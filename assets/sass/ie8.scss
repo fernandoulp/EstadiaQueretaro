@@ -1,23 +1,43 @@
 @import 'libs/vars';
 @import 'libs/functions';
 @import 'libs/mixins';
+
 /*
-	Miniport by HTML5 UP
+	TXT by HTML5 UP
 	html5up.net | @n33co
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
 /* Basic */
 
+	.image {
+		position: relative;
+		-ms-behavior: url('assets/js/ie/PIE.htc');
+
+		&:before {
+			display: none;
+		}
+
+		img {
+			position: relative;
+			-ms-behavior: url('assets/js/ie/PIE.htc');
+		}
+	}
+
+/* Form */
+
 	form {
-		input[type=text],
-		input[type=password],
+		input[type="text"],
+		input[type="email"],
+		input[type="password"],
 		select,
 		textarea {
 			position: relative;
 			-ms-behavior: url('assets/js/ie/PIE.htc');
 		}
 	}
+
+/* Button */
 
 	input[type="button"],
 	input[type="submit"],
@@ -28,65 +48,88 @@
 		-ms-behavior: url('assets/js/ie/PIE.htc');
 	}
 
-/* Section/Article */
-
-	section > .last-child,
-	article > .last-child,
-	section.last-child,
-	article.last-child {
-		margin-bottom: 0;
-	}
-
-/* Box */
-
-	.box {
-		border: solid 1px #ddd;
-	}
-
 /* List */
 
 	ul {
-		&.social {
+		&.contact {
 			li {
 				a {
 					position: relative;
-					top: 0 !important;
-					overflow: hidden;
 					-ms-behavior: url('assets/js/ie/PIE.htc');
-
-					&:before {
-						background: none;
-					}
 				}
+			}
+		}
+
+		&.special {
+			a {
+				position: relative;
+				-ms-behavior: url('assets/js/ie/PIE.htc');
 			}
 		}
 	}
 
-/* Wrappers */
+/* Copyright  */
 
-	.wrapper {
-		border-top: solid 1px #ddd;
+	#copyright {
+		position: relative;
+		-ms-behavior: url('assets/js/ie/PIE.htc');
 	}
 
 /* Nav */
 
 	#nav {
-		a {
-			position: relative;
-			-ms-behavior: url('assets/js/ie/PIE.htc');
-		}
-	}
-
-/* Articles */
-
-	#top {
-		.image {
-			position: relative;
-			-ms-behavior: url('assets/js/ie/PIE.htc');
-
-			img {
+		li {
+			a, span {
 				position: relative;
 				-ms-behavior: url('assets/js/ie/PIE.htc');
 			}
+		}
+	}
+
+/* Section/Article */
+
+	section, article {
+		> .last-child,
+		&.last-child {
+			margin-bottom: 0;
+		}
+	}
+
+/* Wrappers */
+
+	#banner-wrapper {
+		background-image: url('../../images/banner.jpg');
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		-ms-behavior: url('assets/js/ie/backgroundsize.min.htc');
+
+		&:before {
+			display: none;
+		}
+	}
+
+/* Nav */
+
+	#nav {
+		background: #f8f8f8;
+
+		&:after {
+			display: none;
+		}
+	}
+
+	.dropotron {
+		box-shadow: none !important;
+		-ms-behavior: url('assets/js/ie/PIE.htc');
+	}
+
+/* Banner */
+
+	#banner {
+		background: rgb(21, 28, 23);
+
+		&:before {
+			display: none;
 		}
 	}
