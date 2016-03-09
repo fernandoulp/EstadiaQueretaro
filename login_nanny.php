@@ -61,7 +61,7 @@ if (isset($_POST['email'])) {
      $loginStrGroup = "";
    
    
-
+if (PHP_VERSION >= 5.1) {session_regenerate_id(true);} else {session_regenerate_id();}
 	
     //declare two session variables and assign them
     $_SESSION['MM_Username'] = $loginUsername;
