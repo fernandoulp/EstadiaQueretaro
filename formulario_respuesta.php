@@ -42,8 +42,8 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form2")) {
                        GetSQLValueString($_POST['email'], "text"),
                        GetSQLValueString($_POST['id'], "int"));
 
-  mysql_select_db($database_conexionnany, $conexionnany);
-  $Result1 = mysql_query($updateSQL, $conexionnany) or die(mysql_error());
+  mysql_select_db($database_Conexionnany, $Conexionnany);
+  $Result1 = mysql_query($updateSQL, $Conexionnany) or die(mysql_error());
 
   $updateGoTo = "coment_admin.php";
   if (isset($_SERVER['QUERY_STRING'])) {
@@ -54,15 +54,14 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form2")) {
 }
 
 
-
 /*CONFIGURACIONES DEL SEGUNDO JUEGO DE CONSULTA (RECORDSET2).*/
 $varCategoria_Recordset2 = "0";
 if (isset($_GET["recordID"])) {
   $varCategoria_Recordset2 = $_GET["recordID"];
 }
-mysql_select_db($database_conexionnany, $conexionnany);
+mysql_select_db($database_Conexionnany, $Conexionnany);
 $query_Recordset2 = sprintf("SELECT * FROM contacto WHERE contacto.id = %s", GetSQLValueString($varCategoria_Recordset2, "int"));
-$Recordset2 = mysql_query($query_Recordset2, $conexionnany) or die(mysql_error());
+$Recordset2 = mysql_query($query_Recordset2, $Conexionnany) or die(mysql_error());
 $row_Recordset2 = mysql_fetch_assoc($Recordset2);
 $totalRows_Recordset2 = mysql_num_rows($Recordset2);
 ?>

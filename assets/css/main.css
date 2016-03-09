@@ -9,13 +9,21 @@
 
 
 
-/*Brillo de la tabla de inicio_admin.php*/
+/*BRILLO DE LA TABLA inicio_admin.php*/
 .brillo:hover {
 	background-color:#F7CD57;	
 }
 
 .brillo1 {
 	background-color:#38F761;	
+}
+/*FORMULARIO RESPUESTA DE COMENTARIOS*/
+.formulario {
+    display:block;
+    margin:0 auto;
+    width:425px;
+    color: #666666;
+    font-family:Arial;
 }
 
 /*  LOGIN */
