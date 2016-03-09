@@ -1,4 +1,4 @@
-<?php require_once('Connections/conexion.php'); ?>
+<?php require_once('Connections/Conexionnany.php'); ?>
 
 <!--CONEXIÓN A LA BASE DE DATOS Y CONSULTAS PARA ADMINISTRACIÓN DE LOS COMENTARIOS-->
 <?php
@@ -40,10 +40,10 @@ if (isset($_GET['pageNum_Recordset1'])) {
 }
 $startRow_Recordset1 = $pageNum_Recordset1 * $maxRows_Recordset1;
 
-mysql_select_db($database_conexion, $conexion);
+mysql_select_db($database_Conexionnany, $Conexionnany);
 $query_Recordset1 = "SELECT * FROM contacto ORDER BY contacto.nombre ASC";
 $query_limit_Recordset1 = sprintf("%s LIMIT %d, %d", $query_Recordset1, $startRow_Recordset1, $maxRows_Recordset1);
-$Recordset1 = mysql_query($query_limit_Recordset1, $conexion) or die(mysql_error());
+$Recordset1 = mysql_query($query_limit_Recordset1, $Conexionnany) or die(mysql_error());
 $row_Recordset1 = mysql_fetch_assoc($Recordset1);
 
 if (isset($_GET['totalRows_Recordset1'])) {

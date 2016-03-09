@@ -25,7 +25,7 @@ if ($_POST['submit'])
 if (mail($para, $titulo, $msjCorreo, $header)) {
 echo "<script language='javascript'>
 alert('Mensaje enviado, responderemos a la brevedad...Gracias!.');
-window.location.href = 'localhost/EstadiaQueretaro/index.html';
+window.location.href = 'index.html';
 </script>";
 } else {
 echo 'Falló el envio, intenta de nuevo porfavor.';

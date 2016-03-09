@@ -105,24 +105,13 @@ $totalRows_Recordset2 = mysql_num_rows($Recordset2);
 									 <label for="mensaje">Mensaje:</label>
 									 <textarea id="mensaje" name="mensaje" placeholder="Mensaje" required/></textarea>
 
-									 <input id="submit" type="submit" name="submit" value="Enviar" /> 
+									 <input id="submit" type="submit" name="submit" value="Enviar"class="btn btn-link"/>
 									 <input type="hidden" name="MM_update" value="form2" />
-  <input type="hidden" name="id" value="<?php echo $row_Recordset2['id']; ?>" />
+  									<input type="hidden" name="id" value="<?php echo $row_Recordset2['id']; ?>" />
                                 </form>
 							    </section>
 
-			<!--SCRIPT PARA  PREGUNTA/ELIMINAR-->
 
-
-								<script>
-								  function pregunta_eliminar()
-								{
-								if(confirm("Realmente desea eliminar el comentario seleccionado ?"))
-								document.location.href="";
-								else
-								event.preventDefault();
-								}
-								</script>
 						<!-- Nav -->
 							<nav id="nav">
 								<ul>
