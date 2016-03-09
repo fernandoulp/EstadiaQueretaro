@@ -59,7 +59,6 @@ $a = $row_consultaUsuarios['id_numn'];
 		
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 <!-- Optional theme -->
@@ -73,11 +72,12 @@ $a = $row_consultaUsuarios['id_numn'];
 
 			<!-- Header -->
 				<div id="header-wrapper">
+
 					<div id="header" class="container">
 
 						<!-- Logo -->
 							
-
+           <h1 id"logo"> <img src="images/nany.png"></h1>
 						<!-- Nav -->
 							<nav id="nav">
 								<ul>
@@ -100,10 +100,10 @@ $a = $row_consultaUsuarios['id_numn'];
 								</ul>
 							</nav>
 
-<i class="fa fa-users fa-5x"></i>
-<div class="container">
+</br>
+
 <h1 align="center">Lista de niñeras</h1>
-   <p align="center">&nbsp; </p>
+  <p>USUARIOS ACTIVOS</p>
    <table border="1" cellspacing="0" cellpadding="5" align="center">
      <tr bgcolor="#F4B6D2" align="center">
        <p><td>ID</td></p>
@@ -129,7 +129,7 @@ $a = $row_consultaUsuarios['id_numn'];
        <?php } while ($row_consultaUsuarios = mysql_fetch_assoc($consultaUsuarios)); ?>
  </table>
 </div>
-</div>
+
 					</div>
 				</div>
 
