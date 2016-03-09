@@ -1,5 +1,6 @@
-<?php require_once('Connections/Conexionnany.php'); ?>
+<?php require_once('Connections/conexion.php'); ?>
 
+<!--CONEXIÓN A LA BASE DE DATOS Y CONSULTAS PARA ADMINISTRACIÓN DE LOS COMENTARIOS-->
 <?php
 if (!function_exists("GetSQLValueString")) {
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
@@ -32,39 +33,26 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 }
 
-$editFormAction = $_SERVER['PHP_SELF'];
-if (isset($_SERVER['QUERY_STRING'])) {
-  $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
+$maxRows_Recordset1 = 20;
+$pageNum_Recordset1 = 0;
+if (isset($_GET['pageNum_Recordset1'])) {
+  $pageNum_Recordset1 = $_GET['pageNum_Recordset1'];
 }
+$startRow_Recordset1 = $pageNum_Recordset1 * $maxRows_Recordset1;
 
-if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form2")) {
-  $updateSQL = sprintf("UPDATE contacto SET email=%s WHERE id=%s",
-                       GetSQLValueString($_POST['email'], "text"),
-                       GetSQLValueString($_POST['id'], "int"));
+mysql_select_db($database_conexion, $conexion);
+$query_Recordset1 = "SELECT * FROM contacto ORDER BY contacto.nombre ASC";
+$query_limit_Recordset1 = sprintf("%s LIMIT %d, %d", $query_Recordset1, $startRow_Recordset1, $maxRows_Recordset1);
+$Recordset1 = mysql_query($query_limit_Recordset1, $conexion) or die(mysql_error());
+$row_Recordset1 = mysql_fetch_assoc($Recordset1);
 
-  mysql_select_db($database_conexionnany, $conexionnany);
-  $Result1 = mysql_query($updateSQL, $conexionnany) or die(mysql_error());
-
-  $updateGoTo = "coment_admin.php";
-  if (isset($_SERVER['QUERY_STRING'])) {
-    $updateGoTo .= (strpos($updateGoTo, '?')) ? "&" : "?";
-    $updateGoTo .= $_SERVER['QUERY_STRING'];
-  }
-  header(sprintf("Location: %s", $updateGoTo));
+if (isset($_GET['totalRows_Recordset1'])) {
+  $totalRows_Recordset1 = $_GET['totalRows_Recordset1'];
+} else {
+  $all_Recordset1 = mysql_query($query_Recordset1);
+  $totalRows_Recordset1 = mysql_num_rows($all_Recordset1);
 }
-
-
-
-/*CONFIGURACIONES DEL SEGUNDO JUEGO DE CONSULTA (RECORDSET2).*/
-$varCategoria_Recordset2 = "0";
-if (isset($_GET["recordID"])) {
-  $varCategoria_Recordset2 = $_GET["recordID"];
-}
-mysql_select_db($database_conexionnany, $conexionnany);
-$query_Recordset2 = sprintf("SELECT * FROM contacto WHERE contacto.id = %s", GetSQLValueString($varCategoria_Recordset2, "int"));
-$Recordset2 = mysql_query($query_Recordset2, $conexionnany) or die(mysql_error());
-$row_Recordset2 = mysql_fetch_assoc($Recordset2);
-$totalRows_Recordset2 = mysql_num_rows($Recordset2);
+$totalPages_Recordset1 = ceil($totalRows_Recordset1/$maxRows_Recordset1)-1;
 ?>
 <!--FIN DE LAS CONSULTAS-->
 
@@ -73,7 +61,7 @@ $totalRows_Recordset2 = mysql_num_rows($Recordset2);
 
 <html>
 	<head>
-		<title>Responder - Gonanny</title>
+		<title>Administración</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -87,34 +75,51 @@ $totalRows_Recordset2 = mysql_num_rows($Recordset2);
 				<div id="header-wrapper">
 					<div id="header" class="container">
 
-				<!--PHP PARA RECONOCER USUARIO-->
+<!--PHP PARA RECONOCER USUARIO-->
 					<p>
-							<h1>Responder Comentarios</h1>
-					</p>
-				<!--FIN PHP-->
+							<h1><strong>Bienvenido                              <?php  
+ if ((isset($_SESSION['MM_Username'])) && ($_SESSION['MM_Username'] != ""))
+  {
+	  echo "";
+  echo ObtenerNombreUsuario ($_SESSION['MM_idusuario']);
+  ?></font></p>
+<?php 
+  }
+  else
+  {?><br />
+<?php }?><strong></h1>
+						</p>
+<!--FIN PHP-->
 
 
 <br>
 			<!--FORMULARIO RESPUESTA DE COMENTARIOS-->
-							
-								<section class="formulario">
-								<form action="respuesta_admin.php"  method="post" id="form2">
+							<p>
 
-									 <label for="email">Email:</label>
-									 <input id="email" type="email" value="<?php echo htmlentities($row_Recordset2['email'], ENT_COMPAT, 'iso-8859-1'); ?>" name="email" placeholder="ejemplo@correo.com" required/>
+								 <table border="1">
+							    <tr class="brillo1">
+							      <td align="center" >Nombre</td>
+							      <td align="center">Email</td>
+							      <td align="center">Mensaje</td>
+							      <td align="center">Opciones</td>
+							    </tr>
+							    <tr>
+							     
+							    </tr>
+							    <?php do { ?>
+							  <tr class="brillo">
+							    <td align="center" width="100"><?php echo $row_Recordset1['nombre']; ?></td>
+							    <td align="center" width="310"><?php echo $row_Recordset1['email']; ?></td>
+							    <td align="center" width="600"><?php echo $row_Recordset1['mensaje']; ?></td>
+							    <td align="center" width="170" class="special" id="main"><a href="eliminar_mensaje.php?recordID=<?php echo $row_Recordset1['id']; ?>"onclick="pregunta_eliminar();">Eliminar</a>- <a href="formulario_respuesta.php?recordID=<?php echo $row_Recordset1['id']; ?>">Responder</a></td>
 
-									 <label for="mensaje">Mensaje:</label>
-									 <textarea id="mensaje" name="mensaje" placeholder="Mensaje" required/></textarea>
-
-									 <input id="submit" type="submit" name="submit" value="Enviar" /> 
-									 <input type="hidden" name="MM_update" value="form2" />
-  <input type="hidden" name="id" value="<?php echo $row_Recordset2['id']; ?>" />
-                                </form>
-							    </section>
+							  
+							  </tr>
+							  <?php } while ($row_Recordset1 = mysql_fetch_assoc($Recordset1)); ?>
+							  </table>
+							  <?php echo $totalRows_Recordset1 ?> Total de mensajes
 
 			<!--SCRIPT PARA  PREGUNTA/ELIMINAR-->
-
-
 								<script>
 								  function pregunta_eliminar()
 								{
@@ -167,9 +172,3 @@ $totalRows_Recordset2 = mysql_num_rows($Recordset2);
 
 	</body>
 </html>
-
-<?php
-
-
-mysql_free_result($Recordset2);
-?>
