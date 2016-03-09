@@ -1,6 +1,6 @@
 
 <?php require_once('Connections/Conexionnany.php'); ?>
-<?php
+<?php // FUNCION PARA VALIDAR QUE EL VALOR SEA STRING
 if (!function_exists("GetSQLValueString")) {
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
 {
@@ -31,52 +31,17 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
   return $theValue;
 }
 }
-?>
-<?php
-// *** Validate request to login to this site.
-if (!isset($_SESSION)) {
-  session_start();
-}
-$loginFormAction = $_SERVER['PHP_SELF'];
-if (isset($_GET['accesscheck'])) {
-  $_SESSION['PrevUrl'] = $_GET['accesscheck'];
-}
+// SENTENCIA SQL PARA MOSTRAR LOS USUARIOS ACTIVOS REGISTRADOS
+mysql_select_db($database_Conexionnany, $Conexionnany);
+$query_consultaUsuarios = "SELECT * FROM us_ninera WHERE us_ninera.status_n != 0";
+$consultaUsuarios = mysql_query($query_consultaUsuarios, $Conexionnany) or die(mysql_error());
+$row_consultaUsuarios = mysql_fetch_assoc($consultaUsuarios);
+$totalRows_consultaUsuarios = mysql_num_rows($consultaUsuarios);
+ ?>
+ 
+<?php  
+$a = $row_consultaUsuarios['id_numn'];
 
-if (isset($_POST['email'])) {
-  $loginUsername=$_POST['email'];
-  $password=$_POST['password'];
-  $MM_fldUserAuthorization = "";
-  $MM_redirectLoginSuccess = "index.html";
-  $MM_redirectLoginFailed = "index.html"; 
-  $MM_redirecttoReferrer = false;
-  mysql_select_db($database_Conexionnany, $Conexionnany);
-  
-  $LoginRS__query=sprintf("SELECT id_adm, email_adm, password_adm FROM us_adm WHERE email_adm=%s AND password_adm=%s AND status_adm=1",
-    GetSQLValueString($loginUsername, "text"), GetSQLValueString($password, "text")); 
-   
-  $LoginRS = mysql_query($LoginRS__query, $Conexionnany) or die(mysql_error());
-  $row_LoginRS = mysql_fetch_assoc($LoginRS);
-  $loginFoundUser = mysql_num_rows($LoginRS);
-  if ($loginFoundUser) {
-     $loginStrGroup = "";
-   
-   
-if (PHP_VERSION >= 5.1) {session_regenerate_id(true);} else {session_regenerate_id();}
-	
-    //declare two session variables and assign them
-    $_SESSION['MM_Username'] = $loginUsername;
-    $_SESSION['MM_UserGroup'] = $loginStrGroup;	      
-	$_SESSION['MM_idusuario'] = $row_LoginRS["id_adm"];	 
-
-    if (isset($_SESSION['PrevUrl']) && false) {
-      $MM_redirectLoginSuccess = $_SESSION['PrevUrl'];	
-    }
-    header("Location: " . $MM_redirectLoginSuccess );
-  }
-  else {
-    header("Location: ". $MM_redirectLoginFailed );
-  }
-}
 ?>
 <!DOCTYPE HTML>
 <!--
@@ -86,7 +51,7 @@ if (PHP_VERSION >= 5.1) {session_regenerate_id(true);} else {session_regenerate_
 -->
 <html>
 	<head>
-		<title>Login Nanny </title>
+		<title>Lista de usuarios Niñeras </title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -137,25 +102,32 @@ if (PHP_VERSION >= 5.1) {session_regenerate_id(true);} else {session_regenerate_
 
 <i class="fa fa-users fa-5x"></i>
 <div class="container">
-<h2>Iniciar Sesión</h2>
-<div class="form">
-	<form id="form1" name="form1" method="POST" action="<?php echo $loginFormAction; ?>">
-    <div class="input-group input-group-lg">
-  <span class="input-group-addon">
-    <i class="fa fa-user fa-lg"></i>
-  </span>
-  <input class="form-control" id"email" type="email" placeholder="Email address" required>
-</div>
-<div class="input-group input-group-lg">
-  <span class="input-group-addon">
-    <i class="fa fa-lock fa-lg"></i>
-  </span>
-  <input class="form-control" id="password" type="password" placeholder="Password" required>
-
-</div> 
- <input type="submit" name="submit" id="submit" value="Acceder" />
- 
-</form>
+<h1 align="center">Lista de niñeras</h1>
+   <p align="center">&nbsp; </p>
+   <table border="1" cellspacing="0" cellpadding="5" align="center">
+     <tr bgcolor="#F4B6D2" align="center">
+       <p><td>ID</td></p>
+       <td>Nombre</td>
+       <td>Apellido</td>
+       <td>Dirección</td>
+       <td>Email</td>
+       <td>Contrase&ntilde;a</td>
+       <td>Tipo de usuario</td>
+       <td>Opciones</td>
+     </tr>
+     <?php do { ?>
+       <tr class="brillo2">
+         <td onclick="location='datos_lista.php?recordID=<?php echo $row_consultaUsuarios['id_numn']; ?>'"><?php echo $row_consultaUsuarios['id_numn']; ?></td>
+         <td onclick="location='datos_lista.php?recordID=<?php echo $row_consultaUsuarios['id_numn']; ?>'"><?php echo $row_consultaUsuarios['name_n']; ?></td>
+         <td onclick="location='datos_lista.php?recordID=<?php echo $row_consultaUsuarios['id_numn']; ?>'"><?php echo $row_consultaUsuarios['last_namen']; ?> </td>
+          <td onclick="location='datos_lista.php?recordID=<?php echo $row_consultaUsuarios['id_numn']; ?>'"><?php echo $row_consultaUsuarios['address_n']; ?></td>
+         <td onclick="location='datos_lista.php?recordID=<?php echo $row_consultaUsuarios['id_numn']; ?>'"><?php echo $row_consultaUsuarios['email_n']; ?></td>
+         <td onclick="location='datos_lista.php?recordID=<?php echo $row_consultaUsuarios['id_numn']; ?>'"><?php echo $row_consultaUsuarios['password_n']; ?></td>
+         <td onclick="location='datos_lista.php?recordID=<?php echo $row_consultaUsuarios['id_numn']; ?>'"><?php echo $row_consultaUsuarios['type_n']; ?></td>
+         <td><a href="modificar_usuario_admin.php?recordID=<?php echo $row_consultaUsuarios['id_numn']; ?>">Modificar</a> -<a href="eliminar_usuario.php?recordID=<?php echo $row_consultaUsuarios['id_usuario']; ?>" onclick="pregunta_eliminar()"> Eliminar</a></td>
+       </tr>
+       <?php } while ($row_consultaUsuarios = mysql_fetch_assoc($consultaUsuarios)); ?>
+ </table>
 </div>
 </div>
 					</div>

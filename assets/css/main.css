@@ -17,6 +17,11 @@
 .brillo1 {
 	background-color:#38F761;	
 }
+
+.brillo2:hover {
+
+	background-color:#FDE0FD;
+}
 /*FORMULARIO RESPUESTA DE COMENTARIOS*/
 .formulario {
     display:block;
@@ -1481,6 +1486,7 @@ input {
 
 	table {
 		width: 100%;
+		font-family: "century gothic";
 	}
 
 		table.default {
