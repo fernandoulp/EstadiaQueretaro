@@ -33,14 +33,14 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 // SENTENCIA SQL PARA MOSTRAR LOS USUARIOS ACTIVOS REGISTRADOS
 mysql_select_db($database_Conexionnany, $Conexionnany);
-$query_consultaUsuarios = "SELECT * FROM us_ninera WHERE us_ninera.status_n != 0";
+$query_consultaUsuarios = "SELECT * FROM us_padres WHERE us_padres.status_p != 0";
 $consultaUsuarios = mysql_query($query_consultaUsuarios, $Conexionnany) or die(mysql_error());
 $row_consultaUsuarios = mysql_fetch_assoc($consultaUsuarios);
 $totalRows_consultaUsuarios = mysql_num_rows($consultaUsuarios);
  ?>
  
 <?php  
-$a = $row_consultaUsuarios['id_numn'];
+$a = $row_consultaUsuarios['id_nump'];
 
 ?>
 <!DOCTYPE HTML>
@@ -51,7 +51,7 @@ $a = $row_consultaUsuarios['id_numn'];
 -->
 <html>
 	<head>
-		<title>Lista de usuarios Niñeras </title>
+		<title>Lista de usuarios Padres </title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -77,7 +77,7 @@ $a = $row_consultaUsuarios['id_numn'];
 
 						<!-- Logo -->
 							
-           <h1 id"logo"> <img src="images/nany.png"></h1>
+           <h1 id"logo"> <img src="images/padres.png"></h1>
 						<!-- Nav -->
 							<nav id="nav">
 								<ul>
@@ -102,28 +102,28 @@ $a = $row_consultaUsuarios['id_numn'];
 
 </br>
 
-<h1 align="center">Lista de niñeras</h1>
+<h1 align="center">Lista de Padres</h1>
   <p>USUARIOS ACTIVOS</p>
    <table border="1" cellspacing="0" cellpadding="5" align="center">
-     <tr bgcolor="#F4B6D2" align="center">
+     <tr bgcolor="#70CAF7" align="center">
        <p><td>ID</td></p>
        <td>Nombre</td>
        <td>Apellido</td>
-       <td>Dirección</td>
        <td>Email</td>
        <td>Contrase&ntilde;a</td>
        <td>Tipo de usuario</td>
+       <td>Status de usuario</td>
        <td>Opciones</td>
      </tr>
      <?php do { ?>
-       <tr class="brillo2">
-         <td onclick="location='datos_lista.php?recordID=<?php echo $row_consultaUsuarios['id_numn']; ?>'"><?php echo $row_consultaUsuarios['id_numn']; ?></td>
-         <td onclick="location='datos_lista.php?recordID=<?php echo $row_consultaUsuarios['id_numn']; ?>'"><?php echo $row_consultaUsuarios['name_n']; ?></td>
-         <td onclick="location='datos_lista.php?recordID=<?php echo $row_consultaUsuarios['id_numn']; ?>'"><?php echo $row_consultaUsuarios['last_namen']; ?> </td>
-          <td onclick="location='datos_lista.php?recordID=<?php echo $row_consultaUsuarios['id_numn']; ?>'"><?php echo $row_consultaUsuarios['address_n']; ?></td>
-         <td onclick="location='datos_lista.php?recordID=<?php echo $row_consultaUsuarios['id_numn']; ?>'"><?php echo $row_consultaUsuarios['email_n']; ?></td>
-         <td onclick="location='datos_lista.php?recordID=<?php echo $row_consultaUsuarios['id_numn']; ?>'"><?php echo $row_consultaUsuarios['password_n']; ?></td>
-         <td onclick="location='datos_lista.php?recordID=<?php echo $row_consultaUsuarios['id_numn']; ?>'"><?php echo $row_consultaUsuarios['type_n']; ?></td>
+       <tr class="brillo3">
+         <td onclick="location='datos_lista.php?recordID=<?php echo $row_consultaUsuarios['id_numn']; ?>'"><?php echo $row_consultaUsuarios['id_nump']; ?></td>
+         <td onclick="location='datos_lista.php?recordID=<?php echo $row_consultaUsuarios['id_numn']; ?>'"><?php echo $row_consultaUsuarios['name_p']; ?></td>
+         <td onclick="location='datos_lista.php?recordID=<?php echo $row_consultaUsuarios['id_numn']; ?>'"><?php echo $row_consultaUsuarios['last_namep']; ?> </td>
+         <td onclick="location='datos_lista.php?recordID=<?php echo $row_consultaUsuarios['id_numn']; ?>'"><?php echo $row_consultaUsuarios['email_p']; ?></td>
+         <td onclick="location='datos_lista.php?recordID=<?php echo $row_consultaUsuarios['id_numn']; ?>'"><?php echo $row_consultaUsuarios['password_p']; ?></td>
+         <td onclick="location='datos_lista.php?recordID=<?php echo $row_consultaUsuarios['id_numn']; ?>'"><?php echo $row_consultaUsuarios['type_p']; ?></td>
+         <td onclick="location='datos_lista.php?recordID=<?php echo $row_consultaUsuarios['id_numn']; ?>'"><?php echo $row_consultaUsuarios['status_p']; ?></td>
          <td><a href="modificar_usuario_admin.php?recordID=<?php echo $row_consultaUsuarios['id_numn']; ?>">Modificar</a> -<a href="eliminar_usuario.php?recordID=<?php echo $row_consultaUsuarios['id_usuario']; ?>" onclick="pregunta_eliminar()"> Eliminar</a></td>
        </tr>
        <?php } while ($row_consultaUsuarios = mysql_fetch_assoc($consultaUsuarios)); ?>
