@@ -1,4 +1,3 @@
-
 <?php require_once('Connections/Conexionnany.php'); ?>
 <?php
 if (!function_exists("GetSQLValueString")) {
@@ -46,12 +45,12 @@ if (isset($_POST['email'])) {
   $loginUsername=$_POST['email'];
   $password=$_POST['password'];
   $MM_fldUserAuthorization = "";
-  $MM_redirectLoginSuccess = "index.html";
-  $MM_redirectLoginFailed = "index.html"; 
+  $MM_redirectLoginSuccess = "inicio_admin.html";
+  $MM_redirectLoginFailed = "error_inicio.html";
   $MM_redirecttoReferrer = false;
   mysql_select_db($database_Conexionnany, $Conexionnany);
   
-  $LoginRS__query=sprintf("SELECT id_adm, email_adm, password_adm FROM us_adm WHERE email_adm=%s AND password_adm=%s AND status_adm=1",
+  $LoginRS__query=sprintf("SELECT idusuario, email, password FROM administrador WHERE email=%s AND password=%s",
     GetSQLValueString($loginUsername, "text"), GetSQLValueString($password, "text")); 
    
   $LoginRS = mysql_query($LoginRS__query, $Conexionnany) or die(mysql_error());
@@ -59,17 +58,15 @@ if (isset($_POST['email'])) {
   $loginFoundUser = mysql_num_rows($LoginRS);
   if ($loginFoundUser) {
      $loginStrGroup = "";
-   
-   
-if (PHP_VERSION >= 5.1) {session_regenerate_id(true);} else {session_regenerate_id();}
-	
+    
+  if (PHP_VERSION >= 5.1) {session_regenerate_id(true);} else {session_regenerate_id();}
     //declare two session variables and assign them
     $_SESSION['MM_Username'] = $loginUsername;
-    $_SESSION['MM_UserGroup'] = $loginStrGroup;	      
-	$_SESSION['MM_idusuario'] = $row_LoginRS["id_adm"];	 
+    $_SESSION['MM_UserGroup'] = $loginStrGroup;       
+  $_SESSION['MM_idusuario'] = $row_LoginRS["idusuario"];   
 
     if (isset($_SESSION['PrevUrl']) && false) {
-      $MM_redirectLoginSuccess = $_SESSION['PrevUrl'];	
+      $MM_redirectLoginSuccess = $_SESSION['PrevUrl'];  
     }
     header("Location: " . $MM_redirectLoginSuccess );
   }
@@ -78,15 +75,13 @@ if (PHP_VERSION >= 5.1) {session_regenerate_id(true);} else {session_regenerate_
   }
 }
 ?>
+<!--FIN CONEXION Y CONSULTAS-->
+
 <!DOCTYPE HTML>
-<!--
-	Strongly Typed by HTML5 UP
-	html5up.net | @n33co
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
+
 <html>
 	<head>
-		<title>Login Nanny </title>
+		<title>Acceso Administrador</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -137,28 +132,23 @@ if (PHP_VERSION >= 5.1) {session_regenerate_id(true);} else {session_regenerate_
 
 <i class="fa fa-users fa-5x"></i>
 <div class="container">
-<h2>Iniciar Sesión</h2>
-<div class="form">
-	<form id="form1" name="form1" method="POST" action="<?php echo $loginFormAction; ?>">
-    <div class="input-group input-group-lg">
-  <span class="input-group-addon">
-    <i class="fa fa-user fa-lg"></i>
-  </span>
-  <input class="form-control" id"email" type="email" placeholder="Email address" required>
-</div>
-<div class="input-group input-group-lg">
-  <span class="input-group-addon">
-    <i class="fa fa-lock fa-lg"></i>
-  </span>
-  <input class="form-control" id="password" type="password" placeholder="Password" required>
+<h2>Acceso Administrador</h2>
+<!-- Formulario -->
+                <section class="formulario">
+                <form  id="form1" name="form1" method="POST" action="<?php echo $loginFormAction; ?>">
 
-</div> 
- <input type="submit" name="submit" id="submit" value="Acceder" />
- 
-</form>
-</div>
-</div>
-					</div>
+                   <label >Email:</label>
+                   <input type="email" name="email" placeholder="ejemplo@correo.com" required />
+
+                   <label >Password:</label>
+                   <input type="password" name="password" placeholder="password" required/>
+
+
+                   <a href="javascript:enlaces('index.html')"><input id="submit" type="submit" name="submit" value="Iniciar" /></a>
+                                </form>
+                  </section>
+
+                  <!-- Fin del formulario -->
 				</div>
 
 		

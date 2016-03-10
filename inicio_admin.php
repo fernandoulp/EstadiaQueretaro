@@ -1,3 +1,4 @@
+
 <!DOCTYPE HTML>
 <!--
 	Strongly Typed by HTML5 UP
@@ -21,7 +22,20 @@
 					<div id="header" class="container">
 
 					<p>
-							<h1><strong>Bienvenido Administrador</strong></h1>
+							
+
+
+							<h1><strong>Bienvenido                              <?php  
+ if ((isset($_SESSION['MM_Username'])) && ($_SESSION['MM_Username'] != ""))
+  {
+	  echo "";
+  echo ObtenerNombreUsuario ($_SESSION['MM_idusuario']);
+  ?></font></p>
+<?php 
+  }
+  else
+  {?><br />
+<?php }?></strong></h1>
 						</p>
 <br>
 

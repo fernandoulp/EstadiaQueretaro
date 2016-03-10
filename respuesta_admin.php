@@ -17,7 +17,7 @@ if ($_POST['submit'])
 if (mail($para, $titulo, $msjCorreo, $header)) {
 echo "<script language='javascript'>
 alert('Mensaje enviado...Gracias!.');
-window.location.href = 'http://www.gonanny.com/inicio_admin.html';
+window.location.href = 'coment_admin.php';
 </script>";
 } else {
 echo 'Falló el envio, intenta de nuevo por favor.';
