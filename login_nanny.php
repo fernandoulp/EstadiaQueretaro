@@ -45,7 +45,7 @@ if (isset($_POST['email'])) {
   $loginUsername=$_POST['email'];
   $password=$_POST['password'];
   $MM_fldUserAuthorization = "";
-  $MM_redirectLoginSuccess = "inicio_admin.html";
+  $MM_redirectLoginSuccess = "inicio_admin.php";
   $MM_redirectLoginFailed = "error_inicio.html";
   $MM_redirecttoReferrer = false;
   mysql_select_db($database_Conexionnany, $Conexionnany);

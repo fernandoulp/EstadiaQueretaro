@@ -77,17 +77,7 @@ $totalPages_Recordset1 = ceil($totalRows_Recordset1/$maxRows_Recordset1)-1;
 
 <!--PHP PARA RECONOCER USUARIO-->
 					<p>
-							<h1><strong>Bienvenido                              <?php  
- if ((isset($_SESSION['MM_Username'])) && ($_SESSION['MM_Username'] != ""))
-  {
-	  echo "";
-  echo ObtenerNombreUsuario ($_SESSION['MM_idusuario']);
-  ?></font></p>
-<?php 
-  }
-  else
-  {?><br />
-<?php }?><strong></h1>
+							<h1><strong>Bienvenido<strong></h1>
 						</p>
 <!--FIN PHP-->
 
