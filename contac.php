@@ -1,19 +1,19 @@
-
+<?php require_once('Connections/Conexionnany.php'); ?>
 <?php
 
 /*Variables para enviar email.*/
 $nombre = $_POST['nombre'];
 $email = $_POST['email'];
 $mensaje = $_POST['mensaje'];
-$para = 'consultic9@gmail.com';
+$para = 'diegocarrillo482@gmail.com';
 $titulo = 'Mensaje enviado desde contáctanos en www.gonanny.com';
 $header = 'From: ' . $email;
 $msjCorreo = "Nombre: $nombre\n E-Mail: $email\n Mensaje:\n $mensaje";
 
 
 /*Conexión y consulta para insertar en la base de datos.*/
-$conexion = mysql_connect("localhost" , "" , "");
-mysql_select_db("nanny",$conexion);
+$conexion = mysql_connect("localhost" , "root" , "utd");
+mysql_select_db("gonanny",$Conexionnany);
 $sql = "INSERT INTO contacto (nombre, email, mensaje) VALUES ('$nombre','$email','$mensaje')";
 mysql_query($sql);
 

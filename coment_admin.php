@@ -77,7 +77,7 @@ $totalPages_Recordset1 = ceil($totalRows_Recordset1/$maxRows_Recordset1)-1;
 
 <!--PHP PARA RECONOCER USUARIO-->
 					<p>
-							<h1><strong>Bienvenido<strong></h1>
+							<h1><strong>Comentarios</strong></h1>
 						</p>
 <!--FIN PHP-->
 
