@@ -38,9 +38,9 @@ if (isset($_SERVER['QUERY_STRING'])) {
 }
 
 if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form2")) {
-  $updateSQL = sprintf("UPDATE contacto SET email=%s WHERE id=%s",
-                       GetSQLValueString($_POST['email'], "text"),
-                       GetSQLValueString($_POST['id'], "int"));
+  $updateSQL = sprintf("UPDATE contacto SET email_coment=%s WHERE id=%s",
+                       GetSQLValueString($_POST['email_coment'], "text"),
+                       GetSQLValueString($_POST['id_coment'], "int"));
 
   mysql_select_db($database_Conexionnany, $Conexionnany);
   $Result1 = mysql_query($updateSQL, $Conexionnany) or die(mysql_error());
@@ -60,7 +60,7 @@ if (isset($_GET["recordID"])) {
   $varCategoria_Recordset2 = $_GET["recordID"];
 }
 mysql_select_db($database_Conexionnany, $Conexionnany);
-$query_Recordset2 = sprintf("SELECT * FROM contacto WHERE contacto.id = %s", GetSQLValueString($varCategoria_Recordset2, "int"));
+$query_Recordset2 = sprintf("SELECT * FROM contacto WHERE contacto.id_coment = %s", GetSQLValueString($varCategoria_Recordset2, "int"));
 $Recordset2 = mysql_query($query_Recordset2, $Conexionnany) or die(mysql_error());
 $row_Recordset2 = mysql_fetch_assoc($Recordset2);
 $totalRows_Recordset2 = mysql_num_rows($Recordset2);
@@ -88,19 +88,22 @@ $totalRows_Recordset2 = mysql_num_rows($Recordset2);
 
 				<!--PHP PARA RECONOCER USUARIO-->
 					<p>
-							<h1>Responder Comentarios</h1>
+							
+							<h1><strong>Responder Comentario</strong></h1>
+						
 					</p>
 				<!--FIN PHP-->
 
 
 <br>
+<div align="left"><a href="coment_admin.php"><strong>Regresar<strong></a></div>
 			<!--FORMULARIO RESPUESTA DE COMENTARIOS-->
 							
 								<section class="formulario">
 								<form action="respuesta_admin.php"  method="post" id="form2">
 
 									 <label for="email">Email:</label>
-									 <input id="email" type="email" value="<?php echo htmlentities($row_Recordset2['email'], ENT_COMPAT, 'iso-8859-1'); ?>" name="email" placeholder="ejemplo@correo.com" required/>
+									 <input id="email" type="email" value="<?php echo htmlentities($row_Recordset2['email_coment'], ENT_COMPAT, 'iso-8859-1'); ?>" name="email" placeholder="ejemplo@correo.com" required/>
 
 									 <label for="mensaje">Mensaje:</label>
 									 <textarea id="mensaje" name="mensaje" placeholder="Mensaje" required/></textarea>

@@ -41,7 +41,7 @@ if (isset($_GET['pageNum_Recordset1'])) {
 $startRow_Recordset1 = $pageNum_Recordset1 * $maxRows_Recordset1;
 
 mysql_select_db($database_Conexionnany, $Conexionnany);
-$query_Recordset1 = "SELECT * FROM contacto ORDER BY contacto.nombre ASC";
+$query_Recordset1 = "SELECT * FROM contacto ORDER BY contacto.nombre_coment ASC";
 $query_limit_Recordset1 = sprintf("%s LIMIT %d, %d", $query_Recordset1, $startRow_Recordset1, $maxRows_Recordset1);
 $Recordset1 = mysql_query($query_limit_Recordset1, $Conexionnany) or die(mysql_error());
 $row_Recordset1 = mysql_fetch_assoc($Recordset1);
@@ -67,6 +67,12 @@ $totalPages_Recordset1 = ceil($totalRows_Recordset1/$maxRows_Recordset1)-1;
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+
+		<script>
+function enlaces(dir) {
+window.location.replace(dir)
+}
+</script>
 	</head>
 	<head class="homepage">
 		<div id="page-wrapper">
@@ -75,14 +81,11 @@ $totalPages_Recordset1 = ceil($totalRows_Recordset1/$maxRows_Recordset1)-1;
 				<div id="header-wrapper">
 					<div id="header" class="container">
 
-<!--PHP PARA RECONOCER USUARIO-->
 					<p>
 							<h1><strong>Comentarios</strong></h1>
 						</p>
-<!--FIN PHP-->
-
-
 <br>
+<div align="left"><a href="menu_admin.php"><strong>Menú<strong></a></div>
 			<!--FORMULARIO RESPUESTA DE COMENTARIOS-->
 							<p>
 
@@ -98,10 +101,10 @@ $totalPages_Recordset1 = ceil($totalRows_Recordset1/$maxRows_Recordset1)-1;
 							    </tr>
 							    <?php do { ?>
 							  <tr class="brillo">
-							    <td align="center" width="100"><?php echo $row_Recordset1['nombre']; ?></td>
-							    <td align="center" width="310"><?php echo $row_Recordset1['email']; ?></td>
-							    <td align="center" width="600"><?php echo $row_Recordset1['mensaje']; ?></td>
-							    <td align="center" width="170" class="special" id="main"><a href="eliminar_mensaje.php?recordID=<?php echo $row_Recordset1['id']; ?>"onclick="pregunta_eliminar();">Eliminar</a>- <a href="formulario_respuesta.php?recordID=<?php echo $row_Recordset1['id']; ?>">Responder</a></td>
+							    <td align="center" width="150"><?php echo $row_Recordset1['nombre_coment']; ?></td>
+							    <td align="center" width="290"><?php echo $row_Recordset1['email_coment']; ?></td>
+							    <td align="center" width="590"><?php echo $row_Recordset1['coment']; ?></td>
+							    <td align="center" width="170" class="special" id="main"><a href="eliminar_comentario.php?recordID=<?php echo $row_Recordset1['id_coment']; ?>"onclick="pregunta_eliminar();">Eliminar</a>- <a href="formulario_respuesta.php?recordID=<?php echo $row_Recordset1['id_coment']; ?>">Responder</a></td>
 
 							  
 							  </tr>
@@ -109,17 +112,17 @@ $totalPages_Recordset1 = ceil($totalRows_Recordset1/$maxRows_Recordset1)-1;
 							  </table>
 							  <?php echo $totalRows_Recordset1 ?> Total de mensajes
 
-			<!--SCRIPT PARA  PREGUNTA/ELIMINAR-->
-								<script>
+								<!--SCRIPT PARA  PREGUNTA/ELIMINAR-->
+											<script>
 								  function pregunta_eliminar()
 								{
-								if(confirm("Realmente desea eliminar el comentario seleccionado ?"))
+								if(confirm("Desea eliminar el comentario seleccionado ?"))
 								document.location.href="";
 								else
 								event.preventDefault();
 								}
 								</script>
-						<!-- Nav -->
+			<!-- Nav -->
 							<nav id="nav">
 								<ul>
 									<li><a href="index.html"><i class="fa fa-home fa-2x"></i><span> INICIO</span></a></li>
