@@ -1,6 +1,6 @@
 
 <?php require_once('Connections/Conexionnany.php'); ?>
-<?php // FUNCION PARA VALIDAR QUE EL VALOR SEA STRING
+<?php
 if (!function_exists("GetSQLValueString")) {
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
 {
@@ -31,18 +31,20 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
   return $theValue;
 }
 }
-// SENTENCIA SQL PARA MOSTRAR LOS USUARIOS ACTIVOS REGISTRADOS
-mysql_select_db($database_Conexionnany, $Conexionnany);
-$query_consultaUsuarios = "SELECT * FROM us_ninera WHERE us_ninera.status_n != 0";
-$consultaUsuarios = mysql_query($query_consultaUsuarios, $Conexionnany) or die(mysql_error());
-$row_consultaUsuarios = mysql_fetch_assoc($consultaUsuarios);
-$totalRows_consultaUsuarios = mysql_num_rows($consultaUsuarios);
- ?>
- 
-<?php  
-$a = $row_consultaUsuarios['id_numn'];
 
+$varUsuario_consulta_datosUsuario = 0;
+if (isset($_GET['recordID'])) {
+  $varUsuario_consulta_datosUsuario = $_GET['recordID'];
+}
+//CONSULTA SQL PARA TABLA DE USUARIOS
+mysql_select_db($database_Conexionnany, $Conexionnany);
+$query_consulta_datosUsuario = sprintf("SELECT * FROM us_ninera  WHERE us_ninera.id_numn = %s", GetSQLValueString($varUsuario_consulta_datosUsuario, "int"));
+$consulta_datosUsuario = mysql_query($query_consulta_datosUsuario, $Conexionnany) or die(mysql_error());
+$row_consulta_datosUsuario = mysql_fetch_assoc($consulta_datosUsuario);
+$totalRows_consulta_datosUsuario = mysql_num_rows($consulta_datosUsuario);
 ?>
+
+
 <!DOCTYPE HTML>
 <!--
 	Strongly Typed by HTML5 UP
@@ -51,7 +53,7 @@ $a = $row_consultaUsuarios['id_numn'];
 -->
 <html>
 	<head>
-		<title>Lista de usuarios Niñeras </title>
+		<title>Lista de usuarios Padres </title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -77,7 +79,7 @@ $a = $row_consultaUsuarios['id_numn'];
 
 						<!-- Logo -->
 							
-           <h1 id"logo"> <img src="images/nany.png"></h1>
+           
 						<!-- Nav -->
 							<nav id="nav">
 								<ul>
@@ -102,46 +104,23 @@ $a = $row_consultaUsuarios['id_numn'];
 
 </br>
 
-<h1 align="center">Lista de niñeras</h1>
-  <p>USUARIOS ACTIVOS</p>
-   <table border="1" cellspacing="0" cellpadding="5" align="center">
-     <tr bgcolor="#F4B6D2" align="center">
-       <p><td>ID</td></p>
-       <td>Nombre</td>
-       <td>Apellido</td>
-       <td>Email</td>
-       <td>Teléfono</td>
-       <td>Tipo de usuario</td>
-       <td>Opciones</td>
-     </tr>
-     <?php do { ?>
-       <tr class="brillo2">
-         <td onclick="location='datos_nineras.php?recordID=<?php echo $row_consultaUsuarios['id_numn']; ?>'"><?php echo $row_consultaUsuarios['id_numn']; ?></td>
-         <td onclick="location='datos_nineras.php?recordID=<?php echo $row_consultaUsuarios['id_numn']; ?>'"><?php echo $row_consultaUsuarios['name_n']; ?></td>
-         <td onclick="location='datos_nineras.php?recordID=<?php echo $row_consultaUsuarios['id_numn']; ?>'"><?php echo $row_consultaUsuarios['last_namen']; ?> </td>
-         <td onclick="location='datos_nineras.php?recordID=<?php echo $row_consultaUsuarios['id_numn']; ?>'"><?php echo $row_consultaUsuarios['email_n']; ?></td>
-          <td onclick="location='datos_nineras.php?recordID=<?php echo $row_consultaUsuarios['id_numn']; ?>'"><?php echo $row_consultaUsuarios['tel_n']; ?></td>
-         <td onclick="location='datos_nineras.php?recordID=<?php echo $row_consultaUsuarios['id_numn']; ?>'"><?php echo $row_consultaUsuarios['type_n']; ?></td>
-   			<td><a href="suspender_ninera.php?recordID=<?php echo $row_consultaUsuarios['id_numn']; ?>" onclick="pregunta_eliminar()"> Dar de baja</td>
-       </tr>
-       <?php } while ($row_consultaUsuarios = mysql_fetch_assoc($consultaUsuarios)); ?>
- </table>
+   <div class="titulo_datos">
+  <h2><?php echo $row_consulta_datosUsuario['name_n']; ?> <?php echo $row_consulta_datosUsuario['last_namen']; ?></h2>
+    
+     </br>
+   <p> <strong>Dirección:</strong> <?php echo $row_consulta_datosUsuario['address_n']; ?></p>
+     <p><strong>Email:</strong> <?php echo $row_consulta_datosUsuario['email_n']; ?>
+ 		<strong>Teléfono:</strong> <?php echo $row_consulta_datosUsuario['tel_n']; ?> 
+     </p>
+     <p><strong>Estatus:</strong> <?php echo $row_consulta_datosUsuario['status_n']; ?> 
+     </p>
+     <p><strong>Tipo</strong>: <?php echo $row_consulta_datosUsuario['type_n']; ?></p>
 </div>
 
 					</div>
 				</div>
 
-		<!--SCRIPTS PARA VALIDAR PETICI�N DE USUARIO-->
-  <script>
-  function pregunta_eliminar()
-{
-if(confirm("Desea realmente dar de baja el usuario seleccionado?"))
-document.location.href="";
-else
-event.preventDefault();
-}
-</script>
-
+		
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
@@ -153,4 +132,7 @@ event.preventDefault();
 			<script src="assets/js/main.js"></script>
 
 	</body>
+	<?php
+mysql_free_result($consulta_datosUsuario);
+?>
 </html>
