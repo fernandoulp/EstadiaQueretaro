@@ -32,38 +32,40 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 ?>
 <?php
-// *** Validate request to login to this site.
+// *** VALIDAR SOLICITUD PARA LOGIN DENTRO DEL SITIO.
 if (!isset($_SESSION)) {
   session_start();
 }
 $loginFormAction = $_SERVER['PHP_SELF'];
-if (isset($_GET['accesscheck'])) {
+if (isset($_GET['accesscheck'])) { //VALIDAR EL ACCESO AL USUARIO
   $_SESSION['PrevUrl'] = $_GET['accesscheck'];
 }
 
-if (isset($_POST['email'])) {
+if (isset($_POST['email'])) { //SE DECLARAN VARIABLES QUE TENDRAN EL VALOR DE LOS CAMPOS DEL FORMULARIO
   $loginUsername=$_POST['email'];
-  $password=$_POST['password'];
-  $MM_fldUserAuthorization = "";
-  $MM_redirectLoginSuccess = "inicio_admin.php";
-  $MM_redirectLoginFailed = "error_inicio.html";
+  $password=$_POST['password']; //VARIABLE CONTRASEÑA
+  $MM_fldUserAuthorization = "tipo_us";
+  $MM_redirectLoginSuccess = "inicio_admin.php"; //ENLACE SI LA CONEXIÓN ES ÉXITOSA
+  $MM_redirectLoginFailed = "error_admin.php"; //ENLACE SI FALLA LA CONEXIÓN
   $MM_redirecttoReferrer = false;
   mysql_select_db($database_Conexionnany, $Conexionnany);
   
-  $LoginRS__query=sprintf("SELECT idusuario, email, password FROM administrador WHERE email=%s AND password=%s",
-    GetSQLValueString($loginUsername, "text"), GetSQLValueString($password, "text")); 
-   
+  // CONSULTA SQL PARA VERIFICAR QUE EL USUARIO ESTE EN REGISTRADO EN LA BD
+  $LoginRS__query=sprintf("SELECT id_usuario, email, password, tipo_us FROM usuarios WHERE email=%s AND password=%s AND estado_us=1",
+  GetSQLValueString($loginUsername, "text"), GetSQLValueString($password, "text")); 
   $LoginRS = mysql_query($LoginRS__query, $Conexionnany) or die(mysql_error());
-  $row_LoginRS = mysql_fetch_assoc($LoginRS);
+   $row_LoginRS = mysql_fetch_assoc($LoginRS);
   $loginFoundUser = mysql_num_rows($LoginRS);
+  
   if ($loginFoundUser) {
-     $loginStrGroup = "";
     
+    $loginStrGroup  = mysql_result($LoginRS,0,'tipo_us');    
   if (PHP_VERSION >= 5.1) {session_regenerate_id(true);} else {session_regenerate_id();}
-    //declare two session variables and assign them
-    $_SESSION['MM_Username'] = $loginUsername;
-    $_SESSION['MM_UserGroup'] = $loginStrGroup;       
-  $_SESSION['MM_idusuario'] = $row_LoginRS["idusuario"];   
+
+  //SE DECLARAN VARIABLES DE SESION QUE TOMARAN LOS VALORES DEL USUARIO EN SESION
+  $_SESSION['MM_id_usuario'] = $row_LoginRS["id_usuario"]; 
+  $_SESSION['MM_Username'] = $loginUsername;
+  $_SESSION['MM_UserGroup'] = $loginStrGroup;       
 
     if (isset($_SESSION['PrevUrl']) && false) {
       $MM_redirectLoginSuccess = $_SESSION['PrevUrl'];  
@@ -75,13 +77,14 @@ if (isset($_POST['email'])) {
   }
 }
 ?>
-<!--FIN CONEXION Y CONSULTAS-->
+<!--FIN DE LAS CONSULTAS Y PHP-->
 
+<!--INICIO DEL CONTENIDO-->
 <!DOCTYPE HTML>
 
 <html>
 	<head>
-		<title>Acceso Administrador</title>
+		<title>Iniciar Sesión</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -130,9 +133,11 @@ if (isset($_POST['email'])) {
 								</ul>
 							</nav>
 
-<i class="fa fa-users fa-5x"></i>
+
 <div class="container">
-<h2>Acceso Administrador</h2>
+<p>
+              <h1 id="logo"><a>Iniciar Sesión</a></h1>
+            </p>
 <!-- Formulario -->
                 <section class="formulario">
                 <form  id="form1" name="form1" method="POST" action="<?php echo $loginFormAction; ?>">

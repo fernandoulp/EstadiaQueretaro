@@ -21,7 +21,7 @@
 					<div id="header" class="container">
 
 						<!-- Logo -->
-							<h1 id="logo"><a href="index.html">Menú</a></h1>
+							<h1 id="logo"><a>Menú</a></h1>
 							<p>Da clic sobre la opción que desees gestionar</p>
 
 						<!-- Nav -->

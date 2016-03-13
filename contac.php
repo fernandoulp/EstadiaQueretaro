@@ -2,21 +2,20 @@
 <?php
 
 /*Variables para enviar email.*/
-$nombre = $_POST['nombre_coment'];
-$email = $_POST['email_coment'];
-$mensaje = $_POST['coment'];
+$nombre_coment = $_POST['nombre_coment'];
+$email_coment = $_POST['email_coment'];
+$coment = $_POST['coment'];
 $para = 'diegocarrillo482@gmail.com';
-$titulo = 'Mensaje enviado desde contáctanos en www.gonanny.com';
-$header = 'From: ' . $email;
-$msjCorreo = "Nombre: $nombre\n E-Mail: $email\n Mensaje:\n $mensaje";
+$titulo = 'Mensaje enviado desde administración en https://www.GoNanny.com.mx';
+$header = 'From: ' . $email_coment;
+$msjCorreo = "Nombre: $nombre_coment\n E-Mail: $email_coment\n Mensaje:\n $coment";
 
 
 /*Conexión y consulta para insertar en la base de datos.*/
-$conexion = mysql_connect("localhost" , "root" , "utd");
+$Conexionnany = mysql_connect("localhost" , "root" , "utd");
 mysql_select_db("gonanny",$Conexionnany);
-$sql = "INSERT INTO contacto (nombre_coment, email_coment, coment) VALUES ('$nombre','$email','$mensaje')";
+$sql = "INSERT INTO contacto (nombre_coment, email_coment, coment) VALUES ('$nombre_coment','$email_coment','$coment')";
 mysql_query($sql);
-
 
 /*Datos a enviar y mensajes al usuario.*/
 if ($_POST['submit']) 
@@ -28,7 +27,7 @@ alert('Mensaje enviado, responderemos a la brevedad...Gracias!.');
 window.location.href = 'index.html';
 </script>";
 } else {
-echo 'Falló el envio, intenta de nuevo porfavor.';
+echo 'Falló el envio, intenta de nuevo por favor.';
 }
 }
 

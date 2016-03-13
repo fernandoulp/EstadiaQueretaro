@@ -1,10 +1,48 @@
 <?php require_once('Connections/Conexionnany.php'); ?>
+ <?php
+if (!isset($_SESSION)) {
+  session_start();
+}
+$MM_authorizedUsers = "admin";
+$MM_donotCheckaccess = "false";
+
+// *** RESTRINGIR ACCESO A PÁGINA SI EL USUARIO EN SESIÓN NO ES ADMINISTRADOR
+function isAuthorized($strUsers, $strGroups, $UserName, $UserGroup) { 
+  // VALOR FALSO EN VARIABLE SI EL USUARIO NO ES ADMITIDO
+  $isValid = False; 
+	// CUANDO UN VISITANTE INICIA SESION, LA VARIABLE SESSION: MM_USERNAME TOMA EL VALOR DEL USERNAME
+  
+  // DE OTRA FORMA, CUANDO EL USUARIO NO ES ADMITIDO LA VARIABLE ESTARÁ EN BLANCO
+  if (!empty($UserName)) { 
+
+    $arrUsers = Explode(",", $strUsers); 
+    $arrGroups = Explode(",", $strGroups); 
+    if (in_array($UserName, $arrUsers)) { 
+      $isValid = true; 
+    } 
+    if (in_array($UserGroup, $arrGroups)) { 
+      $isValid = true; 
+    } 
+    if (($strUsers == "") && false) { 
+      $isValid = true; 
+    } 
+  } 
+  return $isValid; 
+}
+// PAGINA A LA QUE SE REDICCIONARÁ SI NO SE AUTORIZA EL ACCESO 
+$MM_restrictGoTo = "login_nanny.php";
+if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers, $_SESSION['MM_Username'], $_SESSION['MM_UserGroup'])))) {   
+  $MM_qsChar = "?";
+  $MM_referrer = $_SERVER['PHP_SELF'];
+  if (strpos($MM_restrictGoTo, "?")) $MM_qsChar = "&";
+  if (isset($_SERVER['QUERY_STRING']) && strlen($_SERVER['QUERY_STRING']) > 0) 
+  $MM_referrer .= "?" . $_SERVER['QUERY_STRING'];
+  $MM_restrictGoTo = $MM_restrictGoTo. $MM_qsChar . "accesscheck=" . urlencode($MM_referrer);
+  header("Location: ". $MM_restrictGoTo); 
+  exit;
+}
+?>
 <!DOCTYPE HTML>
-<!--
-	Strongly Typed by HTML5 UP
-	html5up.net | @n33co
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
 	<head>
 		<title>Administración</title>
@@ -25,28 +63,28 @@
 							
 
 
-							<h1><strong>Bienvenido                              <?php  
+							<h1>Bienvenido                              <?php  
  if ((isset($_SESSION['MM_Username'])) && ($_SESSION['MM_Username'] != ""))
   {
 	  echo "";
-  echo ObtenerNombreUsuario ($_SESSION['MM_idusuario']);
+  echo ObtenerNombreUsuario ($_SESSION['MM_id_usuario']);
   ?></font></p>
 <?php 
   }
   else
   {?><br />
-<?php }?></strong></h1>
+<?php }?></h1>
 						</p>
-<br>
+
 
 <ul >
-<li align="left" ><strong>Ventajas de ser administrador:</strong></li>
+<li align="left" ><b>Ventajas de ser administrador</b></li>
 <li type="square" align="left">Podrás filtrar los comentarios al inicio del sitio web.</li>
 <li type="square" align="left">Añadirás mas usuarios administradores.</li>
 <li type="square" align="left">Cambiarás facilmente los videos al rededor del sitio web.</li>
 <li type="square" align="left">Responderás facilmente los comentarios que requieran una respuesta inmediata.</li>
 </ul>
-<button type="button" class="btn btn-link">Continuar</button>
+<button type="button" class="btn btn-link" OnClick="location.href='menu_admin.php' " style="background-color: #FF9900">Continuar</button>
 
 
 						<!-- Nav -->
@@ -76,11 +114,7 @@
 			</head>
 			<!-- Features -->
 			
-			<div id="copyright" class="container">
-						<ul >
-							<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-						</ul>
-					</div>
+						
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.dropotron.min.js"></script>

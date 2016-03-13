@@ -82,7 +82,7 @@ window.location.replace(dir)
 					<div id="header" class="container">
 
 					<p>
-							<h1><strong>Comentarios</strong></h1>
+							<h1 id="logo"><a>Comentarios</a></h1>
 						</p>
 <br>
 <div align="left"><a href="menu_admin.php"><strong>Menú<strong></a></div>
