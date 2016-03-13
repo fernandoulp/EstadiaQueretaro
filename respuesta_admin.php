@@ -1,15 +1,12 @@
 <?php
 
 /*VARIABLES PARA ENVIAR POR EMAIL*/
-
-$email = 'gonanny@gmail.com';
-$mensaje = $_POST['mensaje'];
-$para = $_POST['email'];
-$titulo = 'RESPUESTA DE GONANNY';
+$email = 'consultic9@gmail.com';
+$coment = $_POST['coment'];
+$para = $_POST['email_coment'];
+$titulo = 'Respuesta de empresa consultic';
 $header = 'From: ' . $email;
-$msjCorreo = "E-Mail: $email\n Mensaje:\n $mensaje";
-
-
+$msjCorreo = "E-Mail: $email\n Mensaje:\n $coment";
 /*Datos a enviar y mensajes al usuario.*/
 if ($_POST['submit']) 
 {
