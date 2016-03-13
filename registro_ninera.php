@@ -19,7 +19,7 @@
 				<!--PHP PARA RECONOCER USUARIO-->
 					<p>
 							
-							<h1 id="logo"><a>Respuesta Comentarios</a></h1>
+							<h1 id="logo"><a>Niñeras</a></h1>
 						
 					</p>
 				<!--FIN PHP-->
@@ -28,7 +28,7 @@
 <br> 
 <div align="left"><a href="coment_admin.php"><strong>Regresar<strong></a></div>
 
-			<!--FORMULARIO RESPUESTA DE COMENTARIOS-->
+			<!--FORMULARIO REGISTRO DE NIÑERAS-->
 							<div>
 								<section class="formulario">
 								<form action="respuesta_admin.php"  method="post" id="form2">
@@ -36,6 +36,19 @@
 										<tr valign="baseline">
 									 <td>Nombre:</td>
 									 <td><input style="width:200px;height:20px"></td>
+									 	</tr>
+									 <td>Apellido Paterno:</td>
+									 <td><input style="width:200px;height:20px"></td>
+									 	</tr>
+									 <td>Apellido Materno:</td>
+									 <td><input style="width:200px;height:20px"></td>
+									 	</tr>
+									 <td>Dirección:</td>
+									 <td><input style="width:200px;height:20px"></td>
+									 	</tr>
+									 <td>Teléfono Celular::</td>
+									 <td><input style="width:200px;height:20px"></td>
+
   									</table>
                                 </form>
 							    </section>
