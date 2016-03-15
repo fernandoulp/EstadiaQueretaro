@@ -51,7 +51,7 @@ if (isset($_POST['email_adm'])) { //SE DECLARAN VARIABLES QUE TENDRAN EL VALOR D
   mysql_select_db($database_Conexionnany, $Conexionnany);
   
   // CONSULTA SQL PARA VERIFICAR QUE EL USUARIO ESTE EN REGISTRADO EN LA BD
-  $LoginRS__query=sprintf("SELECT id_user, email_adm, password, type_us FROM usuarios WHERE email_adm=%s AND password=%s AND status_us=1",
+  $LoginRS__query=sprintf("SELECT id_user, email_adm, password, type_us FROM administradores WHERE email_adm=%s AND password=%s AND status_us=1",
   GetSQLValueString($loginUsername, "text"), GetSQLValueString($password, "text")); 
   $LoginRS = mysql_query($LoginRS__query, $Conexionnany) or die(mysql_error());
    $row_LoginRS = mysql_fetch_assoc($LoginRS);
