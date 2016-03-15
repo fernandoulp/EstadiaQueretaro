@@ -33,18 +33,18 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 // INHABILITAR USUARIO DE LA BD QUE ES SELECCIONADO POR EL ADMINISTRADOR - PARÁMETRO ENVIADO
 if ((isset($_GET['recordID'])) && ($_GET['recordID'] != "")) {
-  $UpdateSQL = sprintf("UPDATE us_ninera SET status_n=0 WHERE id_numn=%s",
+  $deleteSQL = sprintf("DELETE FROM us_ninera WHERE id_numn=%s",
                        GetSQLValueString($_GET['recordID'], "int"));
 
   mysql_select_db($database_Conexionnany, $database_Conexionnany);
-  $Result1 = mysql_query($UpdateSQL, $Conexionnany) or die(mysql_error());
+  $Result1 = mysql_query($deleteSQL, $Conexionnany) or die(mysql_error());
 
-  $updateGoTo = "nineras_baja_adm.php";
+  $deleteGoTo = "lista_nineras_adm.php";
   if (isset($_SERVER['QUERY_STRING'])) {
-    $updateGoTo .= (strpos($updateGoTo, '?')) ? "&" : "?";
-    $updateGoTo .= $_SERVER['QUERY_STRING'];
+    $deleteGoTo .= (strpos($deleteGoTo, '?')) ? "&" : "?";
+    $deleteGoTo .= $_SERVER['QUERY_STRING'];
   }
-  header(sprintf("Location: %s", $updateGoTo));
+  header(sprintf("Location: %s", $deleteGoTo));
 }
 ?>
 
