@@ -145,7 +145,7 @@ if (isset($_POST['email_adm'])) { //SE DECLARAN VARIABLES QUE TENDRAN EL VALOR D
 
                     <tr valign="baseline">
                    <td>Email:</td>
-                   <td><input type="email" name="email" placeholder="ejemplo@correo.com" style="width:240px;height:px" required /></td>
+                   <td><input type="email" name="email_adm" placeholder="ejemplo@correo.com" style="width:240px;height:px" required /></td>
                     </tr>
 
                     <tr valign="baseline">
