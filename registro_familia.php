@@ -1,78 +1,8 @@
-<?php require_once('Connections/Conexionnany.php'); ?>
-
-<?php
-if (!function_exists("GetSQLValueString")) {
-function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
-{
-  if (PHP_VERSION < 6) {
-    $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
-  }
-
-  $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
-
-  switch ($theType) {
-    case "text":
-      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-      break;    
-    case "long":
-    case "int":
-      $theValue = ($theValue != "") ? intval($theValue) : "NULL";
-      break;
-    case "double":
-      $theValue = ($theValue != "") ? doubleval($theValue) : "NULL";
-      break;
-    case "date":
-      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-      break;
-    case "defined":
-      $theValue = ($theValue != "") ? $theDefinedValue : $theNotDefinedValue;
-      break;
-  }
-  return $theValue;
-}
-}
-
-$editFormAction = $_SERVER['PHP_SELF'];
-if (isset($_SERVER['QUERY_STRING'])) {
-  $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
-}
-
-if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form2")) {
-  $updateSQL = sprintf("UPDATE contacto SET email_coment=%s WHERE id=%s",
-                       GetSQLValueString($_POST['email_coment'], "text"),
-                       GetSQLValueString($_POST['id_coment'], "int"));
-
-  mysql_select_db($database_Conexionnany, $Conexionnany);
-  $Result1 = mysql_query($updateSQL, $Conexionnany) or die(mysql_error());
-
-  $updateGoTo = "coment_admin.php";
-  if (isset($_SERVER['QUERY_STRING'])) {
-    $updateGoTo .= (strpos($updateGoTo, '?')) ? "&" : "?";
-    $updateGoTo .= $_SERVER['QUERY_STRING'];
-  }
-  header(sprintf("Location: %s", $updateGoTo));
-}
-
-
-/*CONFIGURACIONES DEL SEGUNDO JUEGO DE CONSULTA (RECORDSET2).*/
-$varCategoria_Recordset2 = "0";
-if (isset($_GET["recordID"])) {
-  $varCategoria_Recordset2 = $_GET["recordID"];
-}
-mysql_select_db($database_Conexionnany, $Conexionnany);
-$query_Recordset2 = sprintf("SELECT * FROM contacto WHERE contacto.id_coment = %s", GetSQLValueString($varCategoria_Recordset2, "int"));
-$Recordset2 = mysql_query($query_Recordset2, $Conexionnany) or die(mysql_error());
-$row_Recordset2 = mysql_fetch_assoc($Recordset2);
-$totalRows_Recordset2 = mysql_num_rows($Recordset2);
-?>
-<!--FIN DE LAS CONSULTAS-->
-
-
 <!DOCTYPE HTML>
 
 <html>
 	<head>
-		<title>Responder - Gonanny</title>
+		<title>Registro - Niñera</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -89,31 +19,67 @@ $totalRows_Recordset2 = mysql_num_rows($Recordset2);
 				<!--PHP PARA RECONOCER USUARIO-->
 					<p>
 							
-							<h1 id="logo"><a>Respuesta Comentarios</a></h1>
+							<h1 id="logo"><a>Familia</a></h1>
 						
 					</p>
 				<!--FIN PHP-->
 
 
 <br> 
-<div align="left"><a href="coment_admin.php"><strong>Regresar<strong></a></div>
-			<!--FORMULARIO RESPUESTA DE COMENTARIOS-->
-							
+
+
+			<!--FORMULARIO REGISTRO DE NIÑERAS-->
+							<div>
 								<section class="formulario">
 								<form action="respuesta_admin.php"  method="post" id="form2">
+									<table align="center">
+										<tr valign="baseline">
+									 <td>Nombre:</td>
+									 <td><input style="width:200px;height:20px"></td>
+									 	</tr>
 
-									 <label for="email">Email:</label>
-									 <label id="email" type="email" name="email_coment"  required/><?php echo htmlentities($row_Recordset2['email_coment'], ENT_COMPAT, 'iso-8859-1'); ?></label>
+									 	<tr valign="baseline">
+									 <td>Apellido Paterno:</td>
+									 <td><input style="width:200px;height:20px"></td>
+									 	</tr>
 
-									 <label for="mensaje">Mensaje:</label>
-									 <textarea id="mensaje" name="coment" placeholder="Mensaje" required/></textarea>
+									 	<tr valign="baseline">
+									 <td>Apellido Materno:</td>
+									 <td><input style="width:200px;height:20px"></td>
+									 	</tr>
 
-									 <input id="submit" type="submit" name="submit" value="Enviar"class="btn btn-link"/>
-									 <input type="hidden" name="MM_update" value="form2" />
-  									<input type="hidden" name="id" value="<?php echo $row_Recordset2['id_coment']; ?>" />
+									 	<tr valign="baseline">
+									 <td>Dirección:</td>
+									 <td><input style="width:200px;height:20px"></td>
+									 	</tr>
+
+									 	<tr valign="baseline">
+									 <td>Teléfono Celular:</td>
+									 <td><input style="width:200px;height:20px"></td>
+									 	</tr>
+
+									 	<tr valign="baseline">
+									 <td>Email:</td>
+									 <td><input style="width:200px;height:20px"></td>
+									 	</tr>
+
+									 	<tr valign="baseline">
+									 <td>Sexo:</td>
+									 <td></td>
+									 	</tr>
+
+									 	<tr valign="baseline">
+									 <td>Edad:</td>
+									 <td></td>
+									 	</tr>
+
+									 	
+
+
+  									</table>
                                 </form>
 							    </section>
-
+							</div>
 
 						<!-- Nav -->
 							<nav id="nav">

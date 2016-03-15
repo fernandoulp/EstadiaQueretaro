@@ -41,17 +41,17 @@ if (isset($_GET['accesscheck'])) { //VALIDAR EL ACCESO AL USUARIO
   $_SESSION['PrevUrl'] = $_GET['accesscheck'];
 }
 
-if (isset($_POST['email'])) { //SE DECLARAN VARIABLES QUE TENDRAN EL VALOR DE LOS CAMPOS DEL FORMULARIO
-  $loginUsername=$_POST['email'];
+if (isset($_POST['email_adm'])) { //SE DECLARAN VARIABLES QUE TENDRAN EL VALOR DE LOS CAMPOS DEL FORMULARIO
+  $loginUsername=$_POST['email_adm'];
   $password=$_POST['password']; //VARIABLE CONTRASEÑA
-  $MM_fldUserAuthorization = "tipo_us";
+  $MM_fldUserAuthorization = "type_us";
   $MM_redirectLoginSuccess = "inicio_admin.php"; //ENLACE SI LA CONEXIÓN ES ÉXITOSA
   $MM_redirectLoginFailed = "error_admin.php"; //ENLACE SI FALLA LA CONEXIÓN
   $MM_redirecttoReferrer = false;
   mysql_select_db($database_Conexionnany, $Conexionnany);
   
   // CONSULTA SQL PARA VERIFICAR QUE EL USUARIO ESTE EN REGISTRADO EN LA BD
-  $LoginRS__query=sprintf("SELECT id_usuario, email, password, tipo_us FROM usuarios WHERE email=%s AND password=%s AND estado_us=1",
+  $LoginRS__query=sprintf("SELECT id_user, email_adm, password, type_us FROM usuarios WHERE email_adm=%s AND password=%s AND status_us=1",
   GetSQLValueString($loginUsername, "text"), GetSQLValueString($password, "text")); 
   $LoginRS = mysql_query($LoginRS__query, $Conexionnany) or die(mysql_error());
    $row_LoginRS = mysql_fetch_assoc($LoginRS);
@@ -59,11 +59,11 @@ if (isset($_POST['email'])) { //SE DECLARAN VARIABLES QUE TENDRAN EL VALOR DE LO
   
   if ($loginFoundUser) {
     
-    $loginStrGroup  = mysql_result($LoginRS,0,'tipo_us');    
+    $loginStrGroup  = mysql_result($LoginRS,0,'type_us');    
   if (PHP_VERSION >= 5.1) {session_regenerate_id(true);} else {session_regenerate_id();}
 
   //SE DECLARAN VARIABLES DE SESION QUE TOMARAN LOS VALORES DEL USUARIO EN SESION
-  $_SESSION['MM_id_usuario'] = $row_LoginRS["id_usuario"]; 
+  $_SESSION['MM_id_user'] = $row_LoginRS["id_user"]; 
   $_SESSION['MM_Username'] = $loginUsername;
   $_SESSION['MM_UserGroup'] = $loginStrGroup;       
 
@@ -136,27 +136,44 @@ if (isset($_POST['email'])) { //SE DECLARAN VARIABLES QUE TENDRAN EL VALOR DE LO
 
 <div class="container">
 <p>
-              <h1 id="logo"><a>Iniciar Sesión</a></h1>
+              <h1 id="logo">Iniciar Sesión</h1>
             </p>
 <!-- Formulario -->
                 <section class="formulario">
                 <form  id="form1" name="form1" method="POST" action="<?php echo $loginFormAction; ?>">
+                  <table align="center">
 
-                   <label >Email:</label>
-                   <input type="email" name="email" placeholder="ejemplo@correo.com" required />
+                    <tr valign="baseline">
+                   <td>Email:</td>
+                   <td><input type="email" name="email" placeholder="ejemplo@correo.com" style="width:240px;height:px" required /></td>
+                    </tr>
 
-                   <label >Password:</label>
-                   <input type="password" name="password" placeholder="password" required/>
+                    <tr valign="baseline">
+                   <td>Password:</td>
+                   <td><input type="password" name="password" placeholder="password" style="width:240px;height:40px" required/></td>
+                    </tr>
 
+                    
 
-                   <a href="javascript:enlaces('index.html')"><input id="submit" type="submit" name="submit" value="Iniciar" /></a>
-                                </form>
+                 </table>
+                 <table align="center">
+                  <tr valign="baseline">
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                   <td><input id="submit" type="submit" name="submit" value="Iniciar" style="width:200px;height:40px"/></td>
+                    </tr>
+                 </table>
+                  </form>
                   </section>
 
                   <!-- Fin del formulario -->
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="images/login.png" WIDTH=162 HEIGHT=164 ALT="Login"/>
 				</div>
 
-		
+		<div id="copyright" class="container">
+            <ul class="links">
+              <li>GoNanny Todos los derechos reservados &copy; Copyright 2016</li><li><a href="login_nanny.php">Administración</a></li>
+            </ul>
+          </div>
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>

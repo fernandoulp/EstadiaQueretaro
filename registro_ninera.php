@@ -2,7 +2,7 @@
 
 <html>
 	<head>
-		<title>Responder - Gonanny</title>
+		<title>Registro - Niñera</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -26,28 +26,65 @@
 
 
 <br> 
-<div align="left"><a href="coment_admin.php"><strong>Regresar<strong></a></div>
+
 
 			<!--FORMULARIO REGISTRO DE NIÑERAS-->
 							<div>
 								<section class="formulario">
-								<form action="respuesta_admin.php"  method="post" id="form2">
+								<form action="agregar_ninera.php"  method="post" id="form2">
 									<table align="center">
 										<tr valign="baseline">
 									 <td>Nombre:</td>
-									 <td><input style="width:200px;height:20px"></td>
+									 <td><input style="width:240px;height:40px" requiered/></td>
 									 	</tr>
+
+									 	<tr valign="baseline">
 									 <td>Apellido Paterno:</td>
-									 <td><input style="width:200px;height:20px"></td>
+									 <td><input style="width:240px;height:20px" requiered/></td>
 									 	</tr>
+
+									 	<tr valign="baseline">
 									 <td>Apellido Materno:</td>
-									 <td><input style="width:200px;height:20px"></td>
+									 <td><input style="width:240px;height:20px" requiered/></td>
 									 	</tr>
+
+									 	<tr valign="baseline">
 									 <td>Dirección:</td>
-									 <td><input style="width:200px;height:20px"></td>
+									 <td><input style="width:240px;height:20px" requieres/></td>
 									 	</tr>
-									 <td>Teléfono Celular::</td>
-									 <td><input style="width:200px;height:20px"></td>
+
+									 	<tr valign="baseline">
+									 <td>Teléfono Celular:</td>
+									 <td><input style="width:240px;height:20px" requiered/></td>
+									 	</tr>
+
+									 	<tr valign="baseline">
+									 <td>Email:</td>
+									 <td><input style="width:240px;height:20px" requiered/></td>
+									 	</tr>
+
+									 	<tr valign="baseline">
+									 <td>Estudios:</td>
+									 <td></td>
+									 	</tr>
+
+									 	<tr valign="baseline">
+									 <td>Primeros Auxilios:</td>
+									 <td></td>
+									 	</tr>
+
+									 	<tr valign="baseline">
+									 <td>Experiencia (años):</td>
+									 <td><input style="width:240px;height:20px" requiered/></td>
+									 	</tr>
+
+  									</table>
+
+  									<table>
+  										<tr valign="baseline">
+									 		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                  					 <td><input id="submit" type="submit" name="submit" value="Continuar" style="width:200px;height:40px"/></td>
+                   					    </tr>
 
   									</table>
                                 </form>

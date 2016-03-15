@@ -67,7 +67,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
  if ((isset($_SESSION['MM_Username'])) && ($_SESSION['MM_Username'] != ""))
   {
 	  echo "";
-  echo ObtenerNombreUsuario ($_SESSION['MM_id_usuario']);
+  echo ObtenerNombreUsuario ($_SESSION['MM_id_user']);
   ?></font></p>
 <?php 
   }

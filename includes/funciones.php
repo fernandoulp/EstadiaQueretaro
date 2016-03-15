@@ -34,11 +34,11 @@ function ObtenerNombreUsuario($identificador)
 {
 	global $database_Conexionnany, $Conexionnany;
 	mysql_select_db($database_Conexionnany, $Conexionnany);
-	$query_ConsultaFuncion = sprintf("SELECT usuarios.nombre FROM usuarios WHERE usuarios.id_usuario = %s", $identificador);
+	$query_ConsultaFuncion = sprintf("SELECT usuarios.name_adm FROM usuarios WHERE usuarios.id_user = %s", $identificador);
 	$ConsultaFuncion = mysql_query($query_ConsultaFuncion, $Conexionnany) or die(mysql_error());
 	$row_ConsultaFuncion = mysql_fetch_assoc($ConsultaFuncion);
 	$totalRows_ConsultaFuncion = mysql_num_rows($ConsultaFuncion);
-	 return $row_ConsultaFuncion['nombre']; 
+	 return $row_ConsultaFuncion['name_adm']; 
 	mysql_free_result($ConsultaFuncion);
 }
 ?>
