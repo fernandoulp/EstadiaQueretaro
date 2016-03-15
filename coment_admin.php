@@ -85,7 +85,9 @@ window.location.replace(dir)
 							<h1 id="logo"><a>Comentarios</a></h1>
 						</p>
 <br>
-<div align="left"><a href="menu_admin.php"><strong>Menú<strong></a></div>
+<div align="left"><a href="inicio_admin.php"><strong>Menú<strong></a></div>
+
+
 			<!--FORMULARIO RESPUESTA DE COMENTARIOS-->
 							<p>
 

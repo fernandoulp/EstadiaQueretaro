@@ -77,13 +77,45 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 						</p>
 
 
-<ul >
-<li align="left" ><b>Ventajas de ser administrador</b></li>
-<li type="square" align="left">Podrás filtrar los comentarios al inicio del sitio web.</li>
-<li type="square" align="left">Añadirás mas usuarios administradores.</li>
-<li type="square" align="left">Cambiarás facilmente los videos al rededor del sitio web.</li>
-<li type="square" align="left">Responderás facilmente los comentarios que requieran una respuesta inmediata.</li>
-</ul>
+<div class="row">
+							<div class="4u 12u(mobile)">
+
+								<!-- Feature -->
+									<section>
+										<a href="#"><img src="images/video.png" alt="" width="175" height="175" /></a>
+										<header>
+											<h3>Video </h3>
+										</header>
+										
+									</section>
+
+							</div>
+							<div class="4u 12u(mobile)">
+
+								<!-- Feature -->
+									<section>
+										<a href="coment_admin.php" ><img src="images/coment1.png" alt="" width="175" height="175"/></a>
+										<header>
+											<h3>Comentarios</h3>
+										</header>
+										
+									</section>
+
+							</div>
+							<div class="4u 12u(mobile)">
+
+								<!-- Feature -->
+									<section>
+										<a href="#" class="image featured"><img src="images/mujer.jpg" alt="" /></a>
+										<header>
+											<h3><strong>¡Manos a la obra!</strong></h3>
+										</header>
+										<p>Después de ponerse en contacto la familia con la niñera, el siguiente paso es que
+                                        los papás puedan divertirse y la niñera empiece a cuidar :)</p>
+									</section>
+
+							</div>
+						</div>
 <button type="button" class="btn btn-link" OnClick="location.href='menu_admin.php' " style="background-color: #FF9900">Continuar</button>
 
 

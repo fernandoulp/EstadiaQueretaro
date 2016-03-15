@@ -98,19 +98,32 @@ $totalRows_Recordset2 = mysql_num_rows($Recordset2);
 <br> 
 <div align="left"><a href="coment_admin.php"><strong>Regresar<strong></a></div>
 			<!--FORMULARIO RESPUESTA DE COMENTARIOS-->
-							
+							<br>
 								<section class="formulario">
 								<form action="respuesta_admin.php"  method="post" id="form2">
+									<table align="Center">
+										<tr>
+									 <td for="email">Email:</td>
+									 <td id="email" type="email" name="email_coment"  required/><?php echo htmlentities($row_Recordset2['email_coment'], ENT_COMPAT, 'iso-8859-1'); ?></td>
+										</tr>
+										<tr>
+									 <td for="mensaje">Mensaje:</td>
+									 <td></td>
+									</tr>
+									<tr>
+									<td></td>
+									 <td><textarea id="mensaje" name="coment" placeholder="Mensaje" style="width:400px;height:40px"  required/></textarea></td>
+									</tr>
+									</table>
 
-									 <label for="email">Email:</label>
-									 <label id="email" type="email" name="email_coment"  required/><?php echo htmlentities($row_Recordset2['email_coment'], ENT_COMPAT, 'iso-8859-1'); ?></label>
-
-									 <label for="mensaje">Mensaje:</label>
-									 <textarea id="mensaje" name="coment" placeholder="Mensaje" required/></textarea>
-
-									 <input id="submit" type="submit" name="submit" value="Enviar"class="btn btn-link"/>
+									<table align="center">
+										<tr>
+											<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+									 <td align="center"><input id="submit" type="submit" name="submit" value="Enviar"class="btn btn-link" style="width:200px;height:45px"/>
 									 <input type="hidden" name="MM_update" value="form2" />
-  									<input type="hidden" name="id" value="<?php echo $row_Recordset2['id_coment']; ?>" />
+  									<input type="hidden" name="id" value="<?php echo $row_Recordset2['id_coment']; ?>" /></td>
+  								</tr>
+  									</table>
                                 </form>
 							    </section>
 

@@ -37,6 +37,16 @@ background-color:#D0F0FF;
     font-family:Arial;
 }
 
+/* Button 6d */
+.btn-6d {
+	border: 2px dashed #38F331;
+}
+
+.btn-6d:hover {
+	
+	color: #38F331;
+}
+
 /*  LOGIN */
 .jumbotron {
 	text-align: center;
