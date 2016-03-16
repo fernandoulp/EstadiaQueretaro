@@ -41,7 +41,7 @@ if (isset($_GET['pageNum_Recordset1'])) {
 $startRow_Recordset1 = $pageNum_Recordset1 * $maxRows_Recordset1;
 
 mysql_select_db($database_Conexionnany, $Conexionnany);
-$query_Recordset1 = "SELECT * FROM contacto ORDER BY contacto.nombre_coment ASC";
+$query_Recordset1 = "SELECT * FROM administradores ORDER BY administradores.name_adm ASC";
 $query_limit_Recordset1 = sprintf("%s LIMIT %d, %d", $query_Recordset1, $startRow_Recordset1, $maxRows_Recordset1);
 $Recordset1 = mysql_query($query_limit_Recordset1, $Conexionnany) or die(mysql_error());
 $row_Recordset1 = mysql_fetch_assoc($Recordset1);
@@ -61,7 +61,7 @@ $totalPages_Recordset1 = ceil($totalRows_Recordset1/$maxRows_Recordset1)-1;
 
 <html>
 	<head>
-		<title>Lista de comentarios</title>
+		<title>Lista de administradores</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -82,9 +82,9 @@ window.location.replace(dir)
 					<div id="header" class="container">
 							<img src="images/coment1.png" alt="" width="125" height="125"/>
 					<p>
-							<h1 id="logo"><a>LISTA DE COMENTARIOS</a></h1>
+							<h1 id="logo"><a>LISTA DE ADMINISTRADORES</a></h1>
 						</p>
-						<P>Comentarios Actuales</P>
+						<P>ADMINISTRDORES ACTUALES</P>
 <br>
 <div align="left"><a href="inicio_admin.php"><strong>Menú<strong></a></div>
 
@@ -94,9 +94,11 @@ window.location.replace(dir)
 
 								 <table border="1">
 							    <tr class="brillo1">
+							    	<td align="center" >ID</td>
 							      <td align="center" >Nombre</td>
+							      <td align="center">Apellido Paterno</td>
+							      <td align="center">Apellido Materno</td>
 							      <td align="center">Email</td>
-							      <td align="center">Mensaje</td>
 							      <td align="center">Opciones</td>
 							    </tr>
 							    <tr>
@@ -104,10 +106,13 @@ window.location.replace(dir)
 							    </tr>
 							    <?php do { ?>
 							  <tr class="brillo">
-							    <td align="center" width="150"><?php echo $row_Recordset1['nombre_coment']; ?></td>
-							    <td align="center" width="290"><?php echo $row_Recordset1['email_coment']; ?></td>
-							    <td align="center" width="590"><?php echo $row_Recordset1['coment']; ?></td>
-							    <td align="center" width="170" class="special" id="main"><a href="eliminar_comentario.php?recordID=<?php echo $row_Recordset1['id_coment']; ?>"onclick="pregunta_eliminar();">Eliminar</a>- <a href="formulario_respuesta.php?recordID=<?php echo $row_Recordset1['id_coment']; ?>">Responder</a></td>
+
+							    <td align="center" width="35"><?php echo $row_Recordset1['id_user']; ?></td>
+							    <td align="center" width="150"><?php echo $row_Recordset1['name_adm']; ?></td>
+							    <td align="center" width="150"><?php echo $row_Recordset1['ape1_adm']; ?></td>
+							    <td align="center" width="150"><?php echo $row_Recordset1['ape2_adm']; ?></td>
+							    <td align="center" width="150"><?php echo $row_Recordset1['email_adm']; ?></td>
+							    <td align="center" width="170" class="special" id="main"><a href="eliminar_comentario.php?recordID=<?php echo $row_Recordset1['id_user']; ?>"onclick="pregunta_eliminar();">Eliminar</a>- <a href="formulario_respuesta.php?recordID=<?php echo $row_Recordset1['id_user']; ?>">Modificar</a></td>
 
 							  
 							  </tr>
