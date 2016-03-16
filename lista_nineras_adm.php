@@ -105,7 +105,7 @@ $a = $row_consultaUsuarios['id_numn'];
 <h1 align="center">Lista de niñeras</h1>
   <p>USUARIOS <ins><b>ACTIVOS</b></ins></p>
    <table border="1" cellspacing="0" cellpadding="5" align="center">
-     <tr bgcolor="#F4B6D2" align="center">
+     <tr bgcolor="#FFB6C1" align="center">
        <p><td>ID</td></p>
        <td>Nombre</td>
        <td>Apellido</td>

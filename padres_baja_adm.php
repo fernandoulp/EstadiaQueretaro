@@ -33,7 +33,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 // SENTENCIA SQL PARA MOSTRAR LOS USUARIOS ACTIVOS REGISTRADOS
 mysql_select_db($database_Conexionnany, $Conexionnany);
-$query_consultaUsuarios = "SELECT * FROM us_padres WHERE us_padres.status_p != 0";
+$query_consultaUsuarios = "SELECT * FROM us_padres WHERE us_padres.status_p = 0";
 $consultaUsuarios = mysql_query($query_consultaUsuarios, $Conexionnany) or die(mysql_error());
 $row_consultaUsuarios = mysql_fetch_assoc($consultaUsuarios);
 $totalRows_consultaUsuarios = mysql_num_rows($consultaUsuarios);
@@ -103,9 +103,9 @@ $a = $row_consultaUsuarios['id_nump'];
 </br>
 
 <h1 align="center">Lista de Padres</h1>
-  <p>USUARIOS ACTIVOS</p>
+  <p>USUARIOS <ins><b>INACTIVOS</b><ins></p>
    <table border="1" cellspacing="0" cellpadding="5" align="center">
-     <tr bgcolor="#00BFFF" align="center">
+     <tr bgcolor="#40E0D0" align="center">
        <p><td>ID</td></p>
        <td>Nombre</td>
        <td>Apellido</td>
@@ -124,7 +124,7 @@ $a = $row_consultaUsuarios['id_nump'];
          <td onclick="location='datos_lista.php?recordID=<?php echo $row_consultaUsuarios['id_nump']; ?>'"><?php echo $row_consultaUsuarios['password_p']; ?></td>
          <td onclick="location='datos_lista.php?recordID=<?php echo $row_consultaUsuarios['id_nump']; ?>'"><?php echo $row_consultaUsuarios['type_p']; ?></td>
          <td onclick="location='datos_lista.php?recordID=<?php echo $row_consultaUsuarios['id_nump']; ?>'"><?php echo $row_consultaUsuarios['status_p']; ?></td>
-         <td><a href="suspender_padre.php?recordID=<?php echo $row_consultaUsuarios['id_nump']; ?>" onclick="pregunta_eliminar()"> Suspender Acceso</a></td>
+         <td><a href="reactivar_padre.php?recordID=<?php echo $row_consultaUsuarios['id_nump']; ?>" onclick="pregunta_reactivar()">Reacitivar</a> -<a href="eliminar_padre.php?recordID=<?php echo $row_consultaUsuarios['id_nump']; ?>" onclick="pregunta_eliminar()"> Eliminar</a></td>
        </tr>
        <?php } while ($row_consultaUsuarios = mysql_fetch_assoc($consultaUsuarios)); ?>
  </table>
@@ -132,16 +132,27 @@ $a = $row_consultaUsuarios['id_nump'];
 
 					</div>
 				</div>
-
-		<script>
-  function pregunta_eliminar()
+<script>
+  function pregunta_reactivar()
 {
-if(confirm("¿Desea realmente supender los privilegios al usuario seleccionado?"))
+if(confirm("Desea volver a activar el usuario seleccionado?"))
 document.location.href="";
 else
 event.preventDefault();
 }
 </script>
+
+<script>
+  function pregunta_eliminar()
+{
+if(confirm("Desea eliminar permanentemente el usuario seleccionado?"))
+document.location.href="";
+else
+event.preventDefault();
+}
+</script>
+		
+	
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
