@@ -45,8 +45,8 @@ if (isset($_POST['email_n'])) { //SE DECLARAN VARIABLES QUE TENDRAN EL VALOR DE 
   $loginUsername=$_POST['email_n'];
   $password=$_POST['password_n']; //VARIABLE CONTRASEÑA
   $MM_fldUserAuthorization = "type_n";
-  $MM_redirectLoginSuccess = "inicio_admin.php"; //ENLACE SI LA CONEXIÓN ES ÉXITOSA
-  $MM_redirectLoginFailed = "error_admin.php"; //ENLACE SI FALLA LA CONEXIÓN
+  $MM_redirectLoginSuccess = "index_ninera.php"; //ENLACE SI LA CONEXIÓN ES ÉXITOSA
+  $MM_redirectLoginFailed = "error_nineras.php"; //ENLACE SI FALLA LA CONEXIÓN
   $MM_redirecttoReferrer = false;
   mysql_select_db($database_Conexionnany, $Conexionnany);
   
