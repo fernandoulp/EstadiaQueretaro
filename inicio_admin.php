@@ -122,7 +122,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 
 								<!-- Feature -->
 									<section>
-										<a href="lista_admin.php"><img src="images/admin.png" alt="" width="125" height="125" /></a>
+										<a href="lista_admin.php"><img src="images/admin2.png" alt="" width="125" height="125" /></a>
 										<header>
 											<h3>Lista Administradores </h3>
 										</header>

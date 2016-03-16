@@ -1,6 +1,5 @@
 <?php require_once('Connections/Conexionnany.php'); ?>
 
-<!--CONEXIÓN A LA BASE DE DATOS Y CONSULTAS PARA ADMINISTRACIÓN DE LOS COMENTARIOS-->
 <?php
 if (!function_exists("GetSQLValueString")) {
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
@@ -33,26 +32,38 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 }
 
-$maxRows_Recordset1 = 20;
-$pageNum_Recordset1 = 0;
-if (isset($_GET['pageNum_Recordset1'])) {
-  $pageNum_Recordset1 = $_GET['pageNum_Recordset1'];
+$editFormAction = $_SERVER['PHP_SELF'];
+if (isset($_SERVER['QUERY_STRING'])) {
+  $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
 }
-$startRow_Recordset1 = $pageNum_Recordset1 * $maxRows_Recordset1;
 
+if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form2")) {
+  $updateSQL = sprintf("UPDATE contacto SET email_coment=%s WHERE id=%s",
+                       GetSQLValueString($_POST['email_coment'], "text"),
+                       GetSQLValueString($_POST['id_coment'], "int"));
+
+  mysql_select_db($database_Conexionnany, $Conexionnany);
+  $Result1 = mysql_query($updateSQL, $Conexionnany) or die(mysql_error());
+
+  $updateGoTo = "coment_admin.php";
+  if (isset($_SERVER['QUERY_STRING'])) {
+    $updateGoTo .= (strpos($updateGoTo, '?')) ? "&" : "?";
+    $updateGoTo .= $_SERVER['QUERY_STRING'];
+  }
+  header(sprintf("Location: %s", $updateGoTo));
+}
+
+
+/*CONFIGURACIONES DEL SEGUNDO JUEGO DE CONSULTA (RECORDSET2).*/
+$varCategoria_Recordset2 = "0";
+if (isset($_GET["recordID"])) {
+  $varCategoria_Recordset2 = $_GET["recordID"];
+}
 mysql_select_db($database_Conexionnany, $Conexionnany);
-$query_Recordset1 = "SELECT * FROM administradores ORDER BY administradores.name_adm ASC";
-$query_limit_Recordset1 = sprintf("%s LIMIT %d, %d", $query_Recordset1, $startRow_Recordset1, $maxRows_Recordset1);
-$Recordset1 = mysql_query($query_limit_Recordset1, $Conexionnany) or die(mysql_error());
-$row_Recordset1 = mysql_fetch_assoc($Recordset1);
-
-if (isset($_GET['totalRows_Recordset1'])) {
-  $totalRows_Recordset1 = $_GET['totalRows_Recordset1'];
-} else {
-  $all_Recordset1 = mysql_query($query_Recordset1);
-  $totalRows_Recordset1 = mysql_num_rows($all_Recordset1);
-}
-$totalPages_Recordset1 = ceil($totalRows_Recordset1/$maxRows_Recordset1)-1;
+$query_Recordset2 = sprintf("SELECT * FROM contacto WHERE contacto.id_coment = %s", GetSQLValueString($varCategoria_Recordset2, "int"));
+$Recordset2 = mysql_query($query_Recordset2, $Conexionnany) or die(mysql_error());
+$row_Recordset2 = mysql_fetch_assoc($Recordset2);
+$totalRows_Recordset2 = mysql_num_rows($Recordset2);
 ?>
 <!--FIN DE LAS CONSULTAS-->
 
@@ -61,18 +72,12 @@ $totalPages_Recordset1 = ceil($totalRows_Recordset1/$maxRows_Recordset1)-1;
 
 <html>
 	<head>
-		<title>Lista de administradores</title>
+		<title>Responder - Gonanny</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
-
-		<script>
-function enlaces(dir) {
-window.location.replace(dir)
-}
-</script>
 	</head>
 	<head class="homepage">
 		<div id="page-wrapper">
@@ -80,57 +85,50 @@ window.location.replace(dir)
 			<!-- Header -->
 				<div id="header-wrapper">
 					<div id="header" class="container">
-							<img src="images/admin2.png" alt="" width="125" height="125"/>
+
+				<!--PHP PARA RECONOCER USUARIO-->
 					<p>
-							<h1 id="logo"><a>LISTA DE ADMINISTRADORES</a></h1>
-						</p>
-						<P>ADMINISTRDORES ACTUALES</P>
-<br>
-<div align="left"><a href="inicio_admin.php"><strong>Menú<strong></a></div>
+							
+							<h1 id="logo"><a>Respuesta Comentarios</a></h1>
+						
+					</p>
+				<!--FIN PHP-->
 
 
+<br> 
+<div align="left"><a href="coment_admin.php"><strong>Regresar<strong></a></div>
 			<!--FORMULARIO RESPUESTA DE COMENTARIOS-->
-							<p>
+							<br>
+								<section class="formulario">
+								<form action="respuesta_admin.php"  method="post" id="form2">
+									<table align="Center">
+										<tr>
+									 <td for="email_coment">Email:</td>
+									 <td id="email_coment" type="email" name="email_coment"  required/><?php echo htmlentities($row_Recordset2['email_coment'], ENT_COMPAT, 'iso-8859-1'); ?></td>
+										</tr>
+										<tr>
+									 <td for="coment">Mensaje:</td>
+									 <td></td>
+									</tr>
+									<tr>
+									<td></td>
+									 <td><textarea id="coment" name="coment" placeholder="Mensaje" style="width:400px;height:40px"  required/></textarea></td>
+									</tr>
+									</table>
 
-								 <table border="1">
-							    <tr class="brillo1">
-							    	<td align="center" >ID</td>
-							      <td align="center" >Nombre</td>
-							      <td align="center">Apellido Paterno</td>
-							      <td align="center">Apellido Materno</td>
-							      <td align="center">Email</td>
-							      <td align="center">Opciones</td>
-							    </tr>
-							    <tr>
-							     
-							    </tr>
-							    <?php do { ?>
-							  <tr class="brillo">
+									<table align="center">
+										<tr>
+											<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+									 <td align="center"><input id="submit" type="submit" name="submit" value="Enviar"class="btn btn-link" style="width:200px;height:45px"/>
+									 <input type="hidden" name="MM_update" value="form2" />
+  									<input type="hidden" name="id" value="<?php echo $row_Recordset2['id_coment']; ?>" /></td>
+  								</tr>
+  									</table>
+                                </form>
+							    </section>
 
-							    <td align="center" width="35"><?php echo $row_Recordset1['id_user']; ?></td>
-							    <td align="center" width="150"><?php echo $row_Recordset1['name_adm']; ?></td>
-							    <td align="center" width="150"><?php echo $row_Recordset1['ape1_adm']; ?></td>
-							    <td align="center" width="150"><?php echo $row_Recordset1['ape2_adm']; ?></td>
-							    <td align="center" width="150"><?php echo $row_Recordset1['email_adm']; ?></td>
-							   <td align="center" width="170" class="special" id="main"><a href="eliminar_admin.php?recordID=<?php echo $row_Recordset1['id_user']; ?>"onclick="pregunta_eliminar();">Eliminar</a>- <a href="modificar_admin.php?recordID=<?php echo $row_Recordset1['id_user']; ?>">Modificar</a></td>
 
-							  
-							  </tr>
-							  <?php } while ($row_Recordset1 = mysql_fetch_assoc($Recordset1)); ?>
-							  </table>
-							  <?php echo $totalRows_Recordset1 ?> Total de mensajes
-
-								<!--SCRIPT PARA  PREGUNTA/ELIMINAR-->
-											<script>
-								  function pregunta_eliminar()
-								{
-								if(confirm("Desea eliminar el administrador seleccionado ?"))
-								document.location.href="";
-								else
-								event.preventDefault();
-								}
-								</script>
-			<!-- Nav -->
+						<!-- Nav -->
 							<nav id="nav">
 								<ul>
 									<li><a href="index.html"><i class="fa fa-home fa-2x"></i><span> INICIO</span></a></li>
@@ -173,3 +171,9 @@ window.location.replace(dir)
 
 	</body>
 </html>
+
+<?php
+
+
+mysql_free_result($Recordset2);
+?>
