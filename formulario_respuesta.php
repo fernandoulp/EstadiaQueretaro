@@ -103,16 +103,16 @@ $totalRows_Recordset2 = mysql_num_rows($Recordset2);
 								<form action="respuesta_admin.php"  method="post" id="form2">
 									<table align="Center">
 										<tr>
-									 <td for="email">Email:</td>
-									 <td id="email" type="email" name="email_coment"  required/><?php echo htmlentities($row_Recordset2['email_coment'], ENT_COMPAT, 'iso-8859-1'); ?></td>
+									 <td for="email_coment">Email:</td>
+									 <td id="email_coment" type="email" name="email_coment"  required/><?php echo htmlentities($row_Recordset2['email_coment'], ENT_COMPAT, 'iso-8859-1'); ?></td>
 										</tr>
 										<tr>
-									 <td for="mensaje">Mensaje:</td>
+									 <td for="coment">Mensaje:</td>
 									 <td></td>
 									</tr>
 									<tr>
 									<td></td>
-									 <td><textarea id="mensaje" name="coment" placeholder="Mensaje" style="width:400px;height:40px"  required/></textarea></td>
+									 <td><textarea id="coment" name="coment" placeholder="Mensaje" style="width:400px;height:40px"  required/></textarea></td>
 									</tr>
 									</table>
 
