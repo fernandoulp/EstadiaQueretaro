@@ -49,10 +49,14 @@
 									 	</tr>
 
 									 	<tr valign="baseline">
-									 <td>Dirección:</td>
-									 <td><input style="width:240px;height:20px" requieres/></td>
+									 <td>Fecha de nacimiento:</td>
+									 <td><input type="date" name="fecha" max="1999-01-01"requiered/></td>
 									 	</tr>
 
+										<tr valign="baseline">
+									 <td>Dirección</td>
+									 <td><input style="width:240px;height:20px" requiered/></td>
+									 	</tr>
 									 	<tr valign="baseline">
 									 <td>Teléfono Celular:</td>
 									 <td><input style="width:240px;height:20px" requiered/></td>
