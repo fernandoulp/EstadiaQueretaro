@@ -104,8 +104,9 @@ $a = $row_consultaUsuarios['id_nump'];
 
 <h1 align="center">Lista de Padres</h1>
   <p>USUARIOS ACTIVOS</p>
+  <?php if ($totalRows_consultaUsuarios > 0) { // Show if recordset not empty ?>
    <table border="1" cellspacing="0" cellpadding="5" align="center">
-     <tr bgcolor="#00BFFF" align="center">
+     <tr bgcolor="#7FFFD4" align="center">
        <p><td>ID</td></p>
        <td>Nombre</td>
        <td>Apellido</td>
@@ -117,20 +118,27 @@ $a = $row_consultaUsuarios['id_nump'];
      </tr>
      <?php do { ?>
        <tr class="brillo3">
-         <td onclick="location='datos_lista.php?recordID=<?php echo $row_consultaUsuarios['id_nump']; ?>'"><?php echo $row_consultaUsuarios['id_nump']; ?></td>
-         <td onclick="location='datos_lista.php?recordID=<?php echo $row_consultaUsuarios['id_nump']; ?>'"><?php echo $row_consultaUsuarios['name_p']; ?></td>
-         <td onclick="location='datos_lista.php?recordID=<?php echo $row_consultaUsuarios['id_nump']; ?>'"><?php echo $row_consultaUsuarios['last_namep']; ?> </td>
-         <td onclick="location='datos_lista.php?recordID=<?php echo $row_consultaUsuarios['id_nump']; ?>'"><?php echo $row_consultaUsuarios['email_p']; ?></td>
-         <td onclick="location='datos_lista.php?recordID=<?php echo $row_consultaUsuarios['id_nump']; ?>'"><?php echo $row_consultaUsuarios['password_p']; ?></td>
-         <td onclick="location='datos_lista.php?recordID=<?php echo $row_consultaUsuarios['id_nump']; ?>'"><?php echo $row_consultaUsuarios['type_p']; ?></td>
-         <td onclick="location='datos_lista.php?recordID=<?php echo $row_consultaUsuarios['id_nump']; ?>'"><?php echo $row_consultaUsuarios['status_p']; ?></td>
+         <td onclick="location='datos_padres.php?recordID=<?php echo $row_consultaUsuarios['id_nump']; ?>'"><?php echo $row_consultaUsuarios['id_nump']; ?></td>
+         <td onclick="location='datos_padres.php?recordID=<?php echo $row_consultaUsuarios['id_nump']; ?>'"><?php echo $row_consultaUsuarios['name_p']; ?></td>
+         <td onclick="location='datos_padres.php?recordID=<?php echo $row_consultaUsuarios['id_nump']; ?>'"><?php echo $row_consultaUsuarios['last_namep']; ?> </td>
+         <td onclick="location='datos_padres.php?recordID=<?php echo $row_consultaUsuarios['id_nump']; ?>'"><?php echo $row_consultaUsuarios['email_p']; ?></td>
+         <td onclick="location='datos_padres.php?recordID=<?php echo $row_consultaUsuarios['id_nump']; ?>'"><?php echo $row_consultaUsuarios['password_p']; ?></td>
+         <td onclick="location='datos_padres.php?recordID=<?php echo $row_consultaUsuarios['id_nump']; ?>'"><?php echo $row_consultaUsuarios['type_p']; ?></td>
+         <td onclick="location='datos_padres.php?recordID=<?php echo $row_consultaUsuarios['id_nump']; ?>'"><?php echo $row_consultaUsuarios['status_p']; ?></td>
          <td><a href="suspender_padre.php?recordID=<?php echo $row_consultaUsuarios['id_nump']; ?>" onclick="pregunta_eliminar()"> Suspender Acceso</a></td>
        </tr>
        <?php } while ($row_consultaUsuarios = mysql_fetch_assoc($consultaUsuarios)); ?>
- </table>
+       <?php } // Show if recordset not empty ?>
+           </p>
+            <?php if ($totalRows_consultaUsuarios == 0) { // Show if recordset empty ?>
+  <p>No existe ningún usuario registrado aún</p>
+  <?php } // Show if recordset empty ?>
+ </table>	<ul><li><a href="padres_baja_adm.php">Lista de usuarios suspendidos</a></li></ul>
 </div>
 
 					</div>
+
+
 				</div>
 
 		<script>
@@ -142,6 +150,8 @@ else
 event.preventDefault();
 }
 </script>
+
+
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>

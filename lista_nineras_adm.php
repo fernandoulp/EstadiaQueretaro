@@ -104,6 +104,7 @@ $a = $row_consultaUsuarios['id_numn'];
 
 <h1 align="center">Lista de niñeras</h1>
   <p>USUARIOS <ins><b>ACTIVOS</b></ins></p>
+  <?php if ($totalRows_consultaUsuarios > 0) { // Show if recordset not empty ?>
    <table border="1" cellspacing="0" cellpadding="5" align="center">
      <tr bgcolor="#FFB6C1" align="center">
        <p><td>ID</td></p>
@@ -125,7 +126,12 @@ $a = $row_consultaUsuarios['id_numn'];
    			<td><a href="suspender_ninera.php?recordID=<?php echo $row_consultaUsuarios['id_numn']; ?>" onclick="pregunta_eliminar()"> Dar de baja</td>
        </tr>
        <?php } while ($row_consultaUsuarios = mysql_fetch_assoc($consultaUsuarios)); ?>
- </table>
+        <?php } // Show if recordset not empty ?>
+           </p>
+            <?php if ($totalRows_consultaUsuarios == 0) { // Show if recordset empty ?>
+  <p>No existe ningún usuario registrado aún</p>
+  <?php } // Show if recordset empty ?>
+ </table> <ul><li><a href="nineras_baja_adm.php">Lista de usuarios suspendidos</a></li></ul>
 </div>
 
 					</div>

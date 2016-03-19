@@ -104,6 +104,7 @@ $a = $row_consultaUsuarios['id_nump'];
 
 <h1 align="center">Lista de Padres</h1>
   <p>USUARIOS <ins><b>INACTIVOS</b><ins></p>
+  <?php if ($totalRows_consultaUsuarios > 0) { // Show if recordset not empty ?>
    <table border="1" cellspacing="0" cellpadding="5" align="center">
      <tr bgcolor="#40E0D0" align="center">
        <p><td>ID</td></p>
@@ -127,7 +128,12 @@ $a = $row_consultaUsuarios['id_nump'];
          <td><a href="reactivar_padre.php?recordID=<?php echo $row_consultaUsuarios['id_nump']; ?>" onclick="pregunta_reactivar()">Reacitivar</a> -<a href="eliminar_padre.php?recordID=<?php echo $row_consultaUsuarios['id_nump']; ?>" onclick="pregunta_eliminar()"> Eliminar</a></td>
        </tr>
        <?php } while ($row_consultaUsuarios = mysql_fetch_assoc($consultaUsuarios)); ?>
- </table>
+       <?php } // Show if recordset not empty ?>
+           </p>
+            <?php if ($totalRows_consultaUsuarios == 0) { // Show if recordset empty ?>
+  <p>No existe ningún usuario supendido aún</p>
+  <?php } // Show if recordset empty ?>
+ </table> <ul><li><a href="lista_padres_adm.php">Lista de usuarios activos</a></li></ul>
 </div>
 
 					</div>

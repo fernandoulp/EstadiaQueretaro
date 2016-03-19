@@ -38,7 +38,7 @@ if (isset($_GET['recordID'])) {
 }
 //CONSULTA SQL PARA TABLA DE USUARIOS
 mysql_select_db($database_Conexionnany, $Conexionnany);
-$query_consulta_datosUsuario = sprintf("SELECT * FROM us_ninera  WHERE us_ninera.id_numn = %s", GetSQLValueString($varUsuario_consulta_datosUsuario, "int"));
+$query_consulta_datosUsuario = sprintf("SELECT * FROM us_padres  WHERE us_padres.id_nump = %s", GetSQLValueString($varUsuario_consulta_datosUsuario, "int"));
 $consulta_datosUsuario = mysql_query($query_consulta_datosUsuario, $Conexionnany) or die(mysql_error());
 $row_consulta_datosUsuario = mysql_fetch_assoc($consulta_datosUsuario);
 $totalRows_consulta_datosUsuario = mysql_num_rows($consulta_datosUsuario);
@@ -103,19 +103,18 @@ $totalRows_consulta_datosUsuario = mysql_num_rows($consulta_datosUsuario);
 							</nav>
 
 </br>
-		<h2> Datos de niñera</h2>
+
    <div class="titulo_datos">
-  <h2><?php echo $row_consulta_datosUsuario['name_n']; ?> <?php echo $row_consulta_datosUsuario['last_namen']; ?></h2>
+  <h2><?php echo $row_consulta_datosUsuario['name_p']; ?> <?php echo $row_consulta_datosUsuario['last_namep']; ?></h2>
     
      </br>
-   <p> <strong>Dirección:</strong> <?php echo $row_consulta_datosUsuario['address_n']; ?></p>
-   <p> <strong>Fecha de Nacimiento:</strong> <?php echo $row_consulta_datosUsuario['cumple_n']; ?></p>
-     <p><strong>Email:</strong> <?php echo $row_consulta_datosUsuario['email_n']; ?>
- 		<strong>Teléfono:</strong> <?php echo $row_consulta_datosUsuario['tel_n']; ?> 
+   <p> <strong>Dirección:</strong> <?php echo $row_consulta_datosUsuario['address_p']; ?></p>
+     <p><strong>Email:</strong> <?php echo $row_consulta_datosUsuario['email_p']; ?>
+ 		<strong>Teléfono:</strong> <?php echo $row_consulta_datosUsuario['tel_p']; ?> 
      </p>
-     <p><strong>Estatus:</strong> <?php echo $row_consulta_datosUsuario['status_n']; ?> 
+     <p><strong>Estatus:</strong> <?php echo $row_consulta_datosUsuario['status_p']; ?> 
      </p>
-     <p><strong>Tipo</strong>: <?php echo $row_consulta_datosUsuario['type_n']; ?></p>
+     <p><strong>Tipo</strong>: <?php echo $row_consulta_datosUsuario['type_p']; ?></p>
 </div>
 
 					</div>

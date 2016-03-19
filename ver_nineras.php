@@ -1,4 +1,3 @@
-
 <?php require_once('Connections/Conexionnany.php'); ?>
 <?php
 if (!function_exists("GetSQLValueString")) {
@@ -32,28 +31,21 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 }
 
-$varUsuario_consulta_datosUsuario = 0;
-if (isset($_GET['recordID'])) {
-  $varUsuario_consulta_datosUsuario = $_GET['recordID'];
-}
-//CONSULTA SQL PARA TABLA DE USUARIOS
 mysql_select_db($database_Conexionnany, $Conexionnany);
-$query_consulta_datosUsuario = sprintf("SELECT * FROM us_ninera  WHERE us_ninera.id_numn = %s", GetSQLValueString($varUsuario_consulta_datosUsuario, "int"));
-$consulta_datosUsuario = mysql_query($query_consulta_datosUsuario, $Conexionnany) or die(mysql_error());
-$row_consulta_datosUsuario = mysql_fetch_assoc($consulta_datosUsuario);
-$totalRows_consulta_datosUsuario = mysql_num_rows($consulta_datosUsuario);
+$query_consultaUsuarios = sprintf("SELECT * FROM us_ninera WHERE us_ninera.status_n = 1 AND us_ninera.type_n = 'normal'");
+$consultaUsuarios = mysql_query($query_consultaUsuarios, $Conexionnany) or die(mysql_error());
+$row_consultaUsuarios = mysql_fetch_assoc($consultaUsuarios);
+$totalRows_consultaUsuarios = mysql_num_rows($consultaUsuarios);
 ?>
 
+<!--FIN DE LAS CONSULTAS Y PHP-->
 
+<!--INICIO DEL CONTENIDO-->
 <!DOCTYPE HTML>
-<!--
-	Strongly Typed by HTML5 UP
-	html5up.net | @n33co
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
+
 <html>
 	<head>
-		<title>Lista de usuarios Padres </title>
+		<title>Niñeras</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -61,6 +53,7 @@ $totalRows_consulta_datosUsuario = mysql_num_rows($consulta_datosUsuario);
 		
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 <!-- Optional theme -->
@@ -74,12 +67,11 @@ $totalRows_consulta_datosUsuario = mysql_num_rows($consulta_datosUsuario);
 
 			<!-- Header -->
 				<div id="header-wrapper">
-
 					<div id="header" class="container">
 
 						<!-- Logo -->
 							
-           
+
 						<!-- Nav -->
 							<nav id="nav">
 								<ul>
@@ -102,27 +94,38 @@ $totalRows_consulta_datosUsuario = mysql_num_rows($consulta_datosUsuario);
 								</ul>
 							</nav>
 
-</br>
-		<h2> Datos de niñera</h2>
-   <div class="titulo_datos">
-  <h2><?php echo $row_consulta_datosUsuario['name_n']; ?> <?php echo $row_consulta_datosUsuario['last_namen']; ?></h2>
-    
-     </br>
-   <p> <strong>Dirección:</strong> <?php echo $row_consulta_datosUsuario['address_n']; ?></p>
-   <p> <strong>Fecha de Nacimiento:</strong> <?php echo $row_consulta_datosUsuario['cumple_n']; ?></p>
-     <p><strong>Email:</strong> <?php echo $row_consulta_datosUsuario['email_n']; ?>
- 		<strong>Teléfono:</strong> <?php echo $row_consulta_datosUsuario['tel_n']; ?> 
-     </p>
-     <p><strong>Estatus:</strong> <?php echo $row_consulta_datosUsuario['status_n']; ?> 
-     </p>
-     <p><strong>Tipo</strong>: <?php echo $row_consulta_datosUsuario['type_n']; ?></p>
-</div>
 
-					</div>
-				</div>
+    <div class="container">
+    <div id="features-wrapper">
+        
+    
+            <div align="center">
+               <?php if ($totalRows_consultaUsuarios > 0) { // Show if recordset not empty ?>
+               <?php do { ?>
+              <div class="bordeninera">
+
+                <!-- Feature -->
+                  <section>
+                       <a href="#"><img src="images/nany.png" alt="" /></a><h3><?php echo $row_consultaUsuarios['name_n']; ?> <?php echo $row_consultaUsuarios['last_namen']; ?></h3>
+                    
+                        <p><?php echo $row_consultaUsuarios['email_n']; ?></p>
+                       </br>
+                  </section>
+                  
+               </div>
+                   </br>
+                <?php } while ($row_consultaUsuarios = mysql_fetch_assoc ($consultaUsuarios));?>
+                <?php } // Show if recordset not empty ?>
+             
+                  <?php if ($totalRows_consultaUsuarios == 0) { // Show if recordset empty ?>
+                   <p>No hay niñeras disponibles en esta sección</p>
+                  <?php } // Show if recordset empty ?> 
+              
+          </div>
+			</div>
+      </div>
 
 		
-
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.dropotron.min.js"></script>
@@ -133,7 +136,4 @@ $totalRows_consulta_datosUsuario = mysql_num_rows($consulta_datosUsuario);
 			<script src="assets/js/main.js"></script>
 
 	</body>
-	<?php
-mysql_free_result($consulta_datosUsuario);
-?>
 </html>

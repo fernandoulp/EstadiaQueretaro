@@ -7,6 +7,15 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
+.bordeninera{
+border-radius: 25px;
+    border: 2px solid #F08080;
+    padding: 20px; 
+    
+}
+
+
+
 table1{
 
 }
@@ -1502,7 +1511,7 @@ input {
 
 	table {
 		width: 100%;
-		font-family: "Lobster", "Times", serif;
+		font-family: "Source Sans Pro";
 	}
 
 	.tabla1{
