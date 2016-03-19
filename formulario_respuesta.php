@@ -100,8 +100,12 @@ $totalRows_Recordset2 = mysql_num_rows($Recordset2);
 			<!--FORMULARIO RESPUESTA DE COMENTARIOS-->
 							<br>
 								<section class="formulario">
-								<form action="respuesta_admin.php"  method="post" id="form2">
+								<form action="respuesta_admin.php"  method="post" >
 									<table align="Center">
+										<tr>
+									 <td for="nombre_coment">Nombre:</td>
+									 <td id="nombre_coment" type="email" name="nombre_coment"  required/><?php echo htmlentities($row_Recordset2['nombre_coment'], ENT_COMPAT, 'iso-8859-1'); ?></td>
+										</tr>
 										<tr>
 									 <td for="email_coment">Email:</td>
 									 <td id="email_coment" type="email" name="email_coment"  required/><?php echo htmlentities($row_Recordset2['email_coment'], ENT_COMPAT, 'iso-8859-1'); ?></td>

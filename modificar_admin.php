@@ -1,6 +1,49 @@
 <?php require_once('Connections/Conexionnany.php'); ?>
 
 <?php
+if (!isset($_SESSION)) {
+  session_start();
+}
+$MM_authorizedUsers = "admin";
+$MM_donotCheckaccess = "false";
+
+// *** RESTRINGIR ACCESO A PÁGINA SI EL USUARIO EN SESIÓN NO ES ADMINISTRADOR
+function isAuthorized($strUsers, $strGroups, $UserName, $UserGroup) { 
+
+  $isValid = False; 
+// CUANDO UN VISITANTE INICIA SESION, LA VARIABLE SESSION: MM_USERNAME TOMA EL VALOR DEL USERNAME
+  // DE OTRA FORMA, CUANDO EL USUARIO NO ES ADMITIDO LA VARIABLE ESTARÁ EN BLANCO
+  if (!empty($UserName)) { 
+    
+    $arrUsers = Explode(",", $strUsers); 
+    $arrGroups = Explode(",", $strGroups); 
+    if (in_array($UserName, $arrUsers)) { 
+      $isValid = true; 
+    } 
+  
+    if (in_array($UserGroup, $arrGroups)) { 
+      $isValid = true; 
+    } 
+    if (($strUsers == "") && false) { 
+      $isValid = true; 
+    } 
+  } 
+  return $isValid; 
+}
+// PAGINA A LA QUE SE REDICCIONARÁ SI NO SE AUTORIZA EL ACCESO 
+$MM_restrictGoTo = "login_nanny.php";
+if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers, $_SESSION['MM_Username'], $_SESSION['MM_UserGroup'])))) {   
+  $MM_qsChar = "?";
+  $MM_referrer = $_SERVER['PHP_SELF'];
+  if (strpos($MM_restrictGoTo, "?")) $MM_qsChar = "&";
+  if (isset($_SERVER['QUERY_STRING']) && strlen($_SERVER['QUERY_STRING']) > 0) 
+  $MM_referrer .= "?" . $_SERVER['QUERY_STRING'];
+  $MM_restrictGoTo = $MM_restrictGoTo. $MM_qsChar . "accesscheck=" . urlencode($MM_referrer);
+  header("Location: ". $MM_restrictGoTo); 
+  exit;
+}
+?>
+<?php  // FUNCION PARA VALIDAR QUE EL VALOR SEA STRING
 if (!function_exists("GetSQLValueString")) {
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
 {
@@ -31,39 +74,49 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
   return $theValue;
 }
 }
-
+?>
+<?php
+// SE DECLARA UNA VARIABLE CON EL VALOR DEL ID DEL USUARIO EN SESIÓN (CONSULTA SQL)
+$varID_consultaMisdatos = "0";
+if (isset($_SESSION['MM_id_user'])) {
+  $varID_consultaMisdatos = $_SESSION['MM_id_user'];
+}
+mysql_select_db($database_Conexionnany, $Conexionnany);
+$query_consultaMisdatos = sprintf("SELECT * FROM administradores WHERE administradores.id_user = %s", GetSQLValueString($varID_consultaMisdatos, "bigint"));
+$consultaMisdatos = mysql_query($query_consultaMisdatos, $Conexionnany) or die(mysql_error());
+$row_consultaMisdatos = mysql_fetch_assoc($consultaMisdatos);
+$totalRows_consultaMisdatos = mysql_num_rows($consultaMisdatos);
+?>
+<?php
 $editFormAction = $_SERVER['PHP_SELF'];
 if (isset($_SERVER['QUERY_STRING'])) {
   $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
 }
+?>
 
-if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form2")) {
-  $updateSQL = sprintf("UPDATE contacto SET email_coment=%s WHERE id=%s",
-                       GetSQLValueString($_POST['email_coment'], "text"),
-                       GetSQLValueString($_POST['id_coment'], "int"));
+<?php //FORMULARIO CON LOS DATOS CORREGIDOS , SENTENCIA UPDATE PARA ACTUALIZAR LA INFORMACION DEL REGISTRO
+if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
+  $updateSQL = sprintf("UPDATE administradores SET name_adm=%s, ape1_adm=%s, ape2_adm=%s, email_adm=%s, cel_adm=%s, password=%s, status_us=%s WHERE id_user=%s",
+  // VALORES DEL FORMULARIO ENVIADOS POR EL METODO POST
+                       GetSQLValueString($_POST['name_adm'], "text"),
+                       GetSQLValueString($_POST['ape1_adm'], "text"),
+                       GetSQLValueString($_POST['ape2_adm'], "text"),
+                       GetSQLValueString($_POST['email_adm'], "text"),
+                       GetSQLValueString($_POST['cel_adm'], "text"),
+                       GetSQLValueString($_POST['password'], "text"),
+                       GetSQLValueString($_POST['status_us'], "int"),
+                       GetSQLValueString($_POST['id_user'], "bigint"));
 
   mysql_select_db($database_Conexionnany, $Conexionnany);
   $Result1 = mysql_query($updateSQL, $Conexionnany) or die(mysql_error());
-
-  $updateGoTo = "coment_admin.php";
+// REDICCIONAMIENTO AL INSERTAR
+  $updateGoTo = "lista_admin.php";
   if (isset($_SERVER['QUERY_STRING'])) {
     $updateGoTo .= (strpos($updateGoTo, '?')) ? "&" : "?";
     $updateGoTo .= $_SERVER['QUERY_STRING'];
   }
   header(sprintf("Location: %s", $updateGoTo));
 }
-
-
-/*CONFIGURACIONES DEL SEGUNDO JUEGO DE CONSULTA (RECORDSET2).*/
-$varCategoria_Recordset2 = "0";
-if (isset($_GET["recordID"])) {
-  $varCategoria_Recordset2 = $_GET["recordID"];
-}
-mysql_select_db($database_Conexionnany, $Conexionnany);
-$query_Recordset2 = sprintf("SELECT * FROM contacto WHERE contacto.id_coment = %s", GetSQLValueString($varCategoria_Recordset2, "int"));
-$Recordset2 = mysql_query($query_Recordset2, $Conexionnany) or die(mysql_error());
-$row_Recordset2 = mysql_fetch_assoc($Recordset2);
-$totalRows_Recordset2 = mysql_num_rows($Recordset2);
 ?>
 <!--FIN DE LAS CONSULTAS-->
 
@@ -99,33 +152,67 @@ $totalRows_Recordset2 = mysql_num_rows($Recordset2);
 <div align="left"><a href="coment_admin.php"><strong>Regresar<strong></a></div>
 			<!--FORMULARIO RESPUESTA DE COMENTARIOS-->
 							<br>
-								<section class="formulario">
-								<form action="respuesta_admin.php"  method="post" id="form2">
-									<table align="Center">
-										<tr>
-									 <td for="email_coment">Email:</td>
-									 <td id="email_coment" type="email" name="email_coment"  required/><?php echo htmlentities($row_Recordset2['email_coment'], ENT_COMPAT, 'iso-8859-1'); ?></td>
-										</tr>
-										<tr>
-									 <td for="coment">Mensaje:</td>
-									 <td></td>
-									</tr>
-									<tr>
-									<td></td>
-									 <td><textarea id="coment" name="coment" placeholder="Mensaje" style="width:400px;height:40px"  required/></textarea></td>
-									</tr>
-									</table>
-
+								<div>
+								<section class="formulario" action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1" onsubmit="return valida()">
+								<form action="agregar_ninera.php"  method="post" id="form2">
 									<table align="center">
-										<tr>
-											<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-									 <td align="center"><input id="submit" type="submit" name="submit" value="Enviar"class="btn btn-link" style="width:200px;height:45px"/>
-									 <input type="hidden" name="MM_update" value="form2" />
-  									<input type="hidden" name="id" value="<?php echo $row_Recordset2['id_coment']; ?>" /></td>
-  								</tr>
+										<tr valign="baseline">
+									 <td>Nombre:</td>
+									 <td><input style="width:240px;height:20px" type="text" name="name_adm" value="<?php echo htmlentities($row_consultaMisdatos['name_adm'], ENT_COMPAT, ''); ?>" requiered/></td>
+									 	</tr>
+
+									 	<tr valign="baseline">
+									 <td>Apellido Paterno:</td>
+									 <td><input style="width:240px;height:20px" requiered/></td>
+									 	</tr>
+
+									 	<tr valign="baseline">
+									 <td>Apellido Materno:</td>
+									 <td><input style="width:240px;height:20px" requiered/></td>
+									 	</tr>
+
+									 	<tr valign="baseline">
+									 <td>Dirección:</td>
+									 <td><input style="width:240px;height:20px" requieres/></td>
+									 	</tr>
+
+									 	<tr valign="baseline">
+									 <td>Teléfono Celular:</td>
+									 <td><input style="width:240px;height:20px" requiered/></td>
+									 	</tr>
+
+									 	<tr valign="baseline">
+									 <td>Email:</td>
+									 <td><input style="width:240px;height:20px" requiered/></td>
+									 	</tr>
+
+									 	<tr valign="baseline">
+									 <td>Estudios:</td>
+									 <td></td>
+									 	</tr>
+
+									 	<tr valign="baseline">
+									 <td>Primeros Auxilios:</td>
+									 <td></td>
+									 	</tr>
+
+									 	<tr valign="baseline">
+									 <td>Experiencia (años):</td>
+									 <td><input style="width:240px;height:20px" requiered/></td>
+									 	</tr>
+
+  									</table>
+
+  									<table>
+  										<tr valign="baseline">
+									 		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                  					 <td><input id="submit" type="submit" name="submit" value="Continuar" style="width:200px;height:40px"/></td>
+                   					    </tr>
+
   									</table>
                                 </form>
 							    </section>
+							</div>
 
 
 						<!-- Nav -->
@@ -173,7 +260,5 @@ $totalRows_Recordset2 = mysql_num_rows($Recordset2);
 </html>
 
 <?php
-
-
-mysql_free_result($Recordset2);
+mysql_free_result($consultaMisdatos);
 ?>

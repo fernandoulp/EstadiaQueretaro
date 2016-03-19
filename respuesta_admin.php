@@ -1,24 +1,26 @@
+<?php require_once('Connections/Conexionnany.php'); ?>
 <?php
 
 /*Variables para enviar email.*/
-
-$email = 'diegocarrillo482@gmail.com';
-$mensaje = $_POST['coment'];
-$para = $_POST['email_coment'];
-$titulo = 'Respuesta de empresa consultic';
+$nombre = $_POST['nombre_coment'];
+$email = $_POST['email_coment'];
+$coment = $_POST['coment'];
+$para = 'diegocarrillo482@gmail.com';
+$titulo = 'Mensaje enviado desde administración en https://www.GoNanny.com.mx';
 $header = 'From: ' . $email;
-$msjCorreo = "E-Mail: $email\n Mensaje:\n $mensaje";
+$msjCorreo = "Nombre: $nombre\n E-Mail: $email\n Mensaje:\n $coment";
+
 /*Datos a enviar y mensajes al usuario.*/
 if ($_POST['submit']) 
 {
 
 if (mail($para, $titulo, $msjCorreo, $header)) {
 echo "<script language='javascript'>
-alert('Mensaje enviado...Gracias!.');
-window.location.href = 'http://www.consultic.bravoutd.com/inicio_admin.php';
+alert('Mensaje enviado, responderemos a la brevedad...Gracias!.');
+window.location.href = 'index.html';
 </script>";
 } else {
-echo 'Falló el envio, intenta de nuevo porfavor.';
+echo 'Falló el envio, intenta de nuevo por favor.';
 }
 }
 
