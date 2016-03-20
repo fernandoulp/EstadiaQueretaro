@@ -36,6 +36,8 @@ $query_consultaUsuarios = sprintf("SELECT * FROM us_ninera WHERE us_ninera.statu
 $consultaUsuarios = mysql_query($query_consultaUsuarios, $Conexionnany) or die(mysql_error());
 $row_consultaUsuarios = mysql_fetch_assoc($consultaUsuarios);
 $totalRows_consultaUsuarios = mysql_num_rows($consultaUsuarios);
+
+
 ?>
 
 <!--FIN DE LAS CONSULTAS Y PHP-->
@@ -100,12 +102,17 @@ $totalRows_consultaUsuarios = mysql_num_rows($consultaUsuarios);
       
             
                <?php if ($totalRows_consultaUsuarios > 0) { // Show if recordset not empty ?>
-               <?php do { ?>
+               <?php do { ?>  
               <div class="bordeninera">
 
                   <section>
                        <a href="#"><img src="images/nany.png" alt="" /></a><h3><?php echo $row_consultaUsuarios['name_n']; ?> <?php echo $row_consultaUsuarios['last_namen']; ?></h3>
-                        <p><?php echo $row_consultaUsuarios['email_n']; ?></p>
+                        <p>Email: <?php echo $row_consultaUsuarios['email_n']; ?></p>          
+                        <p>Dirección: <?php echo $row_consultaUsuarios['address_n']; ?></p>
+                         <p>Movil: <?php echo $row_consultaUsuarios['tel_n']; ?></p>
+
+
+		
                      
                   </section>
                
