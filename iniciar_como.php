@@ -40,8 +40,11 @@
 									<li><a href="acerca.html"><i class="fa fa-info-circle fa-2x"></i> </i><span> ACERCA DE</span></a></li>
 									<li><a href="recomendaciones.html"><i class="fa fa-file-text-o fa-2x"></i><span>  RECOMENDACIONES</span></a></li>
 								</ul>
-								
+								</br>
+								<p>Iniciar sesión como</p>
 							</nav>
+
+							
  
  
 					
