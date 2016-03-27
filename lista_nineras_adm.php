@@ -39,10 +39,7 @@ $row_consultaUsuarios = mysql_fetch_assoc($consultaUsuarios);
 $totalRows_consultaUsuarios = mysql_num_rows($consultaUsuarios);
  ?>
  
-<?php  
-$a = $row_consultaUsuarios['id_numn'];
 
-?>
 <!DOCTYPE HTML>
 <!--
 	Strongly Typed by HTML5 UP

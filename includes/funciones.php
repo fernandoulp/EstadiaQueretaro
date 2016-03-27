@@ -41,4 +41,4 @@ function ObtenerNombreUsuario($identificador)
 	 return $row_ConsultaFuncion['name_adm']; 
 	mysql_free_result($ConsultaFuncion);
 }
-?>
+

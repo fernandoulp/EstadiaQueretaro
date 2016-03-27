@@ -45,7 +45,7 @@ if (isset($_POST['email_p'])) { //SE DECLARAN VARIABLES QUE TENDRAN EL VALOR DE 
   $loginUsername=$_POST['email_p'];
   $password=$_POST['password_p']; //VARIABLE CONTRASEÑA
   $MM_fldUserAuthorization = "type_p";
-  $MM_redirectLoginSuccess = "index_familias.php"; //ENLACE SI LA CONEXIÓN ES ÉXITOSA
+  $MM_redirectLoginSuccess = "index_familia.php"; //ENLACE SI LA CONEXIÓN ES ÉXITOSA
   $MM_redirectLoginFailed = "error_familias.php"; //ENLACE SI FALLA LA CONEXIÓN
   $MM_redirecttoReferrer = false;
   mysql_select_db($database_Conexionnany, $Conexionnany);
@@ -59,7 +59,7 @@ if (isset($_POST['email_p'])) { //SE DECLARAN VARIABLES QUE TENDRAN EL VALOR DE 
   
   if ($loginFoundUser) {
     
-    $loginStrGroup  = mysql_result($LoginRS,0,'type_us');    
+    $loginStrGroup  = mysql_result($LoginRS,0,'type_p');    
   if (PHP_VERSION >= 5.1) {session_regenerate_id(true);} else {session_regenerate_id();}
 
   //SE DECLARAN VARIABLES DE SESION QUE TOMARAN LOS VALORES DEL USUARIO EN SESION

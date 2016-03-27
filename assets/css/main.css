@@ -20,6 +20,14 @@ table1{
 
 }
 
+.datos {
+	position:absolute;
+	right:0px;
+	top:50px;
+	width:200px;
+	height:200px;
+	z-index:3;
+}
 /*BRILLO DE LA TABLA inicio_admin.php*/
 .brillo:hover {
 	background-color:#C9F9C4;	
@@ -43,7 +51,7 @@ background-color:#D0F0FF;
     margin:0 auto;
     width:425px;
     color: #666666;
-    font-family:Arial;
+    font-family: "Source Sans Pro";
 }
 
 /* Button 6d */
@@ -1204,11 +1212,7 @@ input {
 		color: #888;
 	}
 
-	h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
-		color: inherit;
-		text-decoration: none;
-		border: 0;
-	}
+	
 
 	a {
 		-moz-transition: color 0.25s ease-in-out, border-bottom-color 0.25s ease-in-out;
@@ -1218,6 +1222,7 @@ input {
 		color: #666;
 		text-decoration: none;
 		border-bottom: solid 1px #ddd;
+		font-family: "Source Sans Pro";
 	}
 
 		a strong {
