@@ -1,5 +1,45 @@
 <?php require_once('Connections/Conexionnany.php'); ?>
 <?php
+// *** RESTRINGIR ACCESO A PÁGINA SI EL USUARIO EN SESIÓN NO ES PADRE
+if (!isset($_SESSION)) {
+  session_start();
+}
+$MM_authorizedUsers = "premium";
+$MM_donotCheckaccess = "false";
+
+function isAuthorized($strUsers, $strGroups, $UserName, $UserGroup) { 
+  // VALOR FALSO EN VARIABLE SI EL USUARIO NO ES ADMITIDO
+  $isValid = False; 
+  // CUANDO UN VISITANTE INICIA SESION, LA VARIABLE SESSION: MM_USERNAME TOMA EL VALOR DEL USERNAME
+  
+  // DE OTRA FORMA, CUANDO EL USUARIO NO ES ADMITIDO LA VARIABLE ESTARÁ EN BLANCO
+  if (!empty($UserName)) { 
+
+    $arrUsers = Explode(",", $strUsers); 
+    $arrGroups = Explode(",", $strGroups); 
+    if (in_array($UserName, $arrUsers)) { 
+      $isValid = true; 
+    } 
+    if (in_array($UserGroup, $arrGroups)) { 
+      $isValid = true; 
+    } 
+    if (($strUsers == "") && false) { 
+      $isValid = true; 
+    } 
+  } 
+  return $isValid; 
+}
+$MM_restrictGoTo = "login_familias.php";
+if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers, $_SESSION['MM_Username'], $_SESSION['MM_UserGroup'])))) {   
+  $MM_qsChar = "?";
+  $MM_referrer = $_SERVER['PHP_SELF'];
+  if (strpos($MM_restrictGoTo, "?")) $MM_qsChar = "&";
+  if (isset($_SERVER['QUERY_STRING']) && strlen($_SERVER['QUERY_STRING']) > 0) 
+  $MM_referrer .= "?" . $_SERVER['QUERY_STRING'];
+  $MM_restrictGoTo = $MM_restrictGoTo. $MM_qsChar . "accesscheck=" . urlencode($MM_referrer);
+  header("Location: ". $MM_restrictGoTo); 
+  exit;
+}
 
 //STRINGS FUNCIONES
 if (!function_exists("GetSQLValueString")) {
@@ -68,7 +108,7 @@ $totalRows_consulta_datos_padres = mysql_num_rows($consulta_datos_padres);
 -->
 <html>
 	<head>
-		<title>Lista de usuarios Padres </title>
+		<title>Solicitud</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -113,10 +153,13 @@ $totalRows_consulta_datos_padres = mysql_num_rows($consulta_datos_padres);
 </br>
 
    <h3>Contactar a <?php echo $row_consulta_datosUsuario['name_n']; ?> <?php echo $row_consulta_datosUsuario['last_namen']; ?> </h3>
+    <p>Fecha aproximada de servicio Nanafy: </p> <input type="date" style="width:240px;height:20px">
 <p>Deja tu mensaje:</p>
-   <input type="text" placeholder="Hola <?php echo $row_consulta_datosUsuario['name_n']; ?> me gustaría contactarte" required>
+<input type="text" hidden value="<?php echo $row_consulta_datos_padres['name_p']; ?> <?php echo $row_consulta_datos_padres['last_namep']; ?>" readonly>
+   <textarea style="width:700px;height:200px" placeholder="Hola <?php echo $row_consulta_datosUsuario['name_n']; ?> me gustaría solicitarte para cuidar a mis niños" required></textarea>
 		
-
+    <input type="text" style="width:240px;height:20px" value="<?php echo $row_consulta_datos_padres['id_nump']; ?>" hidden>
+    
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.dropotron.min.js"></script>
