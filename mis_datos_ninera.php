@@ -7,7 +7,7 @@
 if (!isset($_SESSION)) {
   session_start();
 }
-$MM_authorizedUsers = "normal";
+$MM_authorizedUsers = "premium";
 $MM_donotCheckaccess = "false";
 
 // *** RESTRINGIR ACCESO A PÁGINA SI EL USUARIO EN SESIÓN NO ESTA LOGEADO

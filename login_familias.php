@@ -113,27 +113,14 @@ if (isset($_POST['email_p'])) { //SE DECLARAN VARIABLES QUE TENDRAN EL VALOR DE 
 
 						<!-- Nav -->
 							<nav id="nav">
-								<ul>
-									<li><a href="index.html"><i class="fa fa-home fa-2x"></i><span> INICIO</span></a></li>
-									<li>
-										<a href="#"><i class="fa fa-users fa-2x"></i><span> FAMILIA</span></a>
-										<ul>
-											<li><a href="#">Inicia sesión</a></li>
-											<li><a href="#">Registrate</a></li>
-										</ul>
-									</li>
-									<li><a href="left-sidebar.html"><i class="fa fa-female fa-2x"></i><span> NIÑERA</span></a>
-									<ul>
-											<li><a href="#">Inicia sesión</a></li>
-											<li><a href="#">Registrate</a></li>
-										</ul>
-									</li>
-									<li><a href="right-sidebar.html"><i class="fa fa-info-circle fa-2x"></i> </i><span> ACERCA DE</span></a></li>
-									<li><a href="requisitos.html"><i class="fa fa-file-text-o fa-2x"></i><span>  RECOMENDACIONES</span></a></li>
-								</ul>
-							</nav>
-
-
+                <ul>
+                  <li><a href="index.html"><i class="fa fa-home fa-2x"></i><span> INICIO</span></a></li>
+                  <li><a href="#"><i class="fa fa-users fa-2x"></i> </i><span> FAMILIA</span></a></li>
+                  <li><a href="#"><i class="fa fa-female fa-2x"></i> </i><span> NIÑERA</span></a></li>
+                  <li><a href="acerca.html"><i class="fa fa-info-circle fa-2x"></i> </i><span> ACERCA DE</span></a></li>
+                  <li><a href="recomendaciones.html"><i class="fa fa-file-text-o fa-2x"></i><span>  RECOMENDACIONES</span></a></li>
+                </ul>
+</nav>
 <div class="container">
 <p>
               <h1 id="logo">Iniciar Sesión</h1>
@@ -171,7 +158,7 @@ if (isset($_POST['email_p'])) { //SE DECLARAN VARIABLES QUE TENDRAN EL VALOR DE 
 
 		<div id="copyright" class="container">
             <ul class="links">
-              <li>GoNanny Todos los derechos reservados &copy; Copyright 2016</li><li><a href="login_nanny.php">Administración</a></li>
+              <il>Nanafy</il><li>Todos los derechos reservados &copy; Copyright 2016</li>
             </ul>
           </div>
 

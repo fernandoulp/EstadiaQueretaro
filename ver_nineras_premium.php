@@ -32,7 +32,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 
 mysql_select_db($database_Conexionnany, $Conexionnany);
-$query_consultaUsuarios = sprintf("SELECT * FROM us_ninera WHERE us_ninera.status_n = 1 AND us_ninera.type_n = 'normal'");
+$query_consultaUsuarios = sprintf("SELECT * FROM us_ninera WHERE us_ninera.status_n = 1 AND us_ninera.type_n = 'premium'");
 $consultaUsuarios = mysql_query($query_consultaUsuarios, $Conexionnany) or die(mysql_error());
 $row_consultaUsuarios = mysql_fetch_assoc($consultaUsuarios);
 $totalRows_consultaUsuarios = mysql_num_rows($consultaUsuarios);
@@ -77,48 +77,33 @@ $totalRows_consultaUsuarios = mysql_num_rows($consultaUsuarios);
 						<!-- Nav -->
 							<nav id="nav">
 								<ul>
-									<li><a href="index.html"><i class="fa fa-home fa-2x"></i><span> INICIO</span></a></li>
-									<li>
-										<a href="#"><i class="fa fa-users fa-2x"></i><span> FAMILIA</span></a>
-										<ul>
-											<li><a href="#">Inicia sesión</a></li>
-											<li><a href="#">Registrate</a></li>
-										</ul>
-									</li>
-									<li><a href="left-sidebar.html"><i class="fa fa-female fa-2x"></i><span> NIÑERA</span></a>
-									<ul>
-											<li><a href="#">Inicia sesión</a></li>
-											<li><a href="#">Registrate</a></li>
-										</ul>
-									</li>
-									<li><a href="right-sidebar.html"><i class="fa fa-info-circle fa-2x"></i> </i><span> ACERCA DE</span></a></li>
-									<li><a href="requisitos.html"><i class="fa fa-file-text-o fa-2x"></i><span>  RECOMENDACIONES</span></a></li>
+									<li><a href="index_familia.php"><i class="fa fa-home fa-2x"></i><span> INICIO</span></a></li>
+									<li><a href="mis_datos_padres.php?recordID=<?php echo $_SESSION['MM_id_nump']; ?>"><i class="fa fa-users fa-2x"></i> </i><span> MI PERFIL</span></a></li>
+									<li><a href="ver_nineras_premium.php"><i class="fa fa-female fa-2x"></i> <span>	NIÑERAS</span></a></li>
 								</ul>
+								
 							</nav>
 
-
-    <div class="container">
+					
+				
+   		
         
-      
+      		<div class="datosninera">
             
                <?php if ($totalRows_consultaUsuarios > 0) { // Show if recordset not empty ?>
                <?php do { ?>  
-              <div class="bordeninera">
+             	<div class="bordeninera">
 
                   <section>
-                       <a href="#"><img src="images/nany.png" alt="" /></a><h3><?php echo $row_consultaUsuarios['name_n']; ?> <?php echo $row_consultaUsuarios['last_namen']; ?></h3>
+                       <a href="#"><img src="images/nany.png" alt="" /></a><h3><span><?php echo $row_consultaUsuarios['name_n']; ?> <?php echo $row_consultaUsuarios['last_namen']; ?></span></h3>
                         <p>Email: <?php echo $row_consultaUsuarios['email_n']; ?></p>          
                         <p>Dirección: <?php echo $row_consultaUsuarios['address_n']; ?></p>
                          <p>Movil: <?php echo $row_consultaUsuarios['tel_n']; ?></p>
-
-
-		
-                     
+                         </br>
+                         <a href="contactar_ninera.php?recordID=<?php echo $row_consultaUsuarios['id_numn']; ?>"><input id="submit" type="submit" name="submit" value="Contactar" style="width:200px;height:45px"/></a>
                   </section>
-               
-               </div>
-           </br> 
-                   
+   	            </div>
+         		   
                 <?php } while ($row_consultaUsuarios = mysql_fetch_assoc ($consultaUsuarios));?>
                 <?php } // Show if recordset not empty ?>
              
@@ -126,11 +111,13 @@ $totalRows_consultaUsuarios = mysql_num_rows($consultaUsuarios);
                    <p>No hay niñeras disponibles en esta sección</p>
                   <?php } // Show if recordset empty ?> 
               
-       
-    </div>
+       		</div>
+  		  </div>
 	
     
-
+    </div>
+</div>
+</div>
 		
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>

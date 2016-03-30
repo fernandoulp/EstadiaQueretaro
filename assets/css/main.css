@@ -1,17 +1,25 @@
 @import url("font-awesome.min.css");
 @import url("http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Arvo:700");
 
-/*
-	Strongly Typed by HTML5 UP
-	html5up.net | @n33co
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
 
+
+/* ESTILO VISUALIZACION DE DATOS DE NIÑERAS */
 .bordeninera{
 	border-radius: 25px;
     border: 2px solid #F08080;
     padding: 20px; 
-    
+    width: 300px;
+    float: left;
+    margin: 40px;
+    word-wrap: break-word;
+}
+
+.datosninera{
+ width: 1200px;
+ overflow: auto;
+
+ 
+
 }
 
 

@@ -95,7 +95,7 @@ $totalRows_consulta_datos_padres = mysql_num_rows($consulta_datos_padres);
 								<ul>
 									<li><a href="index_familia.php"><i class="fa fa-home fa-2x"></i><span> INICIO</span></a></li>
 									<li><a href="mis_datos_padres.php?recordID=<?php echo $_SESSION['MM_id_nump']; ?>"><i class="fa fa-users fa-2x"></i> </i><span> MI PERFIL</span></a></li>
-									<li></li>
+									<li><a href="ver_nineras_premium.php"><i class="fa fa-female fa-2x"></i> <span>	NIÑERAS</span></a></li>
 								
 								</ul>
 								

@@ -1,7 +1,7 @@
-
-<!--PAGINA PENDIENTE NO MOVER ( ATTE SAID ) -->
 <?php require_once('Connections/Conexionnany.php'); ?>
 <?php
+
+//STRINGS FUNCIONES
 if (!function_exists("GetSQLValueString")) {
 function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
 {
@@ -33,21 +33,42 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 }
 
+$varUsuario_consulta_datosUsuario = 0;
+if (isset($_GET['recordID'])) {
+  $varUsuario_consulta_datosUsuario = $_GET['recordID'];
+}
+//CONSULTA SQL PARA DATOS DE USUARIO
 mysql_select_db($database_Conexionnany, $Conexionnany);
-$query_consultaUsuarios = sprintf("SELECT * FROM us_ninera WHERE us_ninera.status_n = 1 AND us_ninera.type_n = 'premium'");
-$consultaUsuarios = mysql_query($query_consultaUsuarios, $Conexionnany) or die(mysql_error());
-$row_consultaUsuarios = mysql_fetch_assoc($consultaUsuarios);
-$totalRows_consultaUsuarios = mysql_num_rows($consultaUsuarios);
+$query_consulta_datosUsuario = sprintf("SELECT * FROM us_ninera  WHERE us_ninera.id_numn = %s", GetSQLValueString($varUsuario_consulta_datosUsuario, "int"));
+$consulta_datosUsuario = mysql_query($query_consulta_datosUsuario, $Conexionnany) or die(mysql_error());
+$row_consulta_datosUsuario = mysql_fetch_assoc($consulta_datosUsuario);
+$totalRows_consulta_datosUsuario = mysql_num_rows($consulta_datosUsuario);
+
+
+// SENTENCIA SQL PARA MOSTRAR LOS DATOS DEL USUARIO EN SESION
+$varUS_consulta_datos_padres = "0";
+if (isset($_SESSION['MM_id_nump'])) {
+  $varUS_consulta_datos_padres = $_SESSION['MM_id_nump'];
+}
+mysql_select_db($database_Conexionnany, $Conexionnany);
+// CONSULTA SQL PARA TABLA USUARIOS
+$query_consulta_datos_padres = sprintf("SELECT * FROM us_padres WHERE us_padres.id_nump = %s", GetSQLValueString($varUS_consulta_datos_padres, "int"));
+$consulta_datos_padres = mysql_query($query_consulta_datos_padres, $Conexionnany) or die(mysql_error());
+$row_consulta_datos_padres = mysql_fetch_assoc($consulta_datos_padres);
+$totalRows_consulta_datos_padres = mysql_num_rows($consulta_datos_padres);
+
 ?>
 
-<!--FIN DE LAS CONSULTAS Y PHP-->
 
-<!--INICIO DEL CONTENIDO-->
 <!DOCTYPE HTML>
-
+<!--
+	Strongly Typed by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html>
 	<head>
-		<title>Niñeras</title>
+		<title>Lista de usuarios Padres </title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -55,7 +76,6 @@ $totalRows_consultaUsuarios = mysql_num_rows($consultaUsuarios);
 		
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 <!-- Optional theme -->
@@ -69,50 +89,34 @@ $totalRows_consultaUsuarios = mysql_num_rows($consultaUsuarios);
 
 			<!-- Header -->
 				<div id="header-wrapper">
+
 					<div id="header" class="container">
-
-						<!-- Logo -->
-							
-
+<div class="datos">
+	<i class="fa fa-user fa-2x"></i> 
+	</i> <?php echo $row_consulta_datos_padres['name_p']; ?> 
+	<?php echo $row_consulta_datos_padres['last_namep']; ?> </br>
+	<a href="cerrar_sesion_padres.php">Cerrar sesion</a>
+	</div>
+						
 						<!-- Nav -->
 							<nav id="nav">
 								<ul>
-									<li><a href="index.html"><i class="fa fa-home fa-2x"></i><span> INICIO</span></a></li>
-									<li><a href="ver_nineras.php"><i class="fa fa-female fa-2x"></i> <span>	NIÑERAS</span></a></li>
+									<li><a href="index_familia.php"><i class="fa fa-home fa-2x"></i><span> INICIO</span></a></li>
+									<li><a href="mis_datos_padres.php?recordID=<?php echo $_SESSION['MM_id_nump']; ?>"><i class="fa fa-users fa-2x"></i> </i><span> MI PERFIL</span></a></li>
+									<li></li>
+								
 								</ul>
 								
 							</nav>
 
 
-    <div class="container">
-        
-      <div class="datosninera">
-            
-               <?php if ($totalRows_consultaUsuarios > 0) { // Show if recordset not empty ?>
-               <?php do { ?>
-              <div class="bordeninera">
+</br>
 
-                  <section>
-                       <a href="#"><img src="images/nany.png" alt="" /></a><h3><?php echo $row_consultaUsuarios['name_n']; ?> <?php echo $row_consultaUsuarios['last_namen']; ?></h3>
-                        <p><?php echo $row_consultaUsuarios['email_n']; ?></p>                  
-                  </section>
-
-               </div>
-       
-                   
-                <?php } while ($row_consultaUsuarios = mysql_fetch_assoc ($consultaUsuarios));?>
-                <?php } // Show if recordset not empty ?>
-             
-                  <?php if ($totalRows_consultaUsuarios == 0) { // Show if recordset empty ?>
-                   <p>No hay niñeras disponibles en esta sección</p>
-                  <?php } // Show if recordset empty ?> 
-              </div>
-       
-    </div>
-	
-    
-
+   <h3>Contactar a <?php echo $row_consulta_datosUsuario['name_n']; ?> <?php echo $row_consulta_datosUsuario['last_namen']; ?> </h3>
+<p>Deja tu mensaje:</p>
+   <input type="text" placeholder="Hola <?php echo $row_consulta_datosUsuario['name_n']; ?> me gustaría contactarte" required>
 		
+
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.dropotron.min.js"></script>
@@ -123,4 +127,7 @@ $totalRows_consultaUsuarios = mysql_num_rows($consultaUsuarios);
 			<script src="assets/js/main.js"></script>
 
 	</body>
+	<?php
+mysql_free_result($consulta_datosUsuario);
+?>
 </html>
