@@ -101,6 +101,7 @@ $totalRows_consultaUsuarios = mysql_num_rows($consultaUsuarios);
 
 <h1 align="center">Lista de niñeras</h1>
   <p>USUARIOS <ins><b>ACTIVOS</b></ins></p>
+  <div align="left"><a href="inicio_admin.php"><strong>Menú<strong></a></div>
   <?php if ($totalRows_consultaUsuarios > 0) { // Show if recordset not empty ?>
    <table border="1" cellspacing="0" cellpadding="5" align="center">
      <tr bgcolor="#FFB6C1" align="center">

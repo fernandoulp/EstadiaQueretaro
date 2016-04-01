@@ -103,7 +103,8 @@ $a = $row_consultaUsuarios['id_nump'];
 </br>
 
 <h1 align="center">Lista de Padres</h1>
-  <p>USUARIOS ACTIVOS</p>
+  <p>USUARIOS <u><b>ACTIVOS</b></u></p>
+  <div align="left"><a href="inicio_admin.php"><strong>Menú<strong></a></div>
   <?php if ($totalRows_consultaUsuarios > 0) { // Show if recordset not empty ?>
    <table border="1" cellspacing="0" cellpadding="5" align="center">
      <tr bgcolor="#7FFFD4" align="center">

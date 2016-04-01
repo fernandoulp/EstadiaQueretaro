@@ -82,9 +82,9 @@ window.location.replace(dir)
 					<div id="header" class="container">
 							<img src="images/coment1.png" alt="" width="125" height="125"/>
 					<p>
-							<h1 id="logo"><a>LISTA DE COMENTARIOS</a></h1>
+							<h1 id="logo">LISTA DE COMENTARIOS</h1>
 						</p>
-						<P>Comentarios Actuales</P>
+						<P>Comentarios <u><b>Actuales</b></u></P>
 <br>
 <div align="left"><a href="inicio_admin.php"><strong>Menú<strong></a></div>
 

@@ -89,7 +89,7 @@ $totalRows_Recordset2 = mysql_num_rows($Recordset2);
 				<!--PHP PARA RECONOCER USUARIO-->
 					<p>
 							
-							<h1 id="logo"><a>Respuesta Comentarios</a></h1>
+							<h1 id="logo">Respuesta Comentarios</h1>
 						
 					</p>
 				<!--FIN PHP-->
