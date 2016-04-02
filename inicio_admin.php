@@ -82,18 +82,6 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 
 								<!-- Feature -->
 									<section>
-										<a href="#"><img src="images/video.png" alt="" width="125" height="125" /></a>
-										<header>
-											<h3>Video </h3>
-										</header>
-										
-									</section>
-
-							</div>
-							<div class="4u 12u(mobile)">
-
-								<!-- Feature -->
-									<section>
 										<a href="coment_admin.php" ><img src="images/coment1.png" alt="" width="125" height="125"/></a>
 										<header>
 											<h3>Comentarios</h3>
@@ -106,9 +94,21 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 
 								<!-- Feature -->
 									<section>
-										<a href="lista_admin.php"><img src="images/add_adm.jpg" alt="" width="125" height="125"/></a>
+											<a href="lista_admin.php"><img src="images/add_adm.jpg" alt="" width="125" height="125"/></a>
 										<header>
 											<h3><strong>Agregar Administradores</strong></h3>
+										</header>
+										
+									</section>
+
+							</div>
+							<div class="4u 12u(mobile)">
+
+								<!-- Feature -->
+									<section>
+										<a href="lista_admin.php"><img src="images/admin2.png" alt="" width="125" height="125" /></a>
+										<header>
+											<h3>Lista Administradores </h3>
 										</header>
 					
 									</section>
@@ -118,18 +118,6 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 
 
 <div class="row">
-							<div class="4u 12u(mobile)">
-
-								<!-- Feature -->
-									<section>
-										<a href="lista_admin.php"><img src="images/admin2.png" alt="" width="125" height="125" /></a>
-										<header>
-											<h3>Lista Administradores </h3>
-										</header>
-										
-									</section>
-
-							</div>
 							<div class="4u 12u(mobile)">
 
 								<!-- Feature -->
@@ -150,8 +138,14 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 										<header>
 											<h3><strong>Lista Familias</strong></h3>
 										</header>
-					
+										
 									</section>
+
+							</div>
+							<div class="4u 12u(mobile)">
+
+								<!-- Feature -->
+									
 
 							</div>
 						</div>
@@ -164,14 +158,14 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 									<li>
 										<a href="#"><i class="fa fa-users fa-2x"></i><span> FAMILIA</span></a>
 										<ul>
-											<li><a href="#">Inicia sesión</a></li>
-											<li><a href="#">Registrate</a></li>
+											<li><a href="login_familias.php">Inicia sesión</a></li>
+											<li><a href="registro_familia.php">Registrate</a></li>
 										</ul>
 									</li>
 									<li><a href="left-sidebar.html"><i class="fa fa-female fa-2x"></i><span> NIÑERA</span></a>
 									<ul>
-											<li><a href="#">Inicia sesión</a></li>
-											<li><a href="#">Registrate</a></li>
+											<li><a href="login_nineras.php">Inicia sesión</a></li>
+											<li><a href="registro_ninera.php">Registrate</a></li>
 										</ul>
 									</li>
 									<li><a href="right-sidebar.html"><i class="fa fa-info-circle fa-2x"></i> </i><span> ACERCA DE</span></a></li>

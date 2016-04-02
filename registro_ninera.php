@@ -102,7 +102,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 				<!--PHP PARA RECONOCER USUARIO-->
 					<p>
 							
-							<h1 id="logo"><a>Niñeras</a></h1>
+							<h1 id="logo">Niñeras</h1>
 						
 					</p>
 				<!--FIN PHP-->
@@ -118,12 +118,12 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 									<table align="center">
 										<tr valign="baseline">
 									 <td>Nombre:</td>
-									 <td><input style="width:240px;height:40px" name="nombre_ninera" required/></td>
+									 <td><input  name="nombre_ninera" required/></td>
 									 	</tr>
 
 									 	<tr valign="baseline">
-									 <td>Apellidos:</td>
-									 <td><input style="width:240px;height:20px" name="apell_ninera" required/></td>
+									 <td>Apellido:</td>
+									 <td><input name="apell_ninera" required/></td>
 									 	</tr>
 
 									 	<tr valign="baseline">
@@ -133,37 +133,37 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 
 										<tr valign="baseline">
 									 <td>Dirección</td>
-									 <td><input style="width:240px;height:20px" name="direccion_n" required/></td>
+									 <td><input name="direccion_n" required/></td>
 									 	</tr>
 									 	<tr valign="baseline">
 									 <td>Teléfono Celular:</td>
-									 <td><input style="width:240px;height:20px" name="tel_n" required/></td>
+									 <td><input name="tel_n" required/></td>
 									 	</tr>
 
 									 	<tr valign="baseline">
 									 <td>Email:</td>
-									 <td><input style="width:240px;height:20px" name="email_n" required/></td>
+									 <td><input name="email_n" required/></td>
 									 	</tr>
 
 									 	<tr valign="baseline">
 									 <td>Contraseña:</td>
-									 <td><input type="password" style="width:240px;height:20px" name="pass_n" required/></td>
+									 <td><input type="password" name="pass_n" required/></td>
 									 	</tr>
 
 
 									 	<tr valign="baseline">
 									 <td>Estudios:</td>
-									 <td><input style="width:240px;height:20px" name="estudios_n" required/></td></td>
+									 <td><input name="estudios_n" required/></td></td>
 									 	</tr>
 
 									 	<tr valign="baseline">
 									 <td>Primeros Auxilios:</td>
-									 <td><input style="width:240px;height:20px" name="auxilios_n" required/></td></td>
+									 <td><input name="auxilios_n" required/></td></td>
 									 	</tr>
 
 									 	<tr valign="baseline">
 									 <td>Experiencia (años):</td>
-									 <td><input style="width:240px;height:20px" name="experiencia_n" required/></td>
+									 <td><input name="experiencia_n" required/></td>
 									 	</tr>
 
   								<tr valign="baseline">
@@ -181,13 +181,22 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 							<nav id="nav">
 								<ul>
 									<li><a href="index.html"><i class="fa fa-home fa-2x"></i><span> INICIO</span></a></li>
-									<li><a href="#"><i class="fa fa-users fa-2x"></i> </i><span> FAMILIA</span></a></li>
-									<li><a href="#"><i class="fa fa-female fa-2x"></i> </i><span> NIÑERA</span></a></li>
-									<li><a href="acerca.html"><i class="fa fa-info-circle fa-2x"></i> </i><span> ACERCA DE</span></a></li>
-									<li><a href="recomendaciones.html"><i class="fa fa-file-text-o fa-2x"></i><span>  RECOMENDACIONES</span></a></li>
-									<li><a href="iniciar_como.php"><input id="submit" type="submit" name="submit" value="Iniciar sesión" style="width:200px;height:45px"/></a></li>
+									<li>
+										<a href="#"><i class="fa fa-users fa-2x"></i><span> FAMILIA</span></a>
+										<ul>
+											<li><a href="login_familias.php">Inicia sesión</a></li>
+											<li><a href="registro_familia.php">Registrate</a></li>
+										</ul>
+									</li>
+									<li><a href="left-sidebar.html"><i class="fa fa-female fa-2x"></i><span> NIÑERA</span></a>
+									<ul>
+											<li><a href="login_nineras.php">Inicia sesión</a></li>
+											<li><a href="registro_ninera.php">Registrate</a></li>
+										</ul>
+									</li>
+									<li><a href="acerca_de.html"><i class="fa fa-info-circle fa-2x"></i> </i><span> ACERCA DE</span></a></li>
+									<li><a href="requisitos.html"><i class="fa fa-file-text-o fa-2x"></i><span>  RECOMENDACIONES</span></a></li>
 								</ul>
-								
 							</nav>
 
 					</div>

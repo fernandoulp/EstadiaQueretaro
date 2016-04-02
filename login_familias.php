@@ -101,7 +101,8 @@ if (isset($_POST['email_p'])) { //SE DECLARAN VARIABLES QUE TENDRAN EL VALOR DE 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 	</head>
-	<body class="homepage">
+  <head class="homepage">
+	
 		<div id="page-wrapper">
 
 			<!-- Header -->
@@ -112,15 +113,26 @@ if (isset($_POST['email_p'])) { //SE DECLARAN VARIABLES QUE TENDRAN EL VALOR DE 
 							
 
 						<!-- Nav -->
-							<nav id="nav">
+						<nav id="nav">
                 <ul>
                   <li><a href="index.html"><i class="fa fa-home fa-2x"></i><span> INICIO</span></a></li>
-                  <li><a href="#"><i class="fa fa-users fa-2x"></i> </i><span> FAMILIA</span></a></li>
-                  <li><a href="#"><i class="fa fa-female fa-2x"></i> </i><span> NIÑERA</span></a></li>
-                  <li><a href="acerca.html"><i class="fa fa-info-circle fa-2x"></i> </i><span> ACERCA DE</span></a></li>
-                  <li><a href="recomendaciones.html"><i class="fa fa-file-text-o fa-2x"></i><span>  RECOMENDACIONES</span></a></li>
+                  <li>
+                    <a href="#"><i class="fa fa-users fa-2x"></i><span> FAMILIA</span></a>
+                    <ul>
+                      <li><a href="login_familias.php">Inicia sesión</a></li>
+                      <li><a href="registro_familia.php">Registrate</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="left-sidebar.html"><i class="fa fa-female fa-2x"></i><span> NIÑERA</span></a>
+                  <ul>
+                      <li><a href="login_nineras.php">Inicia sesión</a></li>
+                      <li><a href="registro_ninera.php">Registrate</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="acerca_de.html"><i class="fa fa-info-circle fa-2x"></i> </i><span> ACERCA DE</span></a></li>
+                  <li><a href="requisitos.html"><i class="fa fa-file-text-o fa-2x"></i><span>  RECOMENDACIONES</span></a></li>
                 </ul>
-</nav>
+              </nav>
 <div class="container">
 <p>
               <h1 id="logo">Iniciar Sesión</h1>
@@ -155,7 +167,7 @@ if (isset($_POST['email_p'])) { //SE DECLARAN VARIABLES QUE TENDRAN EL VALOR DE 
                   <!-- Fin del formulario -->
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="images/login.png" WIDTH=162 HEIGHT=164 ALT="Login"/>
 				</div>
-
+</head>
 		<div id="copyright" class="container">
             <ul class="links">
               <il>Nanafy</il><li>Todos los derechos reservados &copy; Copyright 2016</li>

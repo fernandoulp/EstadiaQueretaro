@@ -94,6 +94,7 @@ window.location.replace(dir)
 
 								 <table border="1">
 							    <tr class="brillo1">
+							      <td align="center" >Id</td>
 							      <td align="center" >Nombre</td>
 							      <td align="center">Email</td>
 							      <td align="center">Mensaje</td>
@@ -104,6 +105,7 @@ window.location.replace(dir)
 							    </tr>
 							    <?php do { ?>
 							  <tr class="brillo">
+							  	<td align="center" width="150"><?php echo $row_Recordset1['id_coment']; ?></td>
 							    <td align="center" width="150"><?php echo $row_Recordset1['nombre_coment']; ?></td>
 							    <td align="center" width="290"><?php echo $row_Recordset1['email_coment']; ?></td>
 							    <td align="center" width="590"><?php echo $row_Recordset1['coment']; ?></td>
@@ -115,31 +117,22 @@ window.location.replace(dir)
 							  </table>
 							  <?php echo $totalRows_Recordset1 ?> Total de mensajes
 
-								<!--SCRIPT PARA  PREGUNTA/ELIMINAR-->
-											<script>
-								  function pregunta_eliminar()
-								{
-								if(confirm("Desea eliminar el comentario seleccionado ?"))
-								document.location.href="";
-								else
-								event.preventDefault();
-								}
-								</script>
-			<!-- Nav -->
+								
+			<!-- Nav -->		
 							<nav id="nav">
 								<ul>
 									<li><a href="index.html"><i class="fa fa-home fa-2x"></i><span> INICIO</span></a></li>
 									<li>
 										<a href="#"><i class="fa fa-users fa-2x"></i><span> FAMILIA</span></a>
 										<ul>
-											<li><a href="#">Inicia sesión</a></li>
-											<li><a href="#">Registrate</a></li>
+											<li><a href="login_familias.php">Inicia sesión</a></li>
+											<li><a href="registro_familia.php">Registrate</a></li>
 										</ul>
 									</li>
 									<li><a href="left-sidebar.html"><i class="fa fa-female fa-2x"></i><span> NIÑERA</span></a>
 									<ul>
-											<li><a href="#">Inicia sesión</a></li>
-											<li><a href="#">Registrate</a></li>
+											<li><a href="login_nineras.php">Inicia sesión</a></li>
+											<li><a href="registro_ninera.php">Registrate</a></li>
 										</ul>
 									</li>
 									<li><a href="right-sidebar.html"><i class="fa fa-info-circle fa-2x"></i> </i><span> ACERCA DE</span></a></li>
