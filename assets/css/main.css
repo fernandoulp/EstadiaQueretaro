@@ -1700,10 +1700,13 @@ input {
 	}
 
 		#banner-wrapper .inner {
-			background: url("../../images/banner.jpg");
+			background: url("../../images/niños.jpg");
 			background-size: cover;
 		}
-
+        #banner-wrapper2 .inner {
+			background: url("../../images/niños.jpg");
+			background-size: cover;
+		}
 		#banner-wrapper p {
 			text-align: center;
 		}
@@ -1964,7 +1967,7 @@ input {
 			}
 
 			#banner-wrapper {
-				padding: 3em 0 3em 0;
+				padding: 1em 0 1em 0;
 			}
 
 			#main-wrapper {
