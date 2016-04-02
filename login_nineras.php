@@ -84,7 +84,7 @@ if (isset($_POST['email_n'])) { //SE DECLARAN VARIABLES QUE TENDRAN EL VALOR DE 
 
 <html>
 	<head>
-		<title>Iniciar Sesión</title>
+		<title>Acceso niñera</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -112,21 +112,32 @@ if (isset($_POST['email_n'])) { //SE DECLARAN VARIABLES QUE TENDRAN EL VALOR DE 
 							
 
 						<!-- Nav -->
+            <h4>
 						<nav id="nav">
                 <ul>
                   <li><a href="index.html"><i class="fa fa-home fa-2x"></i><span> INICIO</span></a></li>
-                  <li><a href="#"><i class="fa fa-users fa-2x"></i> </i><span> FAMILIA</span></a></li>
-                  <li><a href="#"><i class="fa fa-female fa-2x"></i> </i><span> NIÑERA</span></a></li>
-                  <li><a href="acerca.html"><i class="fa fa-info-circle fa-2x"></i> </i><span> ACERCA DE</span></a></li>
-                  <li><a href="recomendaciones.html"><i class="fa fa-file-text-o fa-2x"></i><span>  RECOMENDACIONES</span></a></li>   
+                  <li>
+                    <a href="#"><i class="fa fa-users fa-2x"></i><span> FAMILIA</span></a>
+                    <ul>
+                      <li><a href="login_familias.php">Inicia sesión</a></li>
+                      <li><a href="registro_familia.php">Registrate</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="left-sidebar.html"><i class="fa fa-female fa-2x"></i><span> NIÑERA</span></a>
+                  <ul>
+                      <li><a href="login_nineras.php">Inicia sesión</a></li>
+                      <li><a href="registro_ninera.php">Registrate</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="acerca_de.html"><i class="fa fa-info-circle fa-2x"></i> </i><span> ACERCA DE</span></a></li>
+                  <li><a href="requisitos.html"><i class="fa fa-file-text-o fa-2x"></i><span>  RECOMENDACIONES</span></a></li>
                 </ul>
-                
               </nav>
-
+</h4>
 
 <div class="container">
 <p>
-              <h1 id="logo">Iniciar Sesión</h1>
+              <h1 id="logo">Acceso niñera</h1>
             </p>
 <!-- Formulario -->
                 <section class="formulario">
@@ -159,11 +170,16 @@ if (isset($_POST['email_n'])) { //SE DECLARAN VARIABLES QUE TENDRAN EL VALOR DE 
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="images/login.png" WIDTH=162 HEIGHT=164 ALT="Login"/>
 				</div>
 
-		<div id="copyright" class="container">
+		<!-- Footer -->
+        
+          <div id="copyright" class="container">
             <ul class="links">
-              <li>Nanafy</li><li>Todos los derechos reservados &copy; Copyright 2016</li>
+              <li><font color="black"> Nanafy Todos los derechos reservados &copy; Copyright 2016</font></li>
             </ul>
           </div>
+        </div>
+
+    </div>
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>

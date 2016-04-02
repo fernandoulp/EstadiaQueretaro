@@ -133,6 +133,7 @@ $totalRows_consulta_datos_padres = mysql_num_rows($consulta_datos_padres);
 	<a href="cerrar_sesion_padres.php">Cerrar sesion</a>
 	</div>
 						<!-- Nav -->
+            <h4>
 							<nav id="nav">
 								<ul>
 									<li><a href="index_familia.php"><i class="fa fa-home fa-2x"></i><span> INICIO</span></a></li>
@@ -141,7 +142,7 @@ $totalRows_consulta_datos_padres = mysql_num_rows($consulta_datos_padres);
 								</ul>
 								
 							</nav>
-
+</h4>
 					
 				
    		
@@ -153,7 +154,7 @@ $totalRows_consulta_datos_padres = mysql_num_rows($consulta_datos_padres);
              	<div class="bordeninera">
 
                   <section>
-                       <a href="#"><img src="images/nany.png" alt="" /></a><h3><span><?php echo $row_consultaUsuarios['name_n']; ?> <?php echo $row_consultaUsuarios['last_namen']; ?></span></h3>
+                       <img src="images/nany.png" alt="" /><h3><span><?php echo $row_consultaUsuarios['name_n']; ?> <?php echo $row_consultaUsuarios['last_namen']; ?></span></h3>
                         <p>Email: <?php echo $row_consultaUsuarios['email_n']; ?></p>          
                         <p>Dirección: <?php echo $row_consultaUsuarios['address_n']; ?></p>
                          <p>Movil: <?php echo $row_consultaUsuarios['tel_n']; ?></p>
@@ -174,9 +175,17 @@ $totalRows_consulta_datos_padres = mysql_num_rows($consulta_datos_padres);
 	
     
     </div>
+
 </div>
 </div>
 		
+      <!-- Footer -->
+        
+          <div id="copyright" class="container">
+            <ul class="links">
+              <li><font color="black"> Nanafy Todos los derechos reservados &copy; Copyright 2016</li><li><a href="login_nanny.php">Administración</a></font></li>
+            </ul>
+          </div>
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.dropotron.min.js"></script>

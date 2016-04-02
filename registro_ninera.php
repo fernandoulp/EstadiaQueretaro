@@ -102,7 +102,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 				<!--PHP PARA RECONOCER USUARIO-->
 					<p>
 							
-							<h1 id="logo">Niñeras</h1>
+							<h1 id="logo">Registro niñera</h1>
 						
 					</p>
 				<!--FIN PHP-->
@@ -168,7 +168,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 
   								<tr valign="baseline">
          							 <td nowrap="nowrap" align="right">&nbsp;</td>
-         								 <td><input type="submit" id="enviar_usu" value="Dar de alta" /></td>
+         								 <td><input type="submit" id="enviar_usu" value="Registrar" /></td>
       										  </tr>
 
   									</table>
@@ -178,6 +178,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 							</div>
 
 						<!-- Nav -->
+						<h4>
 							<nav id="nav">
 								<ul>
 									<li><a href="index.html"><i class="fa fa-home fa-2x"></i><span> INICIO</span></a></li>
@@ -198,17 +199,21 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 									<li><a href="requisitos.html"><i class="fa fa-file-text-o fa-2x"></i><span>  RECOMENDACIONES</span></a></li>
 								</ul>
 							</nav>
-
+</h4>
 					</div>
 				</div>
 			</head>
-			<!-- Features -->
-			
-			<div id="copyright" class="container">
-						<ul >
-							<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+			<!-- Footer -->
+				
+					<div id="copyright" class="container">
+						<ul class="links">
+							<li><font color="black"> Nanafy Todos los derechos reservados &copy; Copyright 2016</font></li>
 						</ul>
 					</div>
+				</div>
+
+		</div>
+
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.dropotron.min.js"></script>

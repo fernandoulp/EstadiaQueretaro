@@ -64,7 +64,7 @@ $totalRows_consulta_datos_padres = mysql_num_rows($consulta_datos_padres);
 -->
 <html>
 	<head>
-		<title>Inicio Padres</title>
+		<title>Inicio Familia</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -88,7 +88,7 @@ $totalRows_consulta_datos_padres = mysql_num_rows($consulta_datos_padres);
 						<!-- Logo -->
 							<img src="images/logo_pagina.png" alt="" />
 
-							<p>Los padres tambien merecen su tiempo</p>
+							<p><strong><font  color="#8181F7" size="4px">Los padres también merecen su tiempo!</strong></a></p>
 						
 						<!-- Nav -->
 							<nav id="nav">
@@ -113,18 +113,18 @@ $totalRows_consulta_datos_padres = mysql_num_rows($consulta_datos_padres);
 				<div id="features-wrapper">
 					<section id="features" class="container">
 						<header>
-							<h2>Cómo funciona  <strong>NanaFy</strong>?</h2>
-						</header>
+								<h2><b><font color="#FE2E64">Cómo funciona</font></b>&nbsp;<b><font color="#58D3F7">NanaFy</b>?</font></h2>
+						
 						<div class="row">
 							<div class="4u 12u(mobile)">
 
 								<!-- Feature -->
 									<section>
-										<a href="#" class="image featured"><img src="images/solicitud.jpg" alt=""  /></a>
+										<p><img src="images/formulario.png" alt="Formulario" width="200" height="200" /></p>
 										<header>
-											<h3>Niñeras suben su solicitud </h3>
+											<h3><font color="#FE2E64">Niñeras registran sus datos </font></h3>
 										</header>
-										<p>Cualquier niñera tiene la posibilidad de postularse en <strong>Nanafy</strong>, donde para hacerlo, necesitan registrarse, donde proporcionarán todos sus datos.</p>
+										<p><font color="black">Cualquier mujer tiene la posibilidad de postularse en <strong><font color="orange">Nanafy</font></strong>, donde para hacerlo, necesitan cubrir ciertos requisitos, donde proporcionarán datos relevantes.</font></p>
 									</section>
 
 							</div>
@@ -132,11 +132,11 @@ $totalRows_consulta_datos_padres = mysql_num_rows($consulta_datos_padres);
 
 								<!-- Feature -->
 									<section>
-										<a href="#" class="image featured"><img src="images/familia.jpg" alt="" /></a>
+										<p><img src="images/fam.png" alt="Familias" width="200" height="200"/></p>
 										<header>
-											<h3>Familias escogen a una niñera</h3>
+											<h3><font color="#FE2E64">Familias registran sus datos</font></h3>
 										</header>
-										<p>Las familias tendran acceso a la información de todas las niñeras que se registren. Aquí las familias estarán en contacto directo con ellas para llegar a un acuerdo si es que la niñera cumple con los requisitos de la familia.</p>
+										<p><font color="black">Las familias tendran que registrar sus datos previo a visualizar las listas de las niñeras que prestan su servicios para el cuidado y atención a menores.</font></p>
 									</section>
 
 							</div>
@@ -144,12 +144,11 @@ $totalRows_consulta_datos_padres = mysql_num_rows($consulta_datos_padres);
 
 								<!-- Feature -->
 									<section>
-										<a href="#" class="image featured"><img src="images/mujer.jpg" alt="" /></a>
+										<p><img src="images/seleccion.png" alt="Selección" width="410" height="200"/></p>
 										<header>
-											<h3><strong>¡Manos a la obra!</strong></h3>
+											<h3><strong><font color="#FE2E64">¡Selección de niñera!</font></strong></h3>
 										</header>
-										<p>Después de ponerse en contacto la familia con la niñera, el siguiente paso es que
-                                        los papás puedan divertirse y la niñera empiece a cuidar :)</p>
+										<p><font color="black">Después de que la familia se registro, podrá visualizar la sección donde aparecen las niñeras y seleccionar a la que cumpla con los reuisitos o según la calificación que tenga.</font></p>
 									</section>
 
 							</div>
@@ -168,8 +167,7 @@ $totalRows_consulta_datos_padres = mysql_num_rows($consulta_datos_padres);
 				<div id="banner-wrapper">
 					<div class="inner">
 						<section id="banner" class="container">
-							<p>Slogan <strong> o algo así</strong>.<br />
-							</p>
+							
 						</section>
 					</div>
 				</div>
@@ -180,7 +178,7 @@ $totalRows_consulta_datos_padres = mysql_num_rows($consulta_datos_padres);
 				<div id="footer-wrapper">
 					<div id="footer" class="container">
 						<header>
-							<h2>Preguntas o Comentarios? <strong>Contactános:</strong></h2>
+							<h2><font color="#FE2E64">Preguntas o Comentarios?</font> <font color="#58D3F7">Contactános:</font></h2>
 						</header>
 						<div class="row">
 							<div class="6u 12u(mobile)">
@@ -216,39 +214,23 @@ $totalRows_consulta_datos_padres = mysql_num_rows($consulta_datos_padres);
 							</div>
 							<div class="6u 12u(mobile)">
 								<section>
-									<p>Los hijos no solo son un valioso tesoro también son delicados frutos, es por ello que en Nanafy nuestra prioridad es responder a tus preguntas y saber tus comentarios, para brindarte el mejor servicio con la mejor calidad y el mejor precio para tu familia.</p>
+									<p><font color="black">Los hijos no solo son un valioso tesoro también son delicados frutos, es por ello que en Nanafy nuestra prioridad es responder a tus preguntas y saber tus comentarios, para brindarte el mejor servicio con la mejor calidad y el mejor precio para tu familia.</font></p>
 									<div class="row">
 										<div class="6u 12u(mobile)">
 											<ul class="icons">
-												<li class="icon fa-home">
-													1234 Somewhere Road<br />
-													Nashville, TN 00000<br />
-													USA
-												</li>
-												<li class="icon fa-phone">
-													(044) 618-815-94-99
-												</li>
+												
 												<li class="icon fa-envelope">
 													<a href="#">nanafy@gmail.com</a>
 												</li>
-											</ul>
-										</div>
-										<div class="6u 12u(mobile)">
-											<ul class="icons">
 												<li class="icon fa-twitter">
 													<a href="#">@nanafy</a>
-												</li>
-												<li class="icon fa-instagram">
-													<a href="#">instagram.com/nanafy</a>
-												</li>
-												<li class="icon fa-dribbble">
-													<a href="#">dribbble.com/nanafy</a>
 												</li>
 												<li class="icon fa-facebook">
 													<a href="#">facebook.com/nanafyOficial</a>
 												</li>
 											</ul>
 										</div>
+										
 									</div>
 								</section>
 							</div>
@@ -256,7 +238,7 @@ $totalRows_consulta_datos_padres = mysql_num_rows($consulta_datos_padres);
 					</div>
 					<div id="copyright" class="container">
 						<ul class="links">
-							<li> Nanafy Todos los derechos reservados &copy; Copyright 2016</li><li><a href="login_nanny.php">Administración</a></li>
+							<font color="black"><li> Nanafy Todos los derechos reservados &copy; Copyright 2016</li></font>
 						</ul>
 					</div>
 				</div>

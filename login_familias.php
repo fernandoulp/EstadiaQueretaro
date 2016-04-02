@@ -84,7 +84,7 @@ if (isset($_POST['email_p'])) { //SE DECLARAN VARIABLES QUE TENDRAN EL VALOR DE 
 
 <html>
 	<head>
-		<title>Iniciar Sesión</title>
+		<title>Acceso familia</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -113,6 +113,7 @@ if (isset($_POST['email_p'])) { //SE DECLARAN VARIABLES QUE TENDRAN EL VALOR DE 
 							
 
 						<!-- Nav -->
+            <h4>
 						<nav id="nav">
                 <ul>
                   <li><a href="index.html"><i class="fa fa-home fa-2x"></i><span> INICIO</span></a></li>
@@ -133,9 +134,12 @@ if (isset($_POST['email_p'])) { //SE DECLARAN VARIABLES QUE TENDRAN EL VALOR DE 
                   <li><a href="requisitos.html"><i class="fa fa-file-text-o fa-2x"></i><span>  RECOMENDACIONES</span></a></li>
                 </ul>
               </nav>
+</h4>
+
+
 <div class="container">
 <p>
-              <h1 id="logo">Iniciar Sesión</h1>
+              <h1 id="logo">Acceso familia</h1>
             </p>
 <!-- Formulario -->
                 <section class="formulario">
@@ -168,11 +172,17 @@ if (isset($_POST['email_p'])) { //SE DECLARAN VARIABLES QUE TENDRAN EL VALOR DE 
                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="images/login.png" WIDTH=162 HEIGHT=164 ALT="Login"/>
 				</div>
 </head>
-		<div id="copyright" class="container">
+		<!-- Footer -->
+        
+          <div id="copyright" class="container">
             <ul class="links">
-              <il>Nanafy</il><li>Todos los derechos reservados &copy; Copyright 2016</li>
+              <li><font color="black"> Nanafy Todos los derechos reservados &copy; Copyright 2016</font></li>
             </ul>
           </div>
+        </div>
+
+    </div>
+
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
