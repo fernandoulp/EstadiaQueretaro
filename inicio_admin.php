@@ -94,7 +94,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 
 								<!-- Feature -->
 									<section>
-											<a href="lista_admin.php"><img src="images/add_adm.jpg" alt="" width="125" height="125"/></a>
+											<a href="registro_admin.php"><img src="images/add_adm.jpg" alt="" width="125" height="125"/></a>
 										<header>
 											<h3><strong>Agregar Administradores</strong></h3>
 										</header>
@@ -177,7 +177,13 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 				</div>
 			</head>
 			<!-- Features -->
-			
+			<!-- Footer -->
+				
+					<div id="copyright" class="container">
+						<ul class="links">
+							<li><font color="black"> Nanafy Todos los derechos reservados &copy; Copyright 2016</li><li><a href="cerrar_sesion_admin.php">Cerrar sesión</a></font></li>
+						</ul>
+					</div>
 						
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>

@@ -102,6 +102,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
       <li><a href="usuarios_lista.php">Lista de usuarios</a><!-- end .sidebar1 --></li>
     </ul>
   </div>
+  
   <div class="content"><!-- InstanceBeginEditable name="EditRegion3" -->
     
 <script>

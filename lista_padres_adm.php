@@ -153,7 +153,12 @@ event.preventDefault();
 </script>
 
 
-
+<!-- Footer -->
+<div id="copyright" class="container">
+            <ul class="links">
+              <li><font color="black"> Nanafy Todos los derechos reservados &copy; Copyright 2016</li><li><a href="cerrar_sesion_admin.php">Cerrar sesión</a></font></li>
+            </ul>
+          </div>
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.dropotron.min.js"></script>

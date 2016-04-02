@@ -2154,8 +2154,8 @@ input {
 		/* Copyright */
 
 			#copyright {
-				margin-top: 6em;
-				padding-top: 4em;
+				margin-top: 0em;
+				padding-top: 0em;
 			}
 
 	}
@@ -2318,7 +2318,7 @@ input {
 			ul.links li {
 				display: block;
 				border: 0;
-				padding: 0.25em 0 0 0;
+				padding: 0.25 0 0 0;
 				margin: 0;
 			}
 

@@ -157,9 +157,11 @@ window.location.replace(dir)
 			</head>
 			<!-- Features -->
 			
-			<div id="copyright" class="container">
-						<ul >
-							<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+	<!-- Footer -->
+				
+					<div id="copyright" class="container">
+						<ul class="links">
+							<li><font color="black"> Nanafy Todos los derechos reservados &copy; Copyright 2016</li><li><a href="login_nanny.php">Administración</a></font></li>
 						</ul>
 					</div>
 		<!-- Scripts -->
