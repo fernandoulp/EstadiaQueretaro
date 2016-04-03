@@ -71,6 +71,10 @@ $totalRows_consulta_datos_padres = mysql_num_rows($consulta_datos_padres);
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 
+<!-- Start WOWSlider.com HEAD section -->
+<link rel="stylesheet" type="text/css" href="engine1/style.css" />
+<script type="text/javascript" src="engine1/jquery.js"></script>
+<!-- End WOWSlider.com HEAD section -->
 	</head>
 	<body class="homepage">
 		<div id="page-wrapper">
@@ -105,6 +109,7 @@ $totalRows_consulta_datos_padres = mysql_num_rows($consulta_datos_padres);
 
 				</div>
 				 </div>
+				 
   <!-- end .header --></div>
 
 

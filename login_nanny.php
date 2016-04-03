@@ -112,6 +112,7 @@ if (isset($_POST['email_adm'])) { //SE DECLARAN VARIABLES QUE TENDRAN EL VALOR D
 							
 
 						<!-- Nav -->
+            <h4>
 							<nav id="nav">
 								<ul>
 									<li><a href="index.html"><i class="fa fa-home fa-2x"></i><span> INICIO</span></a></li>
@@ -132,7 +133,7 @@ if (isset($_POST['email_adm'])) { //SE DECLARAN VARIABLES QUE TENDRAN EL VALOR D
 									<li><a href="requisitos.html"><i class="fa fa-file-text-o fa-2x"></i><span>  RECOMENDACIONES</span></a></li>
 								</ul>
 							</nav>
-
+</h4>
 
 <div class="container">
 <p>

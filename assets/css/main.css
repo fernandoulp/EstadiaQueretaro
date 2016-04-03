@@ -3,6 +3,7 @@
 
 
 
+
 /* ESTILO VISUALIZACION DE DATOS DE NIÑERAS */
 .bordeninera{
 	border-radius: 25px;
@@ -1704,7 +1705,7 @@ input {
 			background-size: cover;
 		}
         #banner-wrapper2 .inner {
-			background: url("../../images/niños.jpg");
+			background: url("../../images/blanco.gif");
 			background-size: cover;
 		}
 		#banner-wrapper p {

@@ -168,20 +168,25 @@ $totalRows_consulta_datos_padres = mysql_num_rows($consulta_datos_padres);
      </p>
      <p><strong>Tipo</strong>: <?php echo $row_consulta_datosUsuario['type_p']; ?></p>
 </div>
+<!-- Footer -->
+        
+          <div id="copyright" class="container">
+            <ul class="links">
+              <li><font color="black"> Nanafy Todos los derechos reservados &copy; Copyright 2016</li><li><a href="login_nanny.php">Administración</a></font></li>
+            </ul>
+          </div>
+        </div>
 
-					</div>
-				</div>
+    </div>
 
-		
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.dropotron.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/skel-viewport.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="assets/js/main.js"></script>
+    <!-- Scripts -->
+      <script src="assets/js/jquery.min.js"></script>
+      <script src="assets/js/jquery.dropotron.min.js"></script>
+      <script src="assets/js/skel.min.js"></script>
+      <script src="assets/js/skel-viewport.min.js"></script>
+      <script src="assets/js/util.js"></script>
+      <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+      <script src="assets/js/main.js"></script>
 
 	</body>
 	<?php
