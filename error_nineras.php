@@ -32,7 +32,7 @@
 <li align="left" ><strong>Asegurate que tus datos de usuario y contraseña son correctos</strong></li>
 <li align="left"><strong>Asegurate que estes dado de alta en el sistema como niñera</strong></li>
 </ul>
-<a href="login_nanny.php">Regresar</a>
+<a href="login_nineras.php">Regresar</a>
 
 						<!-- Nav -->
 							<nav id="nav">
