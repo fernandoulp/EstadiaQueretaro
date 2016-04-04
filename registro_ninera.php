@@ -57,6 +57,8 @@ if (isset($_SERVER['QUERY_STRING'])) {
   $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
 }
 
+
+
 if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
   $insertSQL = sprintf("INSERT INTO us_ninera (name_n, last_namen, cumple_n, address_n, tel_n, email_n, password_n, estudios_n, auxilios_n, experiencia_n) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
                        GetSQLValueString($_POST['nombre_ninera'], "text"),
@@ -114,8 +116,12 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 			<!--FORMULARIO REGISTRO DE NIÑERAS-->
 							<div>
 								<section class="formulario">
-								<form action="<?php echo $editFormAction; ?>"  method="post" name="form1" id="form1">
+								<form action="<?php echo $editFormAction; ?>"  method="post" name="form1" id="form1" enctype="multipart/form-data">
 									<table align="center">
+
+									<p>Imagen de perfil: </p>
+									<input type="file" style="width:500px;height:50px" name="imagen" required />
+
 										<tr valign="baseline">
 									 <td>Nombre:</td>
 									 <td><input style="width:240px;height:40px" name="nombre_ninera" maxlength="20" required/></td>
@@ -128,7 +134,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 
 									 	<tr valign="baseline">
 									 <td>Fecha de nacimiento:</td>
-									 <td><input type="date" name="cumple_n" max="1999-01-01" required/></td>
+									 <td><input type="date" style="width:240px;height:20px" name="cumple_n" max="1999-01-01" required/></td>
 									 	</tr>
 
 										<tr valign="baseline">
@@ -163,7 +169,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 
 									 	<tr valign="baseline">
 									 <td>Experiencia (años):</td>	
-									 <td><input type="number" min="1" style="width:240px;height:20px" name="experiencia_n" required/></td>
+									 <td><input type="text" style="width:240px;height:20px" name="experiencia_n" required/></td>
 									 	</tr>
 
   								<tr valign="baseline">

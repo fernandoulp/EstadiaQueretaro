@@ -1,5 +1,9 @@
+
 <?php require_once('Connections/Conexionnany.php'); ?>
 <?php
+
+
+
 // *** RESTRINGIR ACCESO A PÁGINA SI EL USUARIO EN SESIÓN NO ES PADRE
 if (!isset($_SESSION)) {
   session_start();
@@ -10,7 +14,7 @@ $MM_donotCheckaccess = "false";
 function isAuthorized($strUsers, $strGroups, $UserName, $UserGroup) { 
   // VALOR FALSO EN VARIABLE SI EL USUARIO NO ES ADMITIDO
   $isValid = False; 
-  // CUANDO UN VISITANTE INICIA SESION, LA VARIABLE SESSION: MM_USERNAME TOMA EL VALOR DEL USERNAME
+	// CUANDO UN VISITANTE INICIA SESION, LA VARIABLE SESSION: MM_USERNAME TOMA EL VALOR DEL USERNAME
   
   // DE OTRA FORMA, CUANDO EL USUARIO NO ES ADMITIDO LA VARIABLE ESTARÁ EN BLANCO
   if (!empty($UserName)) { 
@@ -72,8 +76,6 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
   return $theValue;
 }
 }
-date_default_timezone_set('Mexico/General');
-$fecha = date("d-F-Y");
 
 $varUsuario_consulta_datosUsuario = 0;
 if (isset($_GET['recordID'])) {
@@ -81,7 +83,7 @@ if (isset($_GET['recordID'])) {
 }
 //CONSULTA SQL PARA DATOS DE USUARIO
 mysql_select_db($database_Conexionnany, $Conexionnany);
-$query_consulta_datosUsuario = sprintf("SELECT * FROM us_ninera  WHERE us_ninera.id_numn = %s", GetSQLValueString($varUsuario_consulta_datosUsuario, "int"));
+$query_consulta_datosUsuario = sprintf("SELECT * FROM us_padres  WHERE us_padres.id_nump = %s", GetSQLValueString($varUsuario_consulta_datosUsuario, "int"));
 $consulta_datosUsuario = mysql_query($query_consulta_datosUsuario, $Conexionnany) or die(mysql_error());
 $row_consulta_datosUsuario = mysql_fetch_assoc($consulta_datosUsuario);
 $totalRows_consulta_datosUsuario = mysql_num_rows($consulta_datosUsuario);
@@ -99,39 +101,18 @@ $consulta_datos_padres = mysql_query($query_consulta_datos_padres, $Conexionnany
 $row_consulta_datos_padres = mysql_fetch_assoc($consulta_datos_padres);
 $totalRows_consulta_datos_padres = mysql_num_rows($consulta_datos_padres);
 
-
-$editFormAction = $_SERVER['PHP_SELF'];
-if (isset($_SERVER['QUERY_STRING'])) {
-  $editFormAction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
-}
-
-if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
-  $insertSQL = sprintf("INSERT INTO mensajes (id_padre, id_ninera, mensaje_de, mensaje_para, mensaje_txt, status_mensaje, fecha_mensaje) VALUES (%s, %s, %s, %s, %s, 'Enviado','$fecha')",
-                       GetSQLValueString($_POST['id_padre'], "text"),
-                       GetSQLValueString($_POST['id_ninera'], "text"),
-                       GetSQLValueString($_POST['mensaje_de'], "text"),
-                       GetSQLValueString($_POST['mensaje_para'], "text"),
-                       GetSQLValueString($_POST['mensaje_txt'], "text"));
-
-  mysql_select_db($database_Conexionnany, $Conexionnany);
-  $Result1 = mysql_query($insertSQL, $Conexionnany) or die(mysql_error());
-
-  $insertGoTo = "mensaje_enviado.php";
-  if (isset($_SERVER['QUERY_STRING'])) {
-    $insertGoTo .= (strpos($insertGoTo, '?')) ? "&" : "?";
-    $insertGoTo .= $_SERVER['QUERY_STRING'];
-  }
-  header(sprintf("Location: %s", $insertGoTo));
-}
-     
 ?>
 
 
 <!DOCTYPE HTML>
-
+<!--
+	Strongly Typed by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html>
 	<head>
-		<title>Solicitud</title>
+		<title>Lista de usuarios Padres </title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -163,40 +144,47 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 						
 						<!-- Nav -->
 							<nav id="nav">
-								<ul>
-								<li><a href="index_familia.php"><i class="fa fa-home fa-2x"></i><span> INICIO</span></a></li>
+                <ul>
+                  <li><a href="index_familia.php"><i class="fa fa-home fa-2x"></i><span> INICIO</span></a></li>
                   <li><a href="mis_datos_padres.php?recordID=<?php echo $_SESSION['MM_id_nump']; ?>"><i class="fa fa-users fa-2x"></i> </i><span> MI PERFIL</span></a></li>
                   <li><a href="ver_nineras_premium.php"><i class="fa fa-female fa-2x"></i> <span> NIÑERAS</span></a></li>
-								</ul>
-							</nav>
+                
+                </ul>
+                
+              </nav>
 
-   <h3>Enviar mensaje a <?php echo $row_consulta_datosUsuario['name_n']; ?> <?php echo $row_consulta_datosUsuario['last_namen']; ?> </h3>
-               <form action="<?php echo $editFormAction; ?>"  method="post" name="form1" id="form1">
-                <div align="center">
-                    <p>Deja tu mensaje:</p>
-                    
-                    <textarea style="width:700px;height:200px" name="mensaje_txt" maxlength="255" placeholder="Hola <?php echo $row_consulta_datosUsuario['name_n']; ?> me gustaría poder comunicarnos" required></textarea>
-		                
 
-                                                  <!--CAMPOS OCULTOS  -->
-                     <input type="hidden" name="mensaje_de" style="width:240px;height:20px" value="<?php echo $row_consulta_datos_padres['name_p']; ?> <?php echo $row_consulta_datos_padres['last_namep']; ?>">             
-                     <input type="hidden" name="mensaje_para" style="width:240px;height:20px" value="<?php echo $row_consulta_datosUsuario['name_n']; ?> <?php echo $row_consulta_datosUsuario['last_namen']; ?>">
-                   
-                     <input type="hidden" name="id_padre" style="width:240px;height:20px" value="<?php echo $row_consulta_datos_padres['id_nump']; ?>">
-                     <input type="hidden" name="id_ninera" style="width:240px;height:20px" value="<?php echo $row_consulta_datosUsuario['id_numn']; ?>">
-                     </br>
-                     <input type="submit" id="enviar_mensaje" style="width:240px;height:50px" value="Enviar mensaje" />
-                     <input type="hidden" name="MM_insert" value="form1" />
+</br>
+
+   <div class="titulo_datos">
+   <p>Tu mensaje ha sido enviado exitosamente</p>
+
+   <a href="ver_nineras_premium.php"><p>Volver a lista de niñeras</p></a>
+</div>
+</br></br>
+</br>
+</br>
+</br>
+</br>
+<!-- Footer -->
+        
+          <div id="copyright" class="container">
+            <ul class="links">
+              <li><font color="black"> Nanafy Todos los derechos reservados &copy; Copyright 2016</li>
+            </ul>
           </div>
-      </form> 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.dropotron.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/skel-viewport.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="assets/js/main.js"></script>
+        </div>
+
+    </div>
+
+    <!-- Scripts -->
+      <script src="assets/js/jquery.min.js"></script>
+      <script src="assets/js/jquery.dropotron.min.js"></script>
+      <script src="assets/js/skel.min.js"></script>
+      <script src="assets/js/skel-viewport.min.js"></script>
+      <script src="assets/js/util.js"></script>
+      <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+      <script src="assets/js/main.js"></script>
 
 	</body>
 	<?php

@@ -99,6 +99,14 @@ $query_consulta_datos_ninera = sprintf("SELECT * FROM us_ninera WHERE us_ninera.
 $consulta_datos_ninera = mysql_query($query_consulta_datos_ninera, $Conexionnany) or die(mysql_error());
 $row_consulta_datos_ninera = mysql_fetch_assoc($consulta_datos_ninera);
 $totalRows_consulta_datos_ninera = mysql_num_rows($consulta_datos_ninera);
+
+
+mysql_select_db($database_Conexionnany, $Conexionnany);
+$query_consulta_mensajes = sprintf("SELECT * FROM mensajes WHERE mensajes.id_ninera = %s", GetSQLValueString($varUS_consulta_datos_ninera, "int"));
+$consulta_mensajes = mysql_query($query_consulta_mensajes, $Conexionnany) or die(mysql_error());
+$row_consulta_mensajes = mysql_fetch_assoc($consulta_mensajes);
+$totalRows_consulta_mensajes = mysql_num_rows($consulta_mensajes);
+
 ?>
 
 
@@ -147,9 +155,8 @@ $totalRows_consulta_datos_ninera = mysql_num_rows($consulta_datos_ninera);
 							<nav id="nav">
 								<ul>
 									<li><a href="index_nineras.php"><i class="fa fa-home fa-2x"></i><span> INICIO</span></a></li>
-									<li><a href="mis_datos_ninera.php?recordID=<?php echo $_SESSION['MM_id_numn']; ?>"><i class="fa fa-users fa-2x"></i> </i><span> MI PERFIL</span></a></li>
-									<li></li>
-								
+                  <li><a href="mis_datos_ninera.php?recordID=<?php echo $_SESSION['MM_id_numn']; ?>"><i class="fa fa-users fa-2x"></i> </i><span> MI PERFIL</span></a></li>
+                  <li><a href="mensajes_ninera.php?recordID=<?php echo $_SESSION['MM_id_numn']; ?>"><i class="fa fa-envelope fa-2x"></i> <span>MENSAJES (<?php echo $totalRows_consulta_mensajes?>)</span></a></li>
 								</ul>
 								
 							</nav>
