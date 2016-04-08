@@ -1704,10 +1704,7 @@ input {
 			background: url("../../images/niños.jpg");
 			background-size: cover;
 		}
-        #banner-wrapper2 .inner {
-			background: url("../../images/blanco.gif");
-			background-size: cover;
-		}
+       
 		#banner-wrapper p {
 			text-align: center;
 		}
