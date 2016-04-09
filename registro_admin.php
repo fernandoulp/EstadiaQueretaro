@@ -101,10 +101,10 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 							<h1 id="logo">Agregar admin</h1>
 						
 					</p>
-					<div align="left"><a href="inicio_admin.php"><strong>Menú<strong></a></div>
+					<div align="left"><a href="inicio_admin.php"><strong>Menú<strong></a></div> 
 				<!--FIN PHP-->
 
-
+<div align="right">Campos obligatorios '*'</div>
 <br> 
 
 
@@ -116,16 +116,19 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 										<tr valign="baseline">
 									 <td>Nombre:</td>
 									 <td><input  name="name_adm" required/></td>
+									 <td><font size="5">*</font></td>
 									 	</tr>
 
 									 	<tr valign="baseline">
 									 <td>Apellido Paterno:</td>
 									 <td><input name="ape1_adm" required/></td>
+									 <td><font size="5">*</font></td>
 									 	</tr>
 
 									 	<tr valign="baseline">
 									 <td>Apellido Materno:</td>
 									 <td><input name="ape2_adm"  required/></td>
+									 <td><font size="5">*</font></td>
 									 	</tr>
 
 									<tr valign="baseline">
@@ -136,11 +139,13 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 									 	<tr valign="baseline">
 									 <td>Email:</td>
 									 <td><input name="email_adm" required/></td>
+									 <td><font size="5">*</font></td>
 									 	</tr>
 
 									 	<tr valign="baseline">
 									 <td>Contraseña:</td>
 									 <td><input name="password" required/></td>
+									 <td><font size="5">*</font></td>
 									 	</tr>
 
   								<tr valign="baseline">

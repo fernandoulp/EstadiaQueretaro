@@ -142,7 +142,7 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
 				<!--PHP PARA RECONOCER USUARIO-->
 					<p>
 							
-							<h1 id="logo"><a>Respuesta Comentarios</a></h1>
+							<h1 id="logo">Actualización de datos</h1>
 						
 					</p>
 				<!--FIN PHP-->
@@ -158,47 +158,32 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
 									<table align="center">
 										<tr valign="baseline">
 									 <td>Nombre:</td>
-									 <td><input style="width:240px;height:20px" type="text" name="name_adm" value="<?php echo htmlentities($row_consultaMisdatos['name_adm'], ENT_COMPAT, ''); ?>" requiered/></td>
+									 <td><input style="width:240px;height:50px" name="name_adm" value="<?php echo htmlentities($row_consultaMisdatos['name_adm'], ENT_COMPAT, ''); ?>" size="32" maxlength="60"   required/></td> 
 									 	</tr>
 
 									 	<tr valign="baseline">
 									 <td>Apellido Paterno:</td>
-									 <td><input style="width:240px;height:20px" requiered/></td>
+									 <td><input style="width:240px;height:50px" name="ape1_adm" value="<?php echo htmlentities($row_consultaMisdatos['ape1_adm'], ENT_COMPAT, ''); ?>" size="32" maxlength="60"   required/></td>
 									 	</tr>
 
 									 	<tr valign="baseline">
 									 <td>Apellido Materno:</td>
-									 <td><input style="width:240px;height:20px" requiered/></td>
-									 	</tr>
-
-									 	<tr valign="baseline">
-									 <td>Dirección:</td>
-									 <td><input style="width:240px;height:20px" requieres/></td>
-									 	</tr>
-
-									 	<tr valign="baseline">
-									 <td>Teléfono Celular:</td>
-									 <td><input style="width:240px;height:20px" requiered/></td>
+									 <td><input style="width:240px;height:50px" name="ape2_adm" value="<?php echo htmlentities($row_consultaMisdatos['ape2_adm'], ENT_COMPAT, ''); ?>" size="32" maxlength="60"   required/></td>
 									 	</tr>
 
 									 	<tr valign="baseline">
 									 <td>Email:</td>
-									 <td><input style="width:240px;height:20px" requiered/></td>
+									 <td><input style="width:240px;height:50px" name="email_adm" value="<?php echo htmlentities($row_consultaMisdatos['email_adm'], ENT_COMPAT, ''); ?>" size="32" maxlength="60"   required/></td>
 									 	</tr>
 
 									 	<tr valign="baseline">
-									 <td>Estudios:</td>
-									 <td></td>
+									 <td>Teléfono Celular:</td>
+									 <td><input style="width:240px;height:50px" name="ape1_adm" value="<?php echo htmlentities($row_consultaMisdatos['cel_adm'], ENT_COMPAT, ''); ?>" size="32" maxlength="60"   required/></td>
 									 	</tr>
 
 									 	<tr valign="baseline">
-									 <td>Primeros Auxilios:</td>
-									 <td></td>
-									 	</tr>
-
-									 	<tr valign="baseline">
-									 <td>Experiencia (años):</td>
-									 <td><input style="width:240px;height:20px" requiered/></td>
+									 <td>Email:</td>
+									 <td><input style="width:240px;height:50px" name="password" value="<?php echo htmlentities($row_consultaMisdatos['password'], ENT_COMPAT, ''); ?>" size="32" maxlength="60"   required/></td>
 									 	</tr>
 
   									</table>
@@ -206,7 +191,7 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
   									<table>
   										<tr valign="baseline">
 									 		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                  					 <td><input id="submit" type="submit" name="submit" value="Continuar" style="width:200px;height:40px"/></td>
+                  					 <td><input id="submit" type="submit" name="submit" value="Actualizar" style="width:200px;height:40px"/></td>
                    					    </tr>
 
   									</table>
