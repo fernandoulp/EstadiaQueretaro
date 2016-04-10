@@ -78,6 +78,10 @@ $totalRows_consulta_mensajes = mysql_num_rows($consulta_mensajes);
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+<!-- Start WOWSlider.com HEAD section -->
+<link rel="stylesheet" type="text/css" href="engine1/style.css" />
+<script type="text/javascript" src="engine1/jquery.js"></script>
+<!-- End WOWSlider.com HEAD section -->
 
 	</head>
 	<body class="homepage">
@@ -121,18 +125,18 @@ $totalRows_consulta_mensajes = mysql_num_rows($consulta_mensajes);
 				<div id="features-wrapper">
 					<section id="features" class="container">
 						<header>
-							<h2>Cómo funciona  <strong>NanaFy</strong>?</h2>
-						</header>
+								<h2><b><font color="#FE2E64">Cómo funciona</font></b>&nbsp;<b><font color="#58D3F7">NanaFy</b>?</font></h2>
+						
 						<div class="row">
 							<div class="4u 12u(mobile)">
 
 								<!-- Feature -->
 									<section>
-										<a href="#" class="image featured"><img src="images/solicitud.jpg" alt=""  /></a>
+										<p><img src="images/formulario.png" alt="Formulario" width="200" height="200" /></p>
 										<header>
-											<h3>Niñeras suben su solicitud </h3>
+											<h3><font color="#FE2E64">Niñeras registran sus datos </font></h3>
 										</header>
-										<p>Cualquier niñera tiene la posibilidad de postularse en <strong>Nanafy</strong>, donde para hacerlo, necesitan registrarse, donde proporcionarán todos sus datos.</p>
+										<p><font color="black">Cualquier mujer tiene la posibilidad de postularse en <strong><font color="orange">Nanafy</font></strong>, donde para hacerlo, necesitan cubrir ciertos requisitos, donde proporcionarán datos relevantes.</font></p>
 									</section>
 
 							</div>
@@ -140,11 +144,11 @@ $totalRows_consulta_mensajes = mysql_num_rows($consulta_mensajes);
 
 								<!-- Feature -->
 									<section>
-										<a href="#" class="image featured"><img src="images/familia.jpg" alt="" /></a>
+										<p><img src="images/fam.png" alt="Familias" width="200" height="200"/></p>
 										<header>
-											<h3>Familias escogen a una niñera</h3>
+											<h3><font color="#FE2E64">Familias registran sus datos</font></h3>
 										</header>
-										<p>Las familias tendran acceso a la información de todas las niñeras que se registren. Aquí las familias estarán en contacto directo con ellas para llegar a un acuerdo si es que la niñera cumple con los requisitos de la familia.</p>
+										<p><font color="black">Las familias tendran que registrar sus datos previo a visualizar las listas de las niñeras que prestan su servicios para el cuidado y atención a menores.</font></p>
 									</section>
 
 							</div>
@@ -152,12 +156,11 @@ $totalRows_consulta_mensajes = mysql_num_rows($consulta_mensajes);
 
 								<!-- Feature -->
 									<section>
-										<a href="#" class="image featured"><img src="images/mujer.jpg" alt="" /></a>
+										<p><img src="images/seleccion.png" alt="Selección" width="410" height="200"/></p>
 										<header>
-											<h3><strong>¡Manos a la obra!</strong></h3>
+											<h3><strong><font color="#FE2E64">¡Selección de niñera!</font></strong></h3>
 										</header>
-										<p>Después de ponerse en contacto la familia con la niñera, el siguiente paso es que
-                                        los papás puedan divertirse y la niñera empiece a cuidar :)</p>
+										<p><font color="black">Después de que la familia se registro, podrá visualizar la sección donde aparecen las niñeras y seleccionar a la que cumpla con los reuisitos o según la calificación que tenga.</font></p>
 									</section>
 
 							</div>
@@ -173,13 +176,30 @@ $totalRows_consulta_mensajes = mysql_num_rows($consulta_mensajes);
 				</div>
 
 			<!-- Banner -->
-				<div id="banner-wrapper">
+					<div><div id="banner-wrapper">
 					<div class="inner">
-						<section id="banner" class="container">
-							<p>Slogan <strong> o algo así</strong>.<br />
-							</p>
-						</section>
+						
+
+
+<!-- Start WOWSlider.com BODY section -->
+<div id="wowslider-container1">
+<div class="ws_images"><ul>
+		<li><a href="http://wowslider.com"><img src="data1/images/nios.jpg" alt="http://wowslider.com/" title="niños" id="wows1_0"/></a></li>
+		<li><img src="data1/images/nios4.jpg" alt="niños4" title="niños4" id="wows1_1"/></li>
+	</ul></div>
+	<div class="ws_bullets"><div>
+		<a href="#" title="niños"><span><img src="data1/tooltips/nios.jpg" alt="niños"/>1</span></a>
+		<a href="#" title="niños4"><span><img src="data1/tooltips/nios4.jpg" alt="niños4"/>2</span></a>
+	</div></div><div class="ws_script" style="position:absolute;left:-99%"><a href="http://wowslider.com">http://wowslider.com/</a> by WOWSlider.com v8.7</div>
+<div class="ws_shadow"></div>
+</div>	
+<script type="text/javascript" src="engine1/wowslider.js"></script>
+<script type="text/javascript" src="engine1/script.js"></script>
+<!-- End WOWSlider.com BODY section -->
+
+
 					</div>
+				</div>
 				</div>
 
 			<!-- Main -->
@@ -222,6 +242,7 @@ $totalRows_consulta_mensajes = mysql_num_rows($consulta_mensajes);
 								</section>
 								<!--FIN COMENTARIOS-->
 							</div>
+
 							<div class="6u 12u(mobile)">
 								<section>
 									<p>Los hijos no solo son un valioso tesoro también son delicados frutos, es por ello que en Nanafy nuestra prioridad es responder a tus preguntas y saber tus comentarios, para brindarte el mejor servicio con la mejor calidad y el mejor precio para tu familia.</p>
