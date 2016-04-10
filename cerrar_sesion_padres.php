@@ -1,7 +1,6 @@
  <?php require_once('Connections/Conexionnany.php'); ?>
 <?php
-// ***  CIERRE DE SESION
-$logoutGoTo = "index.html";
+$logoutGoTo = "index.html";// ***  CIERRE DE SESION
 if (!isset($_SESSION)) {
   session_start();
 }

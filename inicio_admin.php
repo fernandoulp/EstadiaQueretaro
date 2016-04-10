@@ -1,9 +1,9 @@
-<?php require_once('Connections/Conexionnany.php'); ?>
- <?php
+<?php require_once('Connections/Conexionnany.php'); 
+
 if (!isset($_SESSION)) {
   session_start();
 }
-$MM_authorizedUsers = "admin";
+$MM_authorizedUsers = "premium";
 $MM_donotCheckaccess = "false";
 
 // *** RESTRINGIR ACCESO A PÁGINA SI EL USUARIO EN SESIÓN NO ES ADMINISTRADOR
@@ -29,7 +29,6 @@ function isAuthorized($strUsers, $strGroups, $UserName, $UserGroup) {
   } 
   return $isValid; 
 }
-// PAGINA A LA QUE SE REDICCIONARÁ SI NO SE AUTORIZA EL ACCESO 
 $MM_restrictGoTo = "login_nanny.php";
 if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers, $_SESSION['MM_Username'], $_SESSION['MM_UserGroup'])))) {   
   $MM_qsChar = "?";
@@ -41,7 +40,19 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
   header("Location: ". $MM_restrictGoTo); 
   exit;
 }
+// SENTENCIA SQL PARA MOSTRAR LOS DATOS DEL USUARIO EN SESION
+$varUS_consulta_datos_administradores = "0";
+if (isset($_SESSION['MM_id_user'])) {
+  $varUS_consulta_datos_administradores = $_SESSION['MM_id_user'];
+}
+mysql_select_db($database_Conexionnany, $Conexionnany);
+// CONSULTA SQL PARA TABLA USUARIOS
+$query_consulta_datos_administradores = sprintf("SELECT * FROM administradores WHERE administradores.id_user = %s", GetSQLValueString($varUS_consulta_datos_administradores, "int"));
+$consulta_datos_administradores = mysql_query($query_consulta_datos_administradores, $Conexionnany) or die(mysql_error());
+$row_consulta_datos_administradores = mysql_fetch_assoc($consulta_datos_administradores);
+$totalRows_consulta_datos_administradores = mysql_num_rows($consulta_datos_administradores);
 ?>
+
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -51,7 +62,12 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+<script Language="JavaScript">
+if(window.history.forward(1) != null) window.history.forward(1);
+</script> 
+		
 	</head>
+	<body >
 	<head class="homepage">
 		<div id="page-wrapper">
 
@@ -63,17 +79,7 @@ if (!((isset($_SESSION['MM_Username'])) && (isAuthorized("",$MM_authorizedUsers,
 							
 
 
-							<h1>Bienvenido                              <?php  
- if ((isset($_SESSION['MM_Username'])) && ($_SESSION['MM_Username'] != ""))
-  {
-	  echo "";
-  echo ObtenerNombreUsuario ($_SESSION['MM_id_user']);
-  ?></font></p>
-<?php 
-  }
-  else
-  {?><br />
-<?php }?></h1>
+							<h1>Bienvenido                         <?php echo $row_consulta_datos_administradores['name_adm']; ?></h1>
 						</p>
 
 

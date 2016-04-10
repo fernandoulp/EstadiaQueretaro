@@ -3,7 +3,7 @@
 if (!isset($_SESSION)) {
   session_start();
 }
-$MM_authorizedUsers = "premium";
+$MM_authorizedUsers = "premium_n";
 $MM_donotCheckaccess = "false";
 
 // *** RESTRINGIR ACCESO A PÁGINA SI EL USUARIO EN SESIÓN NO ES ADMINISTRADOR

@@ -84,7 +84,7 @@ if (isset($_POST['email_adm'])) { //SE DECLARAN VARIABLES QUE TENDRAN EL VALOR D
 
 <html>
 	<head>
-		<title>Iniciar Sesión</title>
+		<title>Acceso administradores</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -137,7 +137,7 @@ if (isset($_POST['email_adm'])) { //SE DECLARAN VARIABLES QUE TENDRAN EL VALOR D
 
 <div class="container">
 <p>
-              <h1 id="logo">Iniciar Sesión</h1>
+              <h1 id="logo">Acceso Administrador</h1>
             </p>
 <!-- Formulario -->
                 <section class="formulario">

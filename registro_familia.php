@@ -58,9 +58,10 @@ if (isset($_SERVER['QUERY_STRING'])) {
 }
 
 if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
-  $insertSQL = sprintf("INSERT INTO us_padres (name_p, last_namep, address_p, email_p, password_p) VALUES (%s, %s, %s, %s, %s)",
+  $insertSQL = sprintf("INSERT INTO us_padres (name_p, last_namep, tel_p, address_p, email_p, password_p) VALUES (%s, %s, %s, %s, %s, %s)",
                        GetSQLValueString($_POST['name_p'], "text"),
                        GetSQLValueString($_POST['last_namep'], "text"),
+                        GetSQLValueString($_POST['tel_p'], "int"),
                        GetSQLValueString($_POST['address_p'], "text"),
                        GetSQLValueString($_POST['email_p'], "text"),
                        GetSQLValueString($_POST['password_p'], "text"));
@@ -68,7 +69,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
   mysql_select_db($database_Conexionnany, $Conexionnany);
   $Result1 = mysql_query($insertSQL, $Conexionnany) or die(mysql_error());
 
-  $insertGoTo = "index.html";
+  $insertGoTo = "login_familias.php";
   if (isset($_SERVER['QUERY_STRING'])) {
     $insertGoTo .= (strpos($insertGoTo, '?')) ? "&" : "?";
     $insertGoTo .= $_SERVER['QUERY_STRING'];
@@ -101,7 +102,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 						
 					</p>
 				<!--FIN PHP-->
-
+<div align="right">Campos obligatorios '*'</div>
 
 <br> 
 
@@ -113,27 +114,38 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 									<table align="center">
 										<tr valign="baseline">
 									 <td>Nombre:</td>
-									 <td><input  name="name_p" required/></td>
+									 <td><input  name="name_p" placeholder="Nombre" required/></td>
+									 <td><font size="6">*</font></td>
 									 	</tr>
 
 									 	<tr valign="baseline">
-									 <td>Apellido:</td>
-									 <td><input name="last_namep" required/></td>
+									 <td>Apellidos:</td>
+									 <td><input name="last_namep" placeholder="Apellidos" required/></td>
+									 <td><font size="6">*</font></td>
+									 	</tr>
+
+									 	<tr valign="baseline">
+									 <td>Teléfono:</td>
+									 <td><input name="tel_p" placeholder="Teléfono" /></td>
+									 
 									 	</tr>
 
 									 	<tr valign="baseline">
 									 <td>Dirección:</td>
-									 <td><input name="address_p"  required/></td>
+									 <td><input name="address_p"  placeholder="Dirección" required/></td>
+									 <td><font size="6">*</font></td>
 									 	</tr>
 
 									 	<tr valign="baseline">
 									 <td>Email:</td>
-									 <td><input name="email_p" required/></td>
+									 <td><input name="email_p" placeholder="ejemplo@gmail.com" required/></td>
+									 <td><font size="6">*</font></td>
 									 	</tr>
 
 									 	<tr valign="baseline">
 									 <td>Contraseña:</td>
-									 <td><input name="password_p" required/></td>
+									 <td><input type="password" name="password_p" placeholder="Contraseña" required/></td>
+									 <td><font size="6">*</font></td>
 									 	</tr>
 
   								<tr valign="baseline">
@@ -143,6 +155,7 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 
   									</table>
  										<input type="hidden" name="MM_insert" value="form1" />
+ 										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="aviso_privacidad/avisodeprivacidad.pdf">Aviso de Privacidad</a>
                                 </form>
 							    </section>
 							</div>

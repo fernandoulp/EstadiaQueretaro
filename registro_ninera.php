@@ -104,11 +104,11 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 				<!--PHP PARA RECONOCER USUARIO-->
 					<p>
 							
-							<h1 id="logo"><a>Niñeras</a></h1>
+							<h1 id="logo">Niñeras</h1>
 						
 					</p>
 				<!--FIN PHP-->
-
+<div align="right">Campos obligatorios '*'</div>
 
 <br> 
 
@@ -120,65 +120,77 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 									<table align="center">
 
 									<p>Imagen de perfil: </p>
-									<input type="file" style="width:500px;height:50px" name="imagen" required />
+									<input type="file"  name="imagen" required />
 
 										<tr valign="baseline">
 									 <td>Nombre:</td>
-									 <td><input style="width:240px;height:40px" name="nombre_ninera" maxlength="20" required/></td>
+									 <td><input  name="nombre_ninera" maxlength="20" placeholder="Nombre"required/></td>
+									 <td><font size="6">*</font></td>
 									 	</tr>
 
 									 	<tr valign="baseline">
 									 <td>Apellidos:</td>
-									 <td><input style="width:240px;height:20px" name="apell_ninera" maxlength="30" required/></td>
+									 <td><input  name="apell_ninera" maxlength="30" placeholder="Apellidos"required/></td>
+									 <td><font size="6">*</font></td>
 									 	</tr>
 
 									 	<tr valign="baseline">
 									 <td>Fecha de nacimiento:</td>
-									 <td><input type="date" style="width:240px;height:20px" name="cumple_n" max="1999-01-01" required/></td>
+									 <td><input type="date"  name="cumple_n" max="1999-01-01" placeholder="año-mes-dia"required/></td>
+									 <td><font size="6">*</font></td>
 									 	</tr>
 
 										<tr valign="baseline">
 									 <td>Dirección</td>
-									 <td><input style="width:240px;height:20px" name="direccion_n" maxlength="50" required/></td>
+									 <td><input name="direccion_n" maxlength="50" placeholder="Dirección"required/></td>
+									 <td><font size="6">*</font></td>
 									 	</tr>
 									 	<tr valign="baseline">
 									 <td>Teléfono Celular:</td>
-									 <td><input type="tel" style="width:240px;height:20px" name="tel_n" required/></td>
+									 <td><input type="tel" name="tel_n" placeholder="Teléfono" required/></td>
 									 	</tr>
 
 									 	<tr valign="baseline">
 									 <td>Email:</td>
-									 <td><input style="width:240px;height:20px" name="email_n" required/></td>
+									 <td><input  name="email_n" placeholder="ejemplo@gmail.com" required/></td>
+									 <td><font size="6">*</font></td>
 									 	</tr>
 
 									 	<tr valign="baseline">
 									 <td>Contraseña:</td>
-									 <td><input type="password" style="width:240px;height:20px" name="pass_n" required/></td>
+									 <td><input type="password"  name="pass_n" placeholder="Contraseña"required/></td>
+									 <td><font size="6">*</font></td>
 									 	</tr>
 
 
 									 	<tr valign="baseline">
 									 <td>Estudios:</td>
-									 <td><input style="width:240px;height:20px" name="estudios_n" required/></td></td>
+									 <td><input  name="estudios_n" placeholder="Estudios"required/></td></td>
+									 <td><font size="6">*</font></td>
 									 	</tr>
 
 									 	<tr valign="baseline">
 									 <td>Primeros Auxilios:</td>
-									 <td><input style="width:240px;height:20px" name="auxilios_n" required/></td></td>
+									 <td><input  name="auxilios_n" placeholder="Primeros Auxilios" required/></td></td>
+									 <td><font size="6">*</font></td>
 									 	</tr>
 
 									 	<tr valign="baseline">
 									 <td>Experiencia (años):</td>	
-									 <td><input type="text" style="width:240px;height:20px" name="experiencia_n" required/></td>
+									 <td><input  name="experiencia_n" placeholder="Experiencia" required/></td>
+									 <td><font size="6">*</font></td>
 									 	</tr>
 
   								<tr valign="baseline">
          							 <td nowrap="nowrap" align="right">&nbsp;</td>
-         								 <td><input type="submit" id="enviar_usu" value="Dar de alta" /></td>
+         								 <td><input type="submit" id="enviar_usu" value="Registrar" /></td>
+
       										  </tr>
 
   									</table>
  										<input type="hidden" name="MM_insert" value="form1" />
+ 										&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="aviso_privacidad/avisodeprivacidad.pdf">Aviso de Privacidad</a>
+ 										
                                 </form>
 							    </section>
 							</div>
@@ -187,13 +199,22 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 							<nav id="nav">
 								<ul>
 									<li><a href="index.html"><i class="fa fa-home fa-2x"></i><span> INICIO</span></a></li>
-									<li><a href="#"><i class="fa fa-users fa-2x"></i> </i><span> FAMILIA</span></a></li>
-									<li><a href="#"><i class="fa fa-female fa-2x"></i> </i><span> NIÑERA</span></a></li>
-									<li><a href="acerca.html"><i class="fa fa-info-circle fa-2x"></i> </i><span> ACERCA DE</span></a></li>
-									<li><a href="recomendaciones.html"><i class="fa fa-file-text-o fa-2x"></i><span>  RECOMENDACIONES</span></a></li>
-									<li><a href="iniciar_como.php"><input id="submit" type="submit" name="submit" value="Iniciar sesión" style="width:200px;height:45px"/></a></li>
+									<li>
+										<a href="#"><i class="fa fa-users fa-2x"></i><span> FAMILIA</span></a>
+										<ul>
+											<li><a href="login_familias.php">Inicia sesión</a></li>
+											<li><a href="registro_familia.php">Registrate</a></li>
+										</ul>
+									</li>
+									<li><a href="left-sidebar.html"><i class="fa fa-female fa-2x"></i><span> NIÑERA</span></a>
+									<ul>
+											<li><a href="login_nineras.php">Inicia sesión</a></li>
+											<li><a href="registro_ninera.php">Registrate</a></li>
+										</ul>
+									</li>
+									<li><a href="right-sidebar.html"><i class="fa fa-info-circle fa-2x"></i> </i><span> ACERCA DE</span></a></li>
+									<li><a href="requisitos.html"><i class="fa fa-file-text-o fa-2x"></i><span>  RECOMENDACIONES</span></a></li>
 								</ul>
-								
 							</nav>
 
 					</div>
@@ -202,10 +223,11 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
 			<!-- Features -->
 			
 			<div id="copyright" class="container">
-						<ul >
-							<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-						</ul>
-					</div>
+            <ul class="links">
+              <li>NanaFy Todos los derechos reservados &copy; Copyright 2016</li><li><a href="login_nanny.php">Administración</a></li>
+            </ul>
+          </div>
+
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.dropotron.min.js"></script>

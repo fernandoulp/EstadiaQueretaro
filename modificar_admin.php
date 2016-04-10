@@ -4,7 +4,7 @@
 if (!isset($_SESSION)) {
   session_start();
 }
-$MM_authorizedUsers = "admin";
+$MM_authorizedUsers = "premium";
 $MM_donotCheckaccess = "false";
 
 // *** RESTRINGIR ACCESO A PÁGINA SI EL USUARIO EN SESIÓN NO ES ADMINISTRADOR
@@ -149,12 +149,12 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
 
 
 <br> 
-<div align="left"><a href="coment_admin.php"><strong>Regresar<strong></a></div>
+<div align="left"><a href="lista_admin.php"><strong>Regresar<strong></a></div>
 			<!--FORMULARIO RESPUESTA DE COMENTARIOS-->
 							<br>
 								<div>
 								<section class="formulario" action="<?php echo $editFormAction; ?>" method="post" name="form1" id="form1" onsubmit="return valida()">
-								<form action="agregar_ninera.php"  method="post" id="form2">
+								<form >
 									<table align="center">
 										<tr valign="baseline">
 									 <td>Nombre:</td>
@@ -228,10 +228,11 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
 			<!-- Features -->
 			
 			<div id="copyright" class="container">
-						<ul >
-							<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-						</ul>
-					</div>
+            <ul class="links">
+              <li>GoNanny Todos los derechos reservados &copy; Copyright 2016</li><li><a href="login_nanny.php">Administración</a></li>
+            </ul>
+          </div>
+
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.dropotron.min.js"></script>
